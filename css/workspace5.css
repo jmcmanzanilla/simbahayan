@@ -1,0 +1,99 @@
+/*!
+ * Start Bootstrap - Logo Nav HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+header.main{
+	width: 100%;
+    margin: 0px;
+    padding: 0px;
+    min-height: 112px;
+    height: auto;
+    border-bottom: 5px solid #ffc000;
+    background:#262626;
+}
+
+div.container a.logo{
+	padding: 10px 0px 10px 0px;
+	width: 49%;
+}
+
+.left{
+	float: left;
+}
+
+img{
+	width: 387.578px;
+	height: 81.859;
+}
+
+body {
+    padding-top: 70px;
+	background-color: #d3d3d3/* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+	width:100%;
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+	margin-left: 10%;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+		width: 100%;
+    }
+
+    .navbar-fixed-top .navbar-brand {
+    	color:#ffc000;
+        padding: 15px 0;
+    }
+}
+
+.menu{
+	font-family: "Century Gothic", Arial, sans-serif;
+    font-size: 15px;
+    padding: 0px 4px 0px 4px;
+    margin: 10px 1px 0px 1px;
+    background: #ffc000;
+    color: #262626;
+    text-shadow: none !important;
+    border-radius: 5px 5px 5px 5px;
+    border-color: black;
+    height: 45px;
+}
+
+i{
+	margin-bottom: 10px; 
+	color: #ffc000;
+}
+
+li.dropdown{
+    font-family: "Century Gothic", Arial, sans-serif;
+    font-size: 15px;
+    padding: 5px 4px 5px 4px;
+    margin: 0px 1px 0px 1px;
+    text-shadow: none !important;
+    border-radius: 5px 5px 5px 5px;
+}
+
+footer {
+	position:relative;
+   	bottom:0;
+   	margin-top:100px;
+   	height:30px;
+   	width:100%;
+	padding-top:10px;
+	background:#262626;
+	
+	font-family:"Lucida Console", Monaco, monospace;
+	font-size:11px;
+	color:#ffc000;
+	text-align:center;	
+	clear:both;	
+	
+}

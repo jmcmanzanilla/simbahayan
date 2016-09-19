@@ -1,0 +1,8 @@
+Username,Name,Email,Account Type
+org1,Organization 1 ,org@1,Organization
+org2,Organization 2 ,org@2,Organization
+adviser,Adviser 1 ,adv@adv,Signatory
+depchair,Department Chair,dep@chair,Signatory
+dean,Dean,dean1@dea,Signatory
+orgpres,Organization President 1,org@1,Signatory
+regent,Regent,father@1,Signatory
