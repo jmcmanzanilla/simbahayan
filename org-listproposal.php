@@ -136,7 +136,7 @@ if(!isset($_SESSION['name'])){
 
                 <div class = "panel panel-body" style = "width: 100%; border-radius: 0;height: auto; color: #000; background-color: #fff; box-shadow: 5px 5px 5px grey;">
                   <div class = "panel panel-heading" style = "font-size: 20px; color: #222; font-weight: bold;">PROPOSALS</div>
-					<form method="post" enctype="multipart/form-data" action="org-filter.php">
+					<form method="post" enctype="multipart/form-data" action="org-filter.php?page=1">
 					<input type="hidden" name="submitted" value="true"/>
                   <div class="form-group col-md-4">
           <label>FILTER BY:</label><br>
