@@ -51,21 +51,8 @@ if(isset($_POST['submitted'])){
     $proj_head2 = $_POST['proj_head2'];
     $position2 = $_POST['position2'];
     $title = $_POST['title'];
-   
-   /*$queryz = "SELECT date FROM program_flow where proposal_id = '$d'";
-    $results = mysqli_query($link,$queryz);
-    $j = 0;
-    while ($row = mysqli_fetch_array($results)){
-    $datez[$j]= $row['date'];
-    $j++;
-    }
-    $dates = "";
-    for ($w = 0; $w != $j; $w++) {
-     $dates = $datez[$w] .", " . $dates;
-   }*/
       
-  
-  $sqlupdate = "UPDATE cover_letter SET iso = $iso, year = $year, date = $date, address_name = $address_name, address_position = $address_position, address_company1 = $address_company1, address_company2 = $address_company2, salutation = $salutation, body = $body, closing = $closing, proj_head1 = $proj_head1, position = $position, title = $title WHERE proposal_id = $d" ;
+  $sqlupdate = "UPDATE cover_letter SET iso = '$iso', year = '$year', date = '$date', address_name = '$address_name', address_position = '$address_position', address_company1 = '$address_company1', address_company2 = '$address_company2', salutation = '$salutation', body = '$body', closing = '$closing', proj_head1 = '$proj_head1', position1 = '$position1', title = '$title' WHERE proposal_id = $d " ;
   
   $sqli = "UPDATE proj_proposal SET cover = 1 WHERE proposal_id = $d ";
 	
@@ -77,7 +64,7 @@ if(isset($_POST['submitted'])){
     die("<script type='text/javascript'>alert('ERROR IN SUBMITTING COVER LETTER!'); window.history.go(-1);</script>");
   }
 
-    echo "<script type='text/javascript'>alert('SUCCESSFULLY ADDED COVER LETTER'); window.location ='budget-proposal.php?d=$d&&days=0';</script>";
+    echo "<script type='text/javascript'>alert('SUCCESSFULLY EDITED COVER LETTER'); window.location ='budget-proposal.php?d=$d&&days=0';</script>";
 }
 ?>
 
@@ -173,7 +160,7 @@ if(isset($_POST['submitted'])){
 
                   <div class = "col-md-12" style = "margin-top: 30px; font-size: 16px;">
 		<?php
-                echo "<form role='form' class='col-md-12' action = 'cover-letter.php?d=$d' method = 'post' enctype='multipart/form-data'>
+                echo "<form role='form' class='col-md-12' action = 'edit-coverletter.php?d=$d' method = 'post' enctype='multipart/form-data'>
                     <input type='hidden' name='submitted' value='true'/>";
 
         $sql = "SELECT * FROM proj_proposal WHERE proposal_id = ".$d.""; 
@@ -224,7 +211,7 @@ if(isset($_POST['submitted'])){
         </div>
 
         <div class = "col-md-12"><label class = "control-label" style = "margin-top: 10px;">Body</label>
-          <textarea name = "body" class = "form-control" style ="height: 400px; margin-top: 10px;"><?php echo $body;?></textarea><
+          <textarea name = "body" class = "form-control" style ="height: 400px; margin-top: 10px;"><?php echo $body;?></textarea>
         </div>
         
         <div class = "col-md-12"><label class = "control-label" style = "margin-top: 10px;" >Closing (i.e. Sincerely Yours)</label>

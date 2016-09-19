@@ -83,7 +83,7 @@ if(isset($_POST['submitted'])){
 	$exp_result3 = $_POST['exp_result3'];
     $proj_evaluation = $_POST['proj_evaluation'];
     
-    $sqlupdate ="UPDATE proj_proposal SET lead_org = $lead_org, affiliation = $affiliation, college = $college, lname1 = $lname1, fname1 = $fname1, mi1 = $mi1,  cnum1 = $cnum1, email1 = $email1, lname2 = $lname2, fname2 = $fname2, mi2 = $mi2,  cnum2 = $cnum2, email2 = $email2, collab = $collab, proj_title = $proj_title, prog_aredev = $prog_areadev, community = $community, participants = $participants, comser_budget = $comser_budget, org_budget = $org_budget, com_budget = $com_budget, proj_background = $prok_background, gen_objective = $gen_objective, spec_obj1 = $spec_obj1, exp_result1 = $exp_result1, spec_obj2 = $spec_obj2, exp_result2 = $exp_result2, spec_obj3 = $spec_obj3, exp_result3 = $exp_result3, proj_evaluation = $proj_evaluation WHERE proposal_id = $d";
+    $sqlupdate ="UPDATE proj_proposal SET lead_org = '$lead_org', affiliation = '$affiliation', college = '$college', lname1 = '$lname1', fname1 = '$fname1', mi1 = '$mi1',  cnum1 = '$cnum1', email1 = '$email1', lname2 = '$lname2', fname2 = '$fname2', mi2 = '$mi2',  cnum2 = '$cnum2', email2 = '$email2', collab = '$collab', proj_title = '$proj_title', prog_aredev = '$prog_areadev', community = '$community', participants = '$participants', comser_budget = '$comser_budget', org_budget = '$org_budget', com_budget = '$com_budget', proj_background = '$proj_background', gen_objective = '$gen_objective', spec_obj1 = '$spec_obj1', exp_result1 = '$exp_result1', spec_obj2 = '$spec_obj2', exp_result2 = '$exp_result2', spec_obj3 = '$spec_obj3', exp_result3 = '$exp_result3', proj_evaluation = '$proj_evaluation' WHERE proposal_id = $d";
     
     if(!mysqli_query($link, $sqlupdate)){
 		die("<script type='text/javascript'>alert('FAILED SUBMISSION!'); window.history.go(-1);</script>");
@@ -417,7 +417,7 @@ var email2 = document.getElementById("email2");
 
                   <div class = "col-md-12" style = "margin-top: 30px; font-size: 16px;">
 
-                 <form role="form" autocomplete="off" class="form-horizontal" method="post" action="upload_proposal.php?days=<?php echo $days;?>" enctype="multipart/form-data">
+                 <form role="form" autocomplete="off" class="form-horizontal" method="post" action="edit-projectproposal.php?d=<?php echo $d;?>" enctype="multipart/form-data">
     <input type="hidden" name="submitted" value="true"/>
     <!-- step 1 -->
       <div class="row setup-content" id="step-1">
