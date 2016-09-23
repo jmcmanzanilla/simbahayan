@@ -30,6 +30,9 @@ while ($row = mysqli_fetch_array($result)){
    $org_budget = $row['org_budget'];
    $com_budget = $row['com_budget'];
    $proj_background = $row['proj_background'];
+   $proj_background1 = $row['proj_background1'];    // added proj_backround 1-3
+   $proj_background2 = $row['proj_background2'];
+   $proj_background3 = $row['proj_background3'];
    $gen_objective = $row['gen_objective'];
    $spec_obj1 = $row['spec_obj1'];
    $exp_result1 = $row['exp_result1'];
@@ -37,43 +40,42 @@ while ($row = mysqli_fetch_array($result)){
    $exp_result2 = $row['exp_result2'];
    $spec_obj3 = $row['spec_obj3'];
    $exp_result3 = $row['exp_result3'];
+   $spec_obj4 = $row['spec_obj4'];					//added spec_obj4 & exp_result4
+   $exp_result4 = $row['exp_result4'];
    $proj_evaluation = $row['proj_evaluation'];
+   $proj_evaluation1 = $row['proj_evaluation1'];	//added proj_evaluation1
    $pending = $row['pending'];
+   
 }
 if ($pending != "User must complete other forms before approval begins") {
     echo "<script type='text/javascript'>alert('Proposal is currently being reviewed by signatories. You currently have no permission to edit proposal.'); window.location ='org-listproposal.php?page=1';</script>";
 }
-
 if(isset($_POST['submitted'])){
-
 	$lead_org = $_POST['lead_org'];
 	$affiliation = $_POST['affiliation'];
 	$college = $_POST['college'];
-
 	$lname1 = $_POST['lname1'];
 	$fname1 = $_POST['fname1'];
 	$mi1 = $_POST['mi1'];
 	$cnum1 = $_POST['cnum1'];
 	$email1 = $_POST['email1'];
-
 	$lname2 = $_POST['lname2'];
 	$fname2 = $_POST['fname2'];
 	$mi2 = $_POST['mi2'];
 	$cnum2 = $_POST['cnum2'];
 	$email2 = $_POST['email2'];
-
 	$collab = $_POST['collab'];
-
 	$proj_title = $_POST['proj_title'];
 	$prog_areadev = $_POST['prog_areadev'];
 	$community = $_POST['community'];
 	$participants = $_POST['participants'];
-
 	$comser_budget = $_POST['comser_budget'];
 	$org_budget = $_POST['org_budget'];
 	$com_budget = $_POST['com_budget'];
-
 	$proj_background = $_POST['proj_background'];
+	$proj_background1 = $_POST['proj_background1'];    // added proj_backround 1-3
+	$proj_background2 = $_POST['proj_background2'];
+	$proj_background3 = $_POST['proj_background3'];
 	$gen_objective = $_POST['gen_objective'];
 	$spec_obj1 = $_POST['spec_obj1'];
 	$exp_result1 = $_POST['exp_result1'];
@@ -81,14 +83,16 @@ if(isset($_POST['submitted'])){
 	$exp_result2 = $_POST['exp_result2'];
 	$spec_obj3 = $_POST['spec_obj3'];
 	$exp_result3 = $_POST['exp_result3'];
+	$spec_obj4 = $_POST['spec_obj4'];					//added spec_obj4 & exp_result4
+	$exp_result4 = $_POST['exp_result4'];
     $proj_evaluation = $_POST['proj_evaluation'];
+	$proj_evaluation1 = $_POST['proj_evaluation1'];	//added proj_evaluation1
     
-    $sqlupdate ="UPDATE proj_proposal SET lead_org = '$lead_org', affiliation = '$affiliation', college = '$college', lname1 = '$lname1', fname1 = '$fname1', mi1 = '$mi1',  cnum1 = '$cnum1', email1 = '$email1', lname2 = '$lname2', fname2 = '$fname2', mi2 = '$mi2',  cnum2 = '$cnum2', email2 = '$email2', collab = '$collab', proj_title = '$proj_title', prog_aredev = '$prog_areadev', community = '$community', participants = '$participants', comser_budget = '$comser_budget', org_budget = '$org_budget', com_budget = '$com_budget', proj_background = '$proj_background', gen_objective = '$gen_objective', spec_obj1 = '$spec_obj1', exp_result1 = '$exp_result1', spec_obj2 = '$spec_obj2', exp_result2 = '$exp_result2', spec_obj3 = '$spec_obj3', exp_result3 = '$exp_result3', proj_evaluation = '$proj_evaluation' WHERE proposal_id = $d";
+    $sqlupdate ="UPDATE proj_proposal SET lead_org = '$lead_org', affiliation = '$affiliation', college = '$college', lname1 = '$lname1', fname1 = '$fname1', mi1 = '$mi1',  cnum1 = '$cnum1', email1 = '$email1', lname2 = '$lname2', fname2 = '$fname2', mi2 = '$mi2',  cnum2 = '$cnum2', email2 = '$email2', collab = '$collab', proj_title = '$proj_title', prog_areadev = '$prog_areadev', community = '$community', participants = '$participants', comser_budget = '$comser_budget', org_budget = '$org_budget', com_budget = '$com_budget', proj_background = '$proj_background', proj_background1 = '$proj_background1', proj_background2 = '$proj_background2', proj_background3 = '$proj_background3', gen_objective = '$gen_objective', spec_obj1 = '$spec_obj1', exp_result1 = '$exp_result1', spec_obj2 = '$spec_obj2', exp_result2 = '$exp_result2', spec_obj3 = '$spec_obj3', exp_result3 = '$exp_result3', spec_obj4 = '$spec_obj4', exp_result4 = '$exp_result4', proj_evaluation = '$proj_evaluation', proj_evaluation1 = '$proj_evaluation1' WHERE proposal_id = $d";
     
     if(!mysqli_query($link, $sqlupdate)){
 		die("<script type='text/javascript'>alert('FAILED SUBMISSION!'); window.history.go(-1);</script>");
 	}
-
 	echo "<script type='text/javascript'>alert('SUCCESSFULLY ADDED PROPOSAL'); window.location ='org-listproposal.php?page=1';</script>";
 }
 ?>
@@ -135,26 +139,21 @@ if(isset($_POST['submitted'])){
   font-weight: 400;
   src: local('RobotoDraft Italic'), local('RobotoDraft-Italic'), local('Roboto-Italic'), url('fonts/RobotoDraftItalic.woff2') format('woff2'), url('../fonts/RobotoDraftItalic.woff') format('woff');
 }
-
 .stepwizard-step p {
   margin-top: 10px;
 }
-
 .stepwizard-row {
   display: table-row;
 }
-
 .stepwizard {
   display: table;
   width: 100%;
   position: relative;
 }
-
 .stepwizard-step button[disabled] {
   opacity: 1 !important;
   filter: alpha(opacity=100) !important;
 }
-
 .stepwizard-row:before {
   top: 14px;
   bottom: 0;
@@ -164,15 +163,12 @@ if(isset($_POST['submitted'])){
   height: 1px;
   background-color: #ccc;
   z-order: 0;
-
 }
-
 .stepwizard-step {
   display: table-cell;
   text-align: center;
   position: relative;
 }
-
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -182,7 +178,6 @@ if(isset($_POST['submitted'])){
   line-height: 1.428571429;
   border-radius: 15px;
 }
-
 .nextBtn {
   float: right;
   width: 10%;
@@ -196,35 +191,26 @@ if(isset($_POST['submitted'])){
 <script>
 function contactNum1()  
        {  
-
           var cnum1 = document.getElementById('cnum1');
-
           var message = document.getElementById('confirmMessage');
-
           var goodColor = "#66cc66";
           var badColor = "#ff6666";
-
           var numbers = /^[0-9]+$/;  
           if(cnum1.value.match(numbers))  
                 {  
-
                 if (cnum1.value.length == 7 || 
-
             cnum1.value.length == 11){
                     message.innerHTML = "Valid contact number!"
                     cnum1.style.backgroundColor = goodColor;
                     message.style.color = goodColor;
                     return true;  
                     }
-
                 else {
-
                     message.innerHTML = "Invalid contact number!" 
                     cnum1.style.backgroundColor = badColor;
                     message.style.color = badColor;
                     return false;  
                 }
-
              }  
           
           else  
@@ -235,38 +221,28 @@ function contactNum1()
           return false;  
           }  
        } 
-
 function contactNum2()  
        {  
-
           var cnum2 = document.getElementById('cnum2');
-
           var message = document.getElementById('confirmMessage2');
-
           var goodColor = "#66cc66";
           var badColor = "#ff6666";
-
           var numbers = /^[0-9]+$/;  
           if(cnum2.value.match(numbers))  
                 {  
-
                 if (cnum2.value.length == 7 || 
-
             cnum2.value.length == 11){
                     message.innerHTML = "Valid contact number!"
                     cnum2.style.backgroundColor = goodColor;
                     message.style.color = goodColor;
                     return true;  
                     }
-
                 else {
-
                     message.innerHTML = "Invalid contact number!" 
                     cnum2.style.backgroundColor = badColor;
                     message.style.color = badColor;
                     return false;  
                 }
-
              }  
           
           else  
@@ -300,12 +276,10 @@ function contactNum2()
             }
             
         }*/
-
 function ValidateEmail1()  
     {  
 var email1 = document.getElementById("email1");
     var message1 = document.getElementById('confirmMessage3');
-
           var goodColor = "#66cc66";
           var badColor = "#ff6666";
     
@@ -326,12 +300,10 @@ var email1 = document.getElementById("email1");
                     return false; 
     }  
     }  
-
     function ValidateEmail2()  
     {  
 var email2 = document.getElementById("email2");
     var message2 = document.getElementById('confirmMessage4');
-
           var goodColor = "#66cc66";
           var badColor = "#ff6666";
     
@@ -352,7 +324,6 @@ var email2 = document.getElementById("email2");
                     return false; 
     }  
     }  
-
 </script>
 
 	<body style = "background-color: #d8ced1; font-family: 'RobotoDraft'; height: 100%; color: #222; font-size: 14px; padding-top: 5%; padding-bottom: 10%;">
@@ -609,8 +580,27 @@ var email2 = document.getElementById("email2");
 
                   <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold">Project Background</label>
-                    <p>What specific problem or need in the partner community or institution does your organization wish to address? Why is it important? How is the project related to your chosen program area?</p>
-                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background"><?php echo $proj_background; ?></textarea>
+                    <p>What specific problem or need in the partner community or institution does your organization wish to address?</p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>Why is it important?</p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background1"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>How is the project related to your chosen program area?</p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background2"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>What specific University Community Development Program (UCDP) success indicator is it trying to address? <a href=".\uploads\UCDP Success Indicators.pdf"target="_blank">Click to view the UCDP Success Indicators</a></p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background3"></textarea>
+					
                   </div>
 
 
@@ -639,7 +629,7 @@ var email2 = document.getElementById("email2");
                           </thead>
                           <tbody>
                             <tr>
-                              <td><textarea type="text" placeholder='Specific Objective 1' class="form-control" name="spec_obj1" required></textarea><?php echo $spec_obj1; ?></td>
+                              <td><textarea type="text" placeholder='Specific Objective 1' class="form-control" name="spec_obj1" required><?php echo $spec_obj1; ?></textarea></td>
                               <td><textarea type="text" placeholder='Expected Results 1' class="form-control" name="exp_result1" required="required"><?php echo $exp_result1; ?></textarea></td>
                             </tr>
                             <tr>
@@ -650,16 +640,26 @@ var email2 = document.getElementById("email2");
                               <td><textarea type="text" placeholder='Specific Objective 3' class="form-control"name="spec_obj3" required><?php echo $spec_obj3; ?></textarea></td>
                               <td><textarea type="text" placeholder='Expected Results 3' class="form-control" name="exp_result3" required="required"><?php echo $exp_result3; ?></textarea></td>
                             </tr>
+							<tr>
+                              <td><textarea type="text" placeholder='Specific Objective 4(Optional)' class="form-control"name="spec_obj4" required><?php echo $spec_obj4; ?></textarea></td>
+                              <td><textarea type="text" placeholder='Expected Results 4 (Optional)' class="form-control" name="exp_result4" required="required"><?php echo $exp_result4; ?></textarea></td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
                   </div>
                    <div class='col-md-12'>
-            <label class='control-label' style='font-weight:bold'>PROJECT EVALUATION</label>
-              <p>How will the achievements be evaluated? What needs to be done in order to know whether the community development project has achieved its general and specific objectives?</p>
-             <textarea name="proj_evaluation" class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here"><?php echo $proj_evaluation; ?></textarea>
-            </div>
+				   <label class='control-label' style='font-weight:bold'>PROJECT EVALUATION</label>
+				   <p>How will the achievements be evaluated? What needs to be done in order to know whether the community development project has achieved its general and specific objectives?</p>
+                   <textarea name="proj_evaluation" class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here"><?php echo $proj_evaluation; ?></textarea>
+                  </div>
+				  <div class="col-md-12">
+					<label class="control-label" style="font-weight:bold"></label>
+					<p>What needs to be done in order to know whether the community development project has achieved its general and specific objectives?</p>
+					<textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here" name="proj_evaluation1"><?php echo $proj_evaluation1; ?></textarea>
+				  </div>
+			
               </div>
             </div>
         </div>

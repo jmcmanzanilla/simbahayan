@@ -28,6 +28,9 @@ while ($row = mysqli_fetch_array($result)){
    $org_budget = $row['org_budget'];
    $com_budget = $row['com_budget'];
    $proj_background = $row['proj_background'];
+   $proj_background1 = $row['proj_background1'];    // added proj_backround 1-3
+   $proj_background2 = $row['proj_background2'];
+   $proj_background3 = $row['proj_background3'];
    $gen_objective = $row['gen_objective'];
    $spec_obj1 = $row['spec_obj1'];
    $exp_result1 = $row['exp_result1'];
@@ -35,7 +38,10 @@ while ($row = mysqli_fetch_array($result)){
    $exp_result2 = $row['exp_result2'];
    $spec_obj3 = $row['spec_obj3'];
    $exp_result3 = $row['exp_result3'];
+   $spec_obj4 = $row['spec_obj4'];					//added spec_obj4 & exp_result4
+   $exp_result4 = $row['exp_result4'];
    $proj_evaluation = $row['proj_evaluation'];
+   $proj_evaluation1 = $row['proj_evaluation1'];	//added proj_evaluation1
 }
 
 $query2 = "SELECT * FROM budget_proposal WHERE proposal_id = $d";
@@ -167,6 +173,7 @@ while ($row = mysqli_fetch_array($result2)){
    $otorg6 = $row['otorg6'];
    $otcom6 = $row['otcom6'];
    $proj_evaluation = $row['proj_evaluation'];
+   $proj_evaluation1 = $row['proj_evaluation1']; //added proj_evaluation1
 }
 
 //eto daw ung mga undefined variable sa collegePDF 
@@ -342,6 +349,9 @@ while ($row = mysqli_fetch_array($resultsql)){
    $time9 = $row['time9'];
    $description9 = $row['description9'];
    $person9 = $row['person9'];
+   $time10 = $row['time10'];						//added additional boxes for Program Flow
+   $description10 = $row['description10'];
+   $person10 = $row['person10'];
  }
 
 $modesql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
@@ -452,20 +462,21 @@ $pressql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org
   $org_name = $row['org_name'];
  }*/
 
-$moderator = "images/krizsa.jpg";
-$director = "images/krizsa.jpg";
-$mode_name = "ASSOC. PROF. JOSE RICARTE ORIGENES";
-$direct_name = "DR. MARK ANTHONY ABENIR, DSD";
+//$moderator = "images/krizsa.jpg";
+//$director = "images/krizsa.jpg";
+//$mode_name = "ASSOC. PROF. JOSE RICARTE ORIGENES";
+//$direct_name = "DR. MARK ANTHONY ABENIR, DSD";
 $logo1 = "images/logo_1.jpg";
 $logo2 = "images/logo2.jpg";
-$president = "images/krizsa.jpg";
-$adviser1 = "images/krizsa.jpg";
-$adviser2 = "images/krizsa.jpg";
-$coordinator = "images/krizsa.jpg";
-$chair = "images/krizsa.jpg";
-$dean = "images/krizsa.jpg";
-$regent = "images/krizsa.jpg";
+//$president = "images/krizsa.jpg";
+//$adviser1 = "images/krizsa.jpg";
+//$adviser2 = "images/krizsa.jpg";
+//$coordinator = "images/krizsa.jpg";
+//$chair = "images/krizsa.jpg";
+//$dean = "images/krizsa.jpg";
+//$regent = "images/krizsa.jpg";
 $org_name = "";
+$chair="";
 
 
 
@@ -749,6 +760,22 @@ $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'PROJECT BACKGROUND: What specific problem or need in the partner community or institution does your organization wish to address? Why is it important? How is the project related to your chosen program area? (Please write inside the box provided below)','LBR','L',false);
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(190,5,$proj_background,'LBR', 'L', false);
+//$pdf->Ln(5); added proj_background1
+$pdf->SetFont('Arial','B',10);
+$pdf->MultiCell(190,5,'Why is it important?','LBR','L',false);
+$pdf->SetFont('Arial','',10);
+$pdf->MultiCell(190,5,$proj_background1,'LBR', 'L', false);
+//$pdf->Ln(5); added proj_background2
+$pdf->SetFont('Arial','B',10);
+$pdf->MultiCell(190,5,'How is the project related to your chosen program area?','LBR','L',false);
+$pdf->SetFont('Arial','',10);
+$pdf->MultiCell(190,5,$proj_background2,'LBR', 'L', false);
+//$pdf->Ln(5); added proj_background3
+$pdf->SetFont('Arial','B',10);
+$pdf->MultiCell(190,5,'What specific University Community Development Program (UCDP) success indicator is it trying to address?','LBR','L',false);
+$pdf->SetFont('Arial','',10);
+$pdf->MultiCell(190,5,$proj_background3,'LBR', 'L', false);
+
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'GENERAL OBJECTIVE: What is the overall intention of your community development project?  What does it realistically intend to achieve within the duration of the project? Only state one general objective. (Please write inside the box provided below)','LTBR','L',false);
 $pdf->SetFont('Arial','',10);
@@ -826,6 +853,30 @@ else {
   $pdf->Cell(95, $yheight3, ' ', 'LBR', 0, 'L', 0);
   $pdf->SetXY($x, $y2);
   }
+  
+//spec4 added 
+$x = $pdf->GetX();
+$y = $pdf->GetY(); 
+$pdf->MultiCell(95,5,'4. '.$spec_obj4,'LTR', 'L', false);
+$y1 = $pdf->GetY();
+$pdf->SetXY($x+95, $y);
+$pdf->MultiCell(95,5,'4. '.$exp_result4,'TR', 'L', false);
+$x = $pdf->GetX();
+$y2 = $pdf->GetY();
+if ($y1 > $y2){
+  $yheight4 = $y1-$y2;
+  $pdf->SetXY($x+95, $y2);
+  $pdf->Cell(95, $yheight4, ' ', 'LBR', 0, 'L', 0);
+  $pdf->SetXY($x, $y1);
+  
+} 
+else {
+  $yheight4 = $y2-$y1;
+  $pdf->SetXY($x+95, $y1);
+  $pdf->Cell(95, $yheight4, ' ', 'LBR', 0, 'L', 0);
+  $pdf->SetXY($x, $y2);
+  }
+  
 
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'PROPOSED PROGRAM FLOW: What is the sequence of events that needs to be followed in order to guide the successful implementation and completion of your community development project? (Please fill out the matrix provided below)','LTR','L',false);
@@ -900,7 +951,12 @@ $pdf->Ln(5);
 $pdf->Cell(30,5,$time9,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description9,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person9,'LBR',0,'C',0);
+
 $pdf->Ln(5);
+
+$pdf->Cell(30,5,$time10,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description10,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person10,'LBR',0,'C',0);
 $pdf->Ln(5);
 $flow--;
 }
@@ -1152,6 +1208,11 @@ $pdf->SetFont('Arial','B',9);
 $pdf->MultiCell(260,5,"PROJECT EVALUATION: How will the project's achievements be evaluated? What needs to be done in order to know whether the community development project has achieved its general and specific objectives?",'LBTR','L',false);
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(260,5,$proj_evaluation,'LBR','L',false);
+$pdf->SetFont('Arial','B',10);
+//added proj_evaluation1
+$pdf->MultiCell(260,5,"What needs to be done in order to know whether the community development project has achieved its general and specific objectives?",'LBTR','L',false);
+$pdf->SetFont('Arial','',10);
+$pdf->MultiCell(260,5,$proj_evaluation1,'LBR','L',false);
 $pdf->AddPage('P', 'Letter', 0);
 $pdf->Cell(190,5,'Prepared by:','',0,'L',0);
 $pdf->Ln(15);

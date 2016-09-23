@@ -24,6 +24,7 @@ while($row = mysqli_fetch_array($results)) {
 	echo "<script type='text/javascript'>alert('Your signatories are not yet properly managed. Please contact your coordinator.');window.location = 'org.php';</script>";
 	}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -285,6 +286,7 @@ var email2 = document.getElementById("email2");
     }  
     }  
 
+	
 </script>
 
 	<body style = "background-color: #d8ced1; font-family: 'RobotoDraft'; height: 100%; color: #222; font-size: 14px; padding-top: 5%; padding-bottom: 10%;">
@@ -384,8 +386,9 @@ var email2 = document.getElementById("email2");
 							echo '<option value="'.$row['college'].'">'.$row['college'].'</option>';
 						}
 						echo '</select>';
-						
+$proj_evaluation="";						
 		?>
+		
                 </div>
         <!-- end of Affiliation Dropdown Menu -->
 
@@ -542,8 +545,27 @@ var email2 = document.getElementById("email2");
 
                   <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold">Project Background</label>
-                    <p>What specific problem or need in the partner community or institution does your organization wish to address? Why is it important? How is the project related to your chosen program area? What specific University Community Development Program (UCDP) success indicator is it trying to address? </p>
+                    <p>What specific problem or need in the partner community or institution does your organization wish to address?</p>
                     <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>Why is it important?</p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background1"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>How is the project related to your chosen program area?</p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background2"></textarea>
+                  </div>
+				  
+				  <div class="col-md-12">
+                    <label class="control-label" style="font-weight:bold"></label>
+                    <p>What specific University Community Development Program (UCDP) success indicator is it trying to address? <a href=".\uploads\UCDP Success Indicators.pdf"target="_blank">Click to view the UCDP Success Indicators</a></p>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background3"></textarea>
+					
                   </div>
 
 
@@ -583,16 +605,28 @@ var email2 = document.getElementById("email2");
                               <td><textarea type="text" placeholder='Specific Objective 3' class="form-control"name="spec_obj3" required></textarea></td>
                               <td><textarea type="text" placeholder='Expected Results 3' class="form-control" name="exp_result3" required="required"></textarea></td>
                             </tr>
+							<tr>
+                              <td><textarea type="text" placeholder='Specific Objective 4(Optional)' class="form-control"name="spec_obj4" required></textarea></td>
+                              <td><textarea type="text" placeholder='Expected Results 4 (Optional)' class="form-control" name="exp_result4" required="required"></textarea></td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>
                   </div>
-                   <div class='col-md-12'>
-            <label class='control-label' style='font-weight:bold'>PROJECT EVALUATION</label>
-              <p>How will the achievements be evaluated? What needs to be done in order to know whether the community development project has achieved its general and specific objectives?</p>
-             <textarea name="proj_evaluation" class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here"></textarea>
-            </div>
+				  
+                   <div class="col-md-12">
+					<label class="control-label" style="font-weight:bold">PROJECT EVALUATION</label>
+					<p>How will the achievements be evaluated?</p>
+					<textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here" name="proj_evaluation"></textarea>
+				   </div>
+				   
+				   <div class="col-md-12">
+					<label class="control-label" style="font-weight:bold"></label>
+					<p>What needs to be done in order to know whether the community development project has achieved its general and specific objectives?</p>
+					<textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Evaluation Here" name="proj_evaluation1"></textarea>
+				   </div>
+				   
               </div>
             </div>
         </div>

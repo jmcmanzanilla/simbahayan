@@ -102,6 +102,41 @@ if(isset($_POST['submitted'])){
 	$time9 = $starttime9.' - '.$endtime9;
 	$description9 = $_POST['description9'][$x];
 	$person9 = $_POST['person9'][$x];
+	$starttime10 = $_POST['starttime10'][$x];   	 //added additional boxes program flow
+	$endtime10 = $_POST['endtime10'][$x];
+	$time10 = $starttime10.' - '.$endtime10;
+	$description10 = $_POST['description10'][$x];
+	$person10 = $_POST['person10'][$x];
+	
+	$starttime11 = $_POST['starttime11'][$x];		//added additional boxes program flow
+	$endtime11 = $_POST['endtime11'][$x];
+	$time11 = $starttime11.' - '.$endtime11;
+	$description11 = $_POST['description11'][$x];
+	$person11 = $_POST['person11'][$x];
+	
+	$starttime12 = $_POST['starttime12'][$x];		//added additional boxes program flow
+	$endtime12 = $_POST['endtime12'][$x];
+	$time12 = $starttime12.' - '.$endtime12;
+	$description12 = $_POST['description12'][$x];
+	$person12 = $_POST['person12'][$x];
+	
+	$starttime13 = $_POST['starttime13'][$x];		//added additional boxes program flow
+	$endtime13 = $_POST['endtime13'][$x];
+	$time13 = $starttime13.' - '.$endtime13;
+	$description13 = $_POST['description13'][$x];
+	$person13 = $_POST['person13'][$x];
+	
+	$starttime14 = $_POST['starttime14'][$x];		//added additional boxes program flow
+	$endtime14 = $_POST['endtime14'][$x];
+	$time14 = $starttime14.' - '.$endtime14;
+	$description14 = $_POST['description14'][$x];
+	$person14 = $_POST['person14'][$x];
+	
+	$starttime15 = $_POST['starttime15'][$x];		//added additional boxes program flow
+	$endtime15 = $_POST['endtime15'][$x];
+	$time15 = $starttime15.' - '.$endtime15;
+	$description15 = $_POST['description15'][$x];
+	$person15 = $_POST['person15'][$x];
     
 	$pname0 = $_POST['pname0'][$x];
 	$pquan0 = $_POST['pquan0'];
@@ -361,9 +396,9 @@ if(isset($_POST['submitted'])){
    // $totalorg = $totalorg + ($ptotalorg + $mtotalorg + $ototalorg + $ottotalorg);
    //$totalcom = $totalcom + ($ptotalcom + $mtotalcom + $ototalcom + $ottotalcom);
     
-	$sqlinsert = "INSERT INTO budget_proposal (proposal_id, pname0, pmail0, pfund0, porg0, pcom0, pname1, pmail1, pfund1, porg1, pcom1, pname2, pmail2, pfund2, porg2, pcom2, pname3, pmail3, pfund3, porg3, pcom3, pname4, pmail4, pfund4, porg4, pcom4, oname0, omail0, ofund0, oorg0, ocom0, oname1, omail1, ofund1, oorg1, ocom1, oname2, omail2, ofund2, oorg2, ocom2, oname3, omail3, oname7, omail7, oname8, omail8, oname9, omail9, oname4, omail4, ofund6, oorg6, ocom6, oname5, omail5, ofund7, oorg7, ocom7, oname6, omail6, ofund8, oorg8, ocom8, ofund9, oorg9, ocom9, mname0, mmail0, mfund0, morg0, mcom0, mname1, mmail1, mfund1, morg1, mcom1, mname2, mmail2, mfund2, morg2, mcom2, mname3, mmail3, mfund3, morg3, mcom3, mname4, mmail4, mfund4, morg4, mcom4,mfund5, morg5,mcom5, otname0, otmail0, otfund0, otorg0, otcom0, otname1, otmail1, otfund1, otorg1, otcom1, otname2, otmail2, otfund2, otorg2, otcom2, otname3, otmail3, otfund3, otorg3, otcom3, otname4, otmail4, otfund4, otorg4, otcom4, otfund5, otorg5, otcom5, otfund6, otorg6, otcom6) VALUES ('$d','$pname0', '$pmail0', '$pfund0', '$porg0', '$pcom0', '$pname1', '$pmail1', '$pfund1', '$porg1', '$pcom1', '$pname2', '$pmail2', '$pfund2', '$porg2', '$pcom2', '$pname3', '$pmail3', '$pfund3', '$porg3', '$pcom3', '$pname4', '$pmail4', '$pfund4', '$porg4', '$pcom4', '$oname0', '$omail0', '$ofund0', '$oorg0', '$ocom0', '$oname1', '$omail1', '$ofund1', '$oorg1', '$ocom1', '$oname2', '$omail2', '$ofund2', '$oorg2', '$ocom2', '$oname3', '$omail3', '$oname7', '$omail7', '$oname8', '$omail8', '$oname9', '$omail9', '$oname4', '$omail4', '$ofund6', '$oorg6', '$ocom6', '$oname5', '$omail5', '$ofund7', '$oorg7', '$ocom7', '$oname6', '$omail6', '$ofund8', '$oorg8', '$ocom8', '$ofund9', '$oorg9', '$ocom9', '$mname0', '$mmail0', '$mfund0', '$morg0', '$mcom0', '$mname1', '$mmail1', '$mfund1', '$morg1', '$mcom1', '$mname2', '$mmail2', '$mfund2', '$morg2', '$mcom2', '$mname3', '$mmail3', '$mfund3', '$morg3', '$mcom3', '$mname4', '$mmail4', '$mfund4', '$morg4', '$mcom4', '$mfund5', '$morg5', '$mcom5', '$otname0', '$otmail0', '$otfund0', '$otorg0', '$otcom0', '$otname1', '$otmail1', '$otfund1', '$otorg1', '$otcom1', '$otname2', '$otmail2', '$otfund2', '$otorg2', '$otcom2', '$otname3', '$otmail3', '$otfund3', '$otorg3', '$otcom3', '$otname4', '$otmail4', '$otfund4', '$otorg4', '$otcom4', '$otfund5', '$otorg5', '$otcom5', '$otfund6', '$otorg6', '$otcom6')";
+	$sqlinsert = "INSERT INTO budget_proposal (proposal_id, proj_evaluation, proj_evaluation1, pname0, pmail0, pfund0, porg0, pcom0, pname1, pmail1, pfund1, porg1, pcom1, pname2, pmail2, pfund2, porg2, pcom2, pname3, pmail3, pfund3, porg3, pcom3, pname4, pmail4, pfund4, porg4, pcom4, oname0, omail0, ofund0, oorg0, ocom0, oname1, omail1, ofund1, oorg1, ocom1, oname2, omail2, ofund2, oorg2, ocom2, oname3, omail3, oname7, omail7, oname8, omail8, oname9, omail9, oname4, omail4, ofund6, oorg6, ocom6, oname5, omail5, ofund7, oorg7, ocom7, oname6, omail6, ofund8, oorg8, ocom8, ofund9, oorg9, ocom9, mname0, mmail0, mfund0, morg0, mcom0, mname1, mmail1, mfund1, morg1, mcom1, mname2, mmail2, mfund2, morg2, mcom2, mname3, mmail3, mfund3, morg3, mcom3, mname4, mmail4, mfund4, morg4, mcom4,mfund5, morg5,mcom5, otname0, otmail0, otfund0, otorg0, otcom0, otname1, otmail1, otfund1, otorg1, otcom1, otname2, otmail2, otfund2, otorg2, otcom2, otname3, otmail3, otfund3, otorg3, otcom3, otname4, otmail4, otfund4, otorg4, otcom4, otfund5, otorg5, otcom5, otfund6, otorg6, otcom6) VALUES ('$d', '$proj_evaluation', '$proj_evaluation1', '$pname0', '$pmail0', '$pfund0', '$porg0', '$pcom0', '$pname1', '$pmail1', '$pfund1', '$porg1', '$pcom1', '$pname2', '$pmail2', '$pfund2', '$porg2', '$pcom2', '$pname3', '$pmail3', '$pfund3', '$porg3', '$pcom3', '$pname4', '$pmail4', '$pfund4', '$porg4', '$pcom4', '$oname0', '$omail0', '$ofund0', '$oorg0', '$ocom0', '$oname1', '$omail1', '$ofund1', '$oorg1', '$ocom1', '$oname2', '$omail2', '$ofund2', '$oorg2', '$ocom2', '$oname3', '$omail3', '$oname7', '$omail7', '$oname8', '$omail8', '$oname9', '$omail9', '$oname4', '$omail4', '$ofund6', '$oorg6', '$ocom6', '$oname5', '$omail5', '$ofund7', '$oorg7', '$ocom7', '$oname6', '$omail6', '$ofund8', '$oorg8', '$ocom8', '$ofund9', '$oorg9', '$ocom9', '$mname0', '$mmail0', '$mfund0', '$morg0', '$mcom0', '$mname1', '$mmail1', '$mfund1', '$morg1', '$mcom1', '$mname2', '$mmail2', '$mfund2', '$morg2', '$mcom2', '$mname3', '$mmail3', '$mfund3', '$morg3', '$mcom3', '$mname4', '$mmail4', '$mfund4', '$morg4', '$mcom4', '$mfund5', '$morg5', '$mcom5', '$otname0', '$otmail0', '$otfund0', '$otorg0', '$otcom0', '$otname1', '$otmail1', '$otfund1', '$otorg1', '$otcom1', '$otname2', '$otmail2', '$otfund2', '$otorg2', '$otcom2', '$otname3', '$otmail3', '$otfund3', '$otorg3', '$otcom3', '$otname4', '$otmail4', '$otfund4', '$otorg4', '$otcom4', '$otfund5', '$otorg5', '$otcom5', '$otfund6', '$otorg6', '$otcom6')";
     
-	$sqlprogram = "INSERT INTO program_flow (proposal_id,date, address, time0, description0, person0, time1, description1, person1, time2, description2, person2, time3, description3, person3, time4, description4, person4, time5, description5, person5, time6, description6, person6, time7, description7, person7, time8, description8, person8, time9, description9, person9) VALUES ('$d','$date', '$address','$time0', '$description0', '$person0', '$time1', '$description1', '$person1', '$time2', '$description2', '$person2', '$time3', '$description3', '$person3', '$time4', '$description4', '$person4', '$time5', '$description5', '$person5', '$time6', '$description6', '$person6', '$time7', '$description7', '$person7', '$time8', '$description8', '$person8', '$time9', '$description9', '$person9')";
+	$sqlprogram = "INSERT INTO program_flow (proposal_id, date, address, time0, description0, person0, time1, description1, person1, time2, description2, person2, time3, description3, person3, time4, description4, person4, time5, description5, person5, time6, description6, person6, time7, description7, person7, time8, description8, person8, time9, description9, person9, time10, description10, person10, time11, description11, person11, time12, description12, person12, time13, description13, person13, time14, description14, person14, time15, description15, person15) VALUES ('$d','$date', '$address','$time0', '$description0', '$person0', '$time1', '$description1', '$person1', '$time2', '$description2', '$person2', '$time3', '$description3', '$person3', '$time4', '$description4', '$person4', '$time5', '$description5', '$person5', '$time6', '$description6', '$person6', '$time7', '$description7', '$person7', '$time8', '$description8', '$person8', '$time9', '$description9', '$person9', '$time10', '$description10', '$person10', '$time11', '$description11', '$person11', '$time12', '$description12', '$person12', '$time13', '$description13', '$person13', '$time14', '$description14', '$person14', $time15', '$description15', '$person15')";
     
     
 	if(!mysqli_query($link, $sqlinsert)){
@@ -688,8 +723,8 @@ document.addEventListener("DOMContentLoaded", function() {
                               <td><input type="text" name="endtime1['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
                               <td><input type="text" name="description1['.$x.']" placeholder="Description" class="form-control"/></td>
                               <td><input type="text" name="person1['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
-              </tr>
-               <tr id="ppf2">
+						  </tr>
+						   <tr id="ppf2">
                               <td>3</td>
                               <td><input type="text" name="starttime2['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
                               <td><input type="text" name="endtime2['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
@@ -744,7 +779,50 @@ document.addEventListener("DOMContentLoaded", function() {
                               <td><input type="text" name="endtime9['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
                               <td><input type="text" name="description9['.$x.']" placeholder="Description" class="form-control"/></td>
                               <td><input type="text" name="person9['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
-              </tr>
+							</tr>
+							<tr id="ppf10">
+                <td>11</td>
+                              <td><input type="text" name="starttime10['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime10['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description10['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person10['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							<tr id="ppf11">
+                <td>12</td>
+                              <td><input type="text" name="starttime11['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime11['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description11['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person11['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							<tr id="ppf12">
+                <td>13</td>
+                              <td><input type="text" name="starttime12['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime12['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description12['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person12['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							<tr id="ppf13">
+                <td>14</td>
+                              <td><input type="text" name="starttime13['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime13['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description13['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person13['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							<tr id="ppf14">
+                <td>15</td>
+                              <td><input type="text" name="starttime14['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime14['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description14['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person14['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							<tr id="ppf15">
+                <td>16</td>
+                              <td><input type="text" name="starttime15['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="endtime15['.$x.']" pattern="^(00|0[0-9]|1[012]):[0-5][0-9] ?((a|p)m|(A|P)M)$" placeholder="Time" class="form-control"/></td>
+                              <td><input type="text" name="description15['.$x.']" placeholder="Description" class="form-control"/></td>
+                              <td><input type="text" name="person15['.$x.']" placeholder="Name of Person/Group" class="form-control"/></td>
+                            </tr>
+							
                           </tbody>
                         </table>
                       </div>
