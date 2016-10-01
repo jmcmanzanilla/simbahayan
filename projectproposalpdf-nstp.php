@@ -40,6 +40,8 @@ while ($row = mysqli_fetch_array($result)){
    $exp_result3 = $row['exp_result3'];
    $spec_obj4 = $row['spec_obj4'];					//added spec_obj4 & exp_result4
    $exp_result4 = $row['exp_result4'];
+   $spec_obj5 = $row['spec_obj5'];					//added spec_obj5 & exp_result5
+   $exp_result5 = $row['exp_result5'];
    $proj_evaluation = $row['proj_evaluation'];
    $proj_evaluation1 = $row['proj_evaluation1'];	//added proj_evaluation1
 }
@@ -172,8 +174,8 @@ while ($row = mysqli_fetch_array($result2)){
    $otfund6 = $row['otfund6'];
    $otorg6 = $row['otorg6'];
    $otcom6 = $row['otcom6'];
-   $proj_evaluation = $row['proj_evaluation'];
-   $proj_evaluation1 = $row['proj_evaluation1']; //added proj_evaluation1
+   //$proj_evaluation = $row['proj_evaluation'];
+   //$proj_evaluation1 = $row['proj_evaluation1']; //added proj_evaluation1
 }
 
 //eto daw ung mga undefined variable sa collegePDF 
@@ -319,39 +321,70 @@ $resultsql = mysqli_query($link, $progsql);
 while ($row = mysqli_fetch_array($resultsql)){
    $date = $row['date'];
    $address = $row['address'];
+   
    $time0 = $row['time0'];
    $description0 = $row['description0'];
    $person0 = $row['person0'];
+   
    $time1 = $row['time1'];
    $description1 = $row['description1'];
    $person1 = $row['person1'];
+   
    $time2 = $row['time2'];
    $description2 = $row['description2'];
    $person2 = $row['person2'];
+   
    $time3 = $row['time3'];
    $description3 = $row['description3'];
    $person3 = $row['person3'];
+   
    $time4 = $row['time4'];
    $description4 = $row['description4'];
    $person4 = $row['person4'];
+   
    $time5 = $row['time5'];
    $description5 = $row['description5'];
    $person5 = $row['person5'];
+   
    $time6 = $row['time6'];
    $description6 = $row['description6'];
    $person6 = $row['person6'];
+   
    $time7 = $row['time7'];
    $description7 = $row['description7'];
    $person7 = $row['person7'];
+   
    $time8 = $row['time8'];
    $description8 = $row['description8'];
    $person8 = $row['person8'];
+   
    $time9 = $row['time9'];
    $description9 = $row['description9'];
    $person9 = $row['person9'];
+   
    $time10 = $row['time10'];						//added additional boxes for Program Flow
    $description10 = $row['description10'];
    $person10 = $row['person10'];
+   
+   $time11 = $row['time11'];						//added additional boxes for Program Flow
+   $description11 = $row['description11'];
+   $person11 = $row['person11'];
+   
+   $time12 = $row['time12'];						//added additional boxes for Program Flow
+   $description12 = $row['description12'];
+   $person12 = $row['person12'];
+   
+   $time13 = $row['time13'];						//added additional boxes for Program Flow
+   $description13 = $row['description13'];
+   $person13 = $row['person13'];
+   
+   $time14 = $row['time14'];						//added additional boxes for Program Flow
+   $description14 = $row['description14'];
+   $person14 = $row['person14'];
+   
+   $time15 = $row['time15'];						//added additional boxes for Program Flow
+   $description15 = $row['description15'];
+   $person15 = $row['person15'];
  }
 
 $modesql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
@@ -877,6 +910,29 @@ else {
   $pdf->SetXY($x, $y2);
   }
   
+//spec5 added 
+$x = $pdf->GetX();
+$y = $pdf->GetY(); 
+$pdf->MultiCell(95,5,'5. '.$spec_obj5,'LTR', 'L', false);
+$y1 = $pdf->GetY();
+$pdf->SetXY($x+95, $y);
+$pdf->MultiCell(95,5,'5. '.$exp_result5,'TR', 'L', false);
+$x = $pdf->GetX();
+$y2 = $pdf->GetY();
+if ($y1 > $y2){
+  $yheight5 = $y1-$y2;
+  $pdf->SetXY($x+95, $y2);
+  $pdf->Cell(95, $yheight5, ' ', 'LBR', 0, 'L', 0);
+  $pdf->SetXY($x, $y1);
+  
+} 
+else {
+  $yheight5 = $y2-$y1;
+  $pdf->SetXY($x+95, $y1);
+  $pdf->Cell(95, $yheight5, ' ', 'LBR', 0, 'L', 0);
+  $pdf->SetXY($x, $y2);
+  }
+  
 
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'PROPOSED PROGRAM FLOW: What is the sequence of events that needs to be followed in order to guide the successful implementation and completion of your community development project? (Please fill out the matrix provided below)','LTR','L',false);
@@ -906,7 +962,7 @@ $pdf->Cell(60,5,$person1,'LBR',0,'C',0);
 
 $pdf->Ln(5);
 
-$pdf->Cell(30,5,$person2,'LBR',0,'C',0);
+$pdf->Cell(30,5,$time2,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description2,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person2,'LBR',0,'C',0);
 
@@ -957,6 +1013,37 @@ $pdf->Ln(5);
 $pdf->Cell(30,5,$time10,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description10,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person10,'LBR',0,'C',0);
+
+$pdf->Ln(5);
+
+$pdf->Cell(30,5,$time11,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description11,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person11,'LBR',0,'C',0);
+
+$pdf->Ln(5);
+
+$pdf->Cell(30,5,$time12,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description12,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person12,'LBR',0,'C',0);
+
+$pdf->Ln(5);
+
+$pdf->Cell(30,5,$time13,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description13,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person13,'LBR',0,'C',0);
+
+$pdf->Ln(5);
+
+$pdf->Cell(30,5,$time14,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description14,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person14,'LBR',0,'C',0);
+
+$pdf->Ln(5);
+
+$pdf->Cell(30,5,$time15,'LBR',0,'C',0);
+$pdf->Cell(100,5,$description15,'LBR',0,'C',0);
+$pdf->Cell(60,5,$person15,'LBR',0,'C',0);
+
 $pdf->Ln(5);
 $flow--;
 }

@@ -42,6 +42,8 @@ while ($row = mysqli_fetch_array($result)){
    $exp_result3 = $row['exp_result3'];
    $spec_obj4 = $row['spec_obj4'];					//added spec_obj4 & exp_result4
    $exp_result4 = $row['exp_result4'];
+   $spec_obj5 = $row['spec_obj5'];					//added spec_obj5 & exp_result5
+   $exp_result5 = $row['exp_result5'];
    $proj_evaluation = $row['proj_evaluation'];
    $proj_evaluation1 = $row['proj_evaluation1'];	//added proj_evaluation1
    $pending = $row['pending'];
@@ -85,10 +87,12 @@ if(isset($_POST['submitted'])){
 	$exp_result3 = $_POST['exp_result3'];
 	$spec_obj4 = $_POST['spec_obj4'];					//added spec_obj4 & exp_result4
 	$exp_result4 = $_POST['exp_result4'];
+	$spec_obj5 = $_POST['spec_obj5'];					//added spec_obj5 & exp_result5
+	$exp_result5 = $_POST['exp_result5'];
     $proj_evaluation = $_POST['proj_evaluation'];
 	$proj_evaluation1 = $_POST['proj_evaluation1'];	//added proj_evaluation1
     
-    $sqlupdate ="UPDATE proj_proposal SET lead_org = '$lead_org', affiliation = '$affiliation', college = '$college', lname1 = '$lname1', fname1 = '$fname1', mi1 = '$mi1',  cnum1 = '$cnum1', email1 = '$email1', lname2 = '$lname2', fname2 = '$fname2', mi2 = '$mi2',  cnum2 = '$cnum2', email2 = '$email2', collab = '$collab', proj_title = '$proj_title', prog_areadev = '$prog_areadev', community = '$community', participants = '$participants', comser_budget = '$comser_budget', org_budget = '$org_budget', com_budget = '$com_budget', proj_background = '$proj_background', proj_background1 = '$proj_background1', proj_background2 = '$proj_background2', proj_background3 = '$proj_background3', gen_objective = '$gen_objective', spec_obj1 = '$spec_obj1', exp_result1 = '$exp_result1', spec_obj2 = '$spec_obj2', exp_result2 = '$exp_result2', spec_obj3 = '$spec_obj3', exp_result3 = '$exp_result3', spec_obj4 = '$spec_obj4', exp_result4 = '$exp_result4', proj_evaluation = '$proj_evaluation', proj_evaluation1 = '$proj_evaluation1' WHERE proposal_id = $d";
+    $sqlupdate ="UPDATE proj_proposal SET lead_org = '$lead_org', affiliation = '$affiliation', college = '$college', lname1 = '$lname1', fname1 = '$fname1', mi1 = '$mi1',  cnum1 = '$cnum1', email1 = '$email1', lname2 = '$lname2', fname2 = '$fname2', mi2 = '$mi2',  cnum2 = '$cnum2', email2 = '$email2', collab = '$collab', proj_title = '$proj_title', prog_areadev = '$prog_areadev', community = '$community', participants = '$participants', comser_budget = '$comser_budget', org_budget = '$org_budget', com_budget = '$com_budget', proj_background = '$proj_background', proj_background1 = '$proj_background1', proj_background2 = '$proj_background2', proj_background3 = '$proj_background3', gen_objective = '$gen_objective', spec_obj1 = '$spec_obj1', exp_result1 = '$exp_result1', spec_obj2 = '$spec_obj2', exp_result2 = '$exp_result2', spec_obj3 = '$spec_obj3', exp_result3 = '$exp_result3', spec_obj4 = '$spec_obj4', exp_result4 = '$exp_result4', spec_obj5 = '$spec_obj5', exp_result5 = '$exp_result5', proj_evaluation = '$proj_evaluation', proj_evaluation1 = '$proj_evaluation1' WHERE proposal_id = $d";
     
     if(!mysqli_query($link, $sqlupdate)){
 		die("<script type='text/javascript'>alert('FAILED SUBMISSION!'); window.history.go(-1);</script>");
@@ -581,25 +585,25 @@ var email2 = document.getElementById("email2");
                   <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold">Project Background</label>
                     <p>What specific problem or need in the partner community or institution does your organization wish to address?</p>
-                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background"></textarea>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background"><?php echo $proj_background; ?></textarea>
                   </div>
 				  
 				  <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold"></label>
                     <p>Why is it important?</p>
-                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background1"></textarea>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background1"><?php echo $proj_background1; ?></textarea>
                   </div>
 				  
 				  <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold"></label>
                     <p>How is the project related to your chosen program area?</p>
-                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background2"></textarea>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background2"><?php echo $proj_background2; ?></textarea>
                   </div>
 				  
 				  <div class="col-md-12">
                     <label class="control-label" style="font-weight:bold"></label>
                     <p>What specific University Community Development Program (UCDP) success indicator is it trying to address? <a href=".\uploads\UCDP Success Indicators.pdf"target="_blank">Click to view the UCDP Success Indicators</a></p>
-                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background3"></textarea>
+                    <textarea class="form-control" rows="5" cols="10" maxlength="1500" type="text" required="required" placeholder="Insert Project Background Here" name="proj_background3"><?php echo $proj_background3; ?></textarea>
 					
                   </div>
 
@@ -643,6 +647,10 @@ var email2 = document.getElementById("email2");
 							<tr>
                               <td><textarea type="text" placeholder='Specific Objective 4(Optional)' class="form-control"name="spec_obj4" required><?php echo $spec_obj4; ?></textarea></td>
                               <td><textarea type="text" placeholder='Expected Results 4 (Optional)' class="form-control" name="exp_result4" required="required"><?php echo $exp_result4; ?></textarea></td>
+                            </tr>
+							<tr>
+                              <td><textarea type="text" placeholder='Specific Objective 5(Optional)' class="form-control"name="spec_obj5" required><?php echo $spec_obj5; ?></textarea></td>
+                              <td><textarea type="text" placeholder='Expected Results 5(Optional)' class="form-control" name="exp_result5" required="required"><?php echo $exp_result5; ?></textarea></td>
                             </tr>
                           </tbody>
                         </table>
