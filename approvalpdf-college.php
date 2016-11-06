@@ -2,6 +2,33 @@
 require('fpdf17/fpdf.php');
 include "mysql_connect.php";
 $d = $_GET['d'];
+
+    $title= "";
+    $proponent= "";
+    $affiliation ="";
+    $prog_area = "";
+    $community = "";
+    $date = "";
+    $budget = "";
+    $reports = "";
+    $attendance = "";
+    $presence_profile = "";
+    $presence_moa = "";
+    $comments1 = "";
+    $reviewed = "";
+    $budget_code = "";
+    $comments2 = "";
+    $recommend_progarea = "";
+    $budget_tobe = "";
+    $comments3 = "";
+    $approve_director = "";
+    $finalbudget = "";
+    $finalbudget_code = "";
+    $cash_req = "";
+    $req_amt = "";
+    $date_today = "";
+    $transpo_amt = "";
+    
 $query = "SELECT * FROM approval_form where approval_id = $d";
 $result = mysqli_query($link,$query);
 while ($row = mysqli_fetch_array($result)){
@@ -60,7 +87,7 @@ while ($row = mysqli_fetch_array($dirresult)){
     $dir_name = $row['signatory_name'];
 }
 
-$logo1 = "images/logo1.png";
+$logo1 = "images/logo1.jpg";
 $logo2 = "images/logo2.jpg";
 $comdev = "images/krizsa.jpg";
 $progarea = "images/krizsa.jpg";

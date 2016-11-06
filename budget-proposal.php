@@ -21,7 +21,7 @@ $signatory1 = "";
 $totalfund = 0;
 $totalorg = 0;
 $totalcom = 0;
-$type = "";
+$type = $_SESSION['college'];
 $proj_evaluation="";
 $proj_evaluation1="";
 
@@ -49,7 +49,7 @@ if(isset($_POST['submitted'])){
     for ($x = 0; $x < $days; $x++) {
 	$date = $_POST['date'][$x];
     $date_target = $date .",";
-	$submission = date('Y/m/d', strtotime("+15 days"));
+	$submission = date('Y-m-d', strtotime("+15 days"));
 	$address = $_POST['address'][$x];
     
 	$starttime0 = $_POST['starttime0'][$x];
@@ -408,7 +408,7 @@ if(isset($_POST['submitted'])){
     
 	$sqlinsert = "INSERT INTO budget_proposal (proposal_id, proj_evaluation, proj_evaluation1, pname0, pmail0, pfund0, porg0, pcom0, pname1, pmail1, pfund1, porg1, pcom1, pname2, pmail2, pfund2, porg2, pcom2, pname3, pmail3, pfund3, porg3, pcom3, pname4, pmail4, pfund4, porg4, pcom4, oname0, omail0, ofund0, oorg0, ocom0, oname1, omail1, ofund1, oorg1, ocom1, oname2, omail2, ofund2, oorg2, ocom2, oname3, omail3, oname7, omail7, oname8, omail8, oname9, omail9, oname4, omail4, ofund6, oorg6, ocom6, oname5, omail5, ofund7, oorg7, ocom7, oname6, omail6, ofund8, oorg8, ocom8, ofund9, oorg9, ocom9, mname0, mmail0, mfund0, morg0, mcom0, mname1, mmail1, mfund1, morg1, mcom1, mname2, mmail2, mfund2, morg2, mcom2, mname3, mmail3, mfund3, morg3, mcom3, mname4, mmail4, mfund4, morg4, mcom4,mfund5, morg5,mcom5, otname0, otmail0, otfund0, otorg0, otcom0, otname1, otmail1, otfund1, otorg1, otcom1, otname2, otmail2, otfund2, otorg2, otcom2, otname3, otmail3, otfund3, otorg3, otcom3, otname4, otmail4, otfund4, otorg4, otcom4, otfund5, otorg5, otcom5, otfund6, otorg6, otcom6) VALUES ('$d', '$proj_evaluation', '$proj_evaluation1', '$pname0', '$pmail0', '$pfund0', '$porg0', '$pcom0', '$pname1', '$pmail1', '$pfund1', '$porg1', '$pcom1', '$pname2', '$pmail2', '$pfund2', '$porg2', '$pcom2', '$pname3', '$pmail3', '$pfund3', '$porg3', '$pcom3', '$pname4', '$pmail4', '$pfund4', '$porg4', '$pcom4', '$oname0', '$omail0', '$ofund0', '$oorg0', '$ocom0', '$oname1', '$omail1', '$ofund1', '$oorg1', '$ocom1', '$oname2', '$omail2', '$ofund2', '$oorg2', '$ocom2', '$oname3', '$omail3', '$oname7', '$omail7', '$oname8', '$omail8', '$oname9', '$omail9', '$oname4', '$omail4', '$ofund6', '$oorg6', '$ocom6', '$oname5', '$omail5', '$ofund7', '$oorg7', '$ocom7', '$oname6', '$omail6', '$ofund8', '$oorg8', '$ocom8', '$ofund9', '$oorg9', '$ocom9', '$mname0', '$mmail0', '$mfund0', '$morg0', '$mcom0', '$mname1', '$mmail1', '$mfund1', '$morg1', '$mcom1', '$mname2', '$mmail2', '$mfund2', '$morg2', '$mcom2', '$mname3', '$mmail3', '$mfund3', '$morg3', '$mcom3', '$mname4', '$mmail4', '$mfund4', '$morg4', '$mcom4', '$mfund5', '$morg5', '$mcom5', '$otname0', '$otmail0', '$otfund0', '$otorg0', '$otcom0', '$otname1', '$otmail1', '$otfund1', '$otorg1', '$otcom1', '$otname2', '$otmail2', '$otfund2', '$otorg2', '$otcom2', '$otname3', '$otmail3', '$otfund3', '$otorg3', '$otcom3', '$otname4', '$otmail4', '$otfund4', '$otorg4', '$otcom4', '$otfund5', '$otorg5', '$otcom5', '$otfund6', '$otorg6', '$otcom6')";
     
-	$sqlprogram = "INSERT INTO program_flow (proposal_id, date, address, time0, description0, person0, time1, description1, person1, time2, description2, person2, time3, description3, person3, time4, description4, person4, time5, description5, person5, time6, description6, person6, time7, description7, person7, time8, description8, person8, time9, description9, person9, time10, description10, person10, time11, description11, person11, time12, description12, person12, time13, description13, person13, time14, description14, person14, time15, description15, person15) VALUES ('$d','$date', '$address', '$time0', '$description0', '$person0', '$time1', '$description1', '$person1', '$time2', '$description2', '$person2', '$time3', '$description3', '$person3', '$time4', '$description4', '$person4', '$time5', '$description5', '$person5', '$time6', '$description6', '$person6', '$time7', '$description7', '$person7', '$time8', '$description8', '$person8', '$time9', '$description9', '$person9', '$time10', '$description10', '$person10', '$time11', '$description11', '$person11', '$time12', '$description12', '$person12', '$time13', '$description13', '$person13', '$time14', '$description14', '$person14', '$time15', '$description15', '$person15')";
+	$sqlprogram = "INSERT INTO program_flow (proposal_id, date, address, time0, description0, person0, time1, description1, person1, time2, description2, person2, time3, description3, person3, time4, description4, person4, time5, description5, person5, time6, description6, person6, time7, description7, person7, time8, description8, person8, time9, description9, person9, time10, description10, person10, time11, description11, person11, time12, description12, person12, time13, description13, person13, time14, description14, person14, time15, description15, person15) VALUES ('$d','$date', '$address','$time0', '$description0', '$person0', '$time1', '$description1', '$person1', '$time2', '$description2', '$person2', '$time3', '$description3', '$person3', '$time4', '$description4', '$person4', '$time5', '$description5', '$person5', '$time6', '$description6', '$person6', '$time7', '$description7', '$person7', '$time8', '$description8', '$person8', '$time9', '$description9', '$person9', '$time10', '$description10', '$person10', '$time11', '$description11', '$person11', '$time12', '$description12', '$person12', '$time13', '$description13', '$person13', '$time14', '$description14', '$person14', '$time15', '$description15', '$person15')";
     
     
 	if(!mysqli_query($link, $sqlinsert)){
@@ -475,15 +475,15 @@ function calc(){
 	var rc = document.getElementById("pcom2").value;
 	var rd = document.getElementById("porg3").value;
 	
-	var j = document.getElementById("ofund0").value; <!--for subtotal / Operations and Logistics / CSF -->
-	var k = document.getElementById("ofund1").value;
-	var l = document.getElementById("ofund2").value;
-	var m = document.getElementById("ofund3").value;
-	var n = document.getElementById("ofund4").value;
-	var o = document.getElementById("ofund5").value;
-	var p = document.getElementById("ofund6").value;
-	var q = document.getElementById("ofund7").value;
-	var r = document.getElementById("ofund8").value;
+	//var j = document.getElementById("ofund0").value; <!--for subtotal / Operations and Logistics / CSF -->
+	//var k = document.getElementById("ofund1").value;
+	///var l = document.getElementById("ofund2").value;
+	//var m = document.getElementById("ofund3").value;
+	//var n = document.getElementById("ofund4").value;
+	//var o = document.getElementById("ofund5").value;
+	//var p = document.getElementById("ofund6").value;
+	//var q = document.getElementById("ofund7").value;
+	//var r = document.getElementById("ofund8").value;
 	
 	
 	
@@ -535,13 +535,13 @@ function calc(){
 		document.getElementById("pcom4").value = compcalc5; <!--subtotal to pcom4-->
 		}
 		
-		if(j>0 || k>0|| l>0 || m>0 || n>0 || o>0 || p>0 || q>0 || r>0){
-			var comp6 = (parseInt(j) + parseInt(k) + parseInt(l) + parseInt(m) + parseInt(n) + parseInt(o) + parseInt(p) + parseInt(q) + parseInt(r));
-			var comp6z = String(comp6); 
+		//if(j>0 && k>0 || l>0 || m>0 || n>0 || o>0 || p>0 || q>0 || r>0){
+		//	var comp6 = (parseInt(j)+parseInt(k)+parseInt(l)+parseInt(m)+parseInt(n)+parseInt(o)+parseInt(p)+parseInt(q)+parseInt(r));
+		//	var comp6z = String(comp6); 
 			
-		var compcalc6 = comp6z; 
-		document.getElementById("ofund9").value = String(comp6); <!--subtotal to ofund9(OPERATIONS AND LOGISTICS)-->
-		}
+		//var compcalc6 = comp6z;
+		//document.getElementById("ofund9").value = String(comp6); <!--subtotal to ofund9(OPERATIONS AND LOGISTICS)-->
+		//}
 		
 
 }
@@ -1056,7 +1056,7 @@ document.addEventListener("DOMContentLoaded", function() {
          echo '   <div class="row clearfix">
               <div clas="col-md-12">
                 <table class="table table-bordered table-hover" id="materials">
-                  <label class="control-label">3. Materials and Supplies(Required)</label>
+                  <label class="control-label">3. Materials and Supplies</label>
                     <thead>
                       <tr>
                         <th class="text-center">#</th>
@@ -1128,7 +1128,7 @@ document.addEventListener("DOMContentLoaded", function() {
               <div clas="col-md-12">
                 <table class="table table-bordered table-hover" id="others">
                     <thead>
-                    <label class="control-label">4. Others(Required)</label>
+                    <label class="control-label">4. Others</label>
                       <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">Item</th>
