@@ -54,26 +54,21 @@ while ($row = mysqli_fetch_array($result)){
     $finalbudget = $row['finalbudget'];
     $finalbudget_code = $row['finalbudget_code'];
     $cash_req = $row['cash_req'];
-    $req_amt = $row['req_amt'];
     $date_today = $row['date_today'];
-    $transpo_amt = $row['transpo_amt'];
 }
-
+/*
 $org = "SELECT user_id FROM login_user WHERE name = $proponent";
 $orgres = mysqli_query($link, $org);
 while ($row = mysqli_fetch_array($orgres)){
     $org_id = $row['user_id'];
 }
+*/
 
-
-
-$comcoor = "SELECT signatory_name FROM order_signatory WHERE order_number = 3 AND standard = 0 AND simbahayan = 0 AND univ_wide = 0 AND org_num = $org_id";
+$comcoor = "SELECT signatory_name FROM order_signatory WHERE order_number = 3 AND standard = 0 AND simbahayan = 0 AND univ_wide = 0 AND org_num = $proponent";
 $comresult = mysqli_query($link, $comcoor);
 while ($row = mysqli_fetch_array($comresult)){
     $comdev_name = $row['signatory_name'];
 }
-
-
 
 $progcoor = "SELECT signatory_name FROM order_signatory WHERE order_number = 1 AND standard = 1 AND simbahayan = 1 AND univ_wide = 0";
 $progresult = mysqli_query($link, $progcoor);

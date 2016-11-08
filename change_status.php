@@ -200,9 +200,12 @@ else if ($order_number <= 4 && $standard == 1 && $univwide == 0) {
 			
 	$reporting = "INSERT INTO report (proposal_id, date_received, lead_org, proj_title, proj_area, beneficiaries, date_target) VALUES ('$d', '$date', '$name', '$proj_title', '$proj_area', '$beneficiaries', '$target_date')";
 	
-	if(!mysqli_query($link, $reporting) AND !mysqli_query($link, $sqlinsert1) ){
+	if(!mysqli_query($link, $reporting)){
 		die("<script type='text/javascript'>alert('UNABLE TO SUBMIT PROPOSAL!!!!'); window.history.go(-1);</script>");
 	}
+    if(!mysqli_query($link, $sqlinsert1)){
+        die("<script type='text/javascript'>alert('UNABLE TO SUBMIT PROPOSAL!!!!'); window.history.go(-1);</script>");
+    }
 	
 		}
 }
