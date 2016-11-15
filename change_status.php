@@ -7,6 +7,7 @@ include "mysql_connect.php";
 
 $d = $_GET['d'];
 $id = $_SESSION['user_id'];
+$stat = "Pending";
 
 // identify the specific project proposal to process and its current signatory stage
 
@@ -173,7 +174,7 @@ else if ($order_number <= 4 && $standard == 1 && $univwide == 0) {
 		} 
 		else if ($x == 0){
 			$next_name = "Complete";
-			$sqlinsert1 = "UPDATE proj_proposal SET status='Approved' WHERE proposal_id = $d";
+			$stat = "Approved";
 		
 			$query = "SELECT lead_org, proj_title, community, participants, upload_date, target_id, proposal_id FROM proj_proposal WHERE proposal_id = $d";
             $result = mysqli_query($link, $query);
@@ -203,14 +204,11 @@ else if ($order_number <= 4 && $standard == 1 && $univwide == 0) {
 	if(!mysqli_query($link, $reporting)){
 		die("<script type='text/javascript'>alert('UNABLE TO SUBMIT PROPOSAL!!!!'); window.history.go(-1);</script>");
 	}
-    if(!mysqli_query($link, $sqlinsert1)){
-        die("<script type='text/javascript'>alert('UNABLE TO SUBMIT PROPOSAL!!!!'); window.history.go(-1);</script>");
-    }
 	
 		}
 }
 
-$sqlinsert = "UPDATE proj_proposal SET signatory_position = '$signatory_position' , pending = '$next_name' WHERE proposal_id = $d";
+$sqlinsert = "UPDATE proj_proposal SET signatory_position = '$signatory_position' , pending = '$next_name' , status = '$stat' WHERE proposal_id = $d";
 $sqlupdate = "INSERT INTO status_update (proposal_id, user_id, action) VALUES ('$d', '$id', 'Approved')";
     if(!mysqli_query($link, $sqlupdate)){
 		die("FAILED SUBMISSION");

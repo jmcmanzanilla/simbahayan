@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_array($dirresult)){
     $dir_name = $row['signatory_name'];
 }
 
-$logo1 = "images/logo1.jpg";
+$logo1 = "images/logo2.jpg";
 $logo2 = "images/logo2.jpg";
 $comdev = "images/krizsa.jpg";
 $progarea = "images/krizsa.jpg";

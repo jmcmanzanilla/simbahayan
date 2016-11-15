@@ -53,7 +53,7 @@ while ($row = mysqli_fetch_array($dirresult)){
 }
 
 
-$logo1 = "images/logo1.png";
+$logo1 = "images/logo2.jpg";
 $logo2 = "images/logo2.jpg";
 $comdev = "images/krizsa.jpg";
 $progarea = "images/krizsa.jpg";
