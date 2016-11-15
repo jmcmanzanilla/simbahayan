@@ -4,10 +4,8 @@ session_start();
 if(!isset($_SESSION['name'])){
 	header("location: index.php");
 }
-
 $d = $_GET['d'];
 $days = $_GET['days'];
-
 if ($days == 0) {
     echo "<script type='text/javascript'>var days = prompt('Please enter number of days of proposed event.', '1');
     if (days != null) {
@@ -15,7 +13,6 @@ if ($days == 0) {
     }
     </script>";
     }; 
-
 $org = $_SESSION['user_id'];
 $signatory1 = "";
 $totalfund = 0;
@@ -24,7 +21,6 @@ $totalcom = 0;
 $type = $_SESSION['college'];
 $proj_evaluation="";
 $proj_evaluation1="";
-
 if ($type == 'nstp'){
 $sql = "SELECT * from order_signatory WHERE nstp = 1 AND order_number = 1";
 $result = mysqli_query($link, $sql);
@@ -39,7 +35,6 @@ while($row = mysqli_fetch_array($result)) {
 	$signatory1 = $row['signatory_num'];
 	}
 }
-
 $sql = "SELECT * from order_signatory WHERE org_num = '$org' AND order_number = 1";
 $result = mysqli_query($link, $sql);
 while($row = mysqli_fetch_array($result)) {
@@ -420,7 +415,6 @@ if(isset($_POST['submitted'])){
 	}
     else if ($date < $submission){
 		die ("<script type='text/javascript'>alert('PROPOSALS SHOULD BE ENCODED 15 DAYS BEFORE THE EVENT!'); window.history.go(-1);</script>");
-
 	}
     }
     $sqli = "UPDATE proj_proposal SET budget = '1', program_flow = '1', days = '$days', pending = '$signatory1' WHERE proposal_id = $d ";
@@ -453,7 +447,7 @@ if(isset($_POST['submitted'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript">
 	
-function calc(){
+	function calc(){
 	var x = document.getElementById("pquan0").value; //personnel
 	var v = document.getElementById("pmon0").value;  <!--student volunteers-->
 	var y = document.getElementById("pday0").value;
@@ -535,19 +529,143 @@ function calc(){
 		document.getElementById("pcom4").value = compcalc5; <!--subtotal to pcom4-->
 		}
 		
-		//if(j>0 && k>0 || l>0 || m>0 || n>0 || o>0 || p>0 || q>0 || r>0){
-		//	var comp6 = (parseInt(j)+parseInt(k)+parseInt(l)+parseInt(m)+parseInt(n)+parseInt(o)+parseInt(p)+parseInt(q)+parseInt(r));
-		//	var comp6z = String(comp6); 
+		/*if(j>0 || k>0 || l>0 || m>0 || n>0 || o>0 || p>0 || q>0 || r>0){
+			var comp6 = (parseInt(j)+parseInt(k)+parseInt(l)+parseInt(m)+parseInt(n)+parseInt(o)+parseInt(p)+parseInt(q)+parseInt(r));
+			var comp6z = String(comp6); 
 			
-		//var compcalc6 = comp6z;
-		//document.getElementById("ofund9").value = String(comp6); <!--subtotal to ofund9(OPERATIONS AND LOGISTICS)-->
-		//}
+		var compcalc6 = comp6z;
+		document.getElementById("ofund9").value = String(comp6); <!--subtotal to ofund9(OPERATIONS AND LOGISTICS)-->
+		}*/
 		
-
 }
-
 document.addEventListener("DOMContentLoaded", function() {
 	calculate();
+});	
+</script>
+
+<script type="text/javascript">		
+		function add(){
+		  ofund9= 0;             //subtotal operations and logistics
+		  oorg9= 0;
+		  ocom9= 0;
+		  
+		  mfund5= 0;            //subtotal materials and supplies
+		  morg5= 0;
+		  mcom5= 0;
+		  
+		  otfund5= 0;           //subtotal others
+		  otorg5= 0;
+		  otcom5= 0;
+		  
+		  otfund6= 0 ;          //overall total
+		  otorg6= 0;
+		  otcom6= 0;
+		  
+		 sum =document.getElementsByClassName("sum");    //for operations and logistics
+		 for(a=0;a<sum.length;a++)
+		   {
+			 console.log(sum[a].value);
+		   ofund9 += parseInt(sum[a].value || 0);
+		  }
+		  document.getElementById("ofund9").value = ofund9;
+		
+		  sum1 =document.getElementsByClassName("sum1");
+		  for(a=0;a<sum1.length;a++)
+		  {
+			  console.log(sum1[a].value);
+			  oorg9 += parseInt(sum1[a].value ||0);
+		  }
+		  document.getElementById("oorg9").value = oorg9;
+		  
+		  sum2 =document.getElementsByClassName("sum2");
+		  for(a=0;a<sum2.length;a++)
+		  {
+			  console.log(sum2[a].value);
+			  ocom9 += parseInt(sum2[a].value ||0);
+		  }
+		  document.getElementById("ocom9").value = ocom9;
+		  
+		  sum3 =document.getElementsByClassName("sum3");      // for materials and supplies
+		  for(a=0;a<sum3.length;a++)
+		  {
+			  console.log(sum3[a].value);
+			  mfund5 += parseInt(sum3[a].value ||0);
+		  }
+		  document.getElementById("mfund5").value = mfund5;
+		  
+		  sum4 =document.getElementsByClassName("sum4");
+		  for(a=0;a<sum4.length;a++)
+		  {
+			  console.log(sum4[a].value);
+			  morg5 += parseInt(sum4[a].value ||0);
+		  }
+		  document.getElementById("morg5").value = morg5;
+		  
+		  sum5 =document.getElementsByClassName("sum5");
+		  for(a=0;a<sum5.length;a++)
+		  {
+			  console.log(sum5[a].value);
+			  mcom5 += parseInt(sum5[a].value ||0);
+		  }
+		  document.getElementById("mcom5").value = mcom5;
+		  
+		  sum6 =document.getElementsByClassName("sum6");    //for others
+		  for(a=0;a<sum6.length;a++)
+		  {
+			  console.log(sum6[a].value);
+			  otfund5 += parseInt(sum6[a].value ||0);
+		  }
+		  document.getElementById("otfund5").value = otfund5;
+		  
+		  sum7 =document.getElementsByClassName("sum7");
+		  for(a=0;a<sum7.length;a++)
+		  {
+			  console.log(sum7[a].value);
+			  otorg5 += parseInt(sum7[a].value ||0);
+		  }
+		  document.getElementById("otorg5").value = otorg5;
+		  
+		  sum8 =document.getElementsByClassName("sum8");
+		  for(a=0;a<sum8.length;a++)
+		  {
+			  console.log(sum8[a].value);
+			  otcom5 += parseInt(sum8[a].value ||0);
+		  }
+		  document.getElementById("otcom5").value = otcom5;
+		  
+		  tot1 =document.getElementsByClassName("tot1");          //for overall total
+		  for(a=0;a<tot1.length;a++)
+		  {
+			  console.log(tot1[a].value);
+			  otfund6 += parseInt(tot1[a].value ||0);
+		  }
+		  document.getElementById("otfund6").value = otfund6;
+		  
+		  tot2 =document.getElementsByClassName("tot2");
+		  for(a=0;a<tot2.length;a++)
+		  {
+			  console.log(tot2[a].value);
+			  otorg6 += parseInt(tot2[a].value ||0);
+		  }
+		  document.getElementById("otorg6").value = otorg6;
+		  
+		  tot3 =document.getElementsByClassName("tot3");
+		  for(a=0;a<tot3.length;a++)
+		  {
+			  console.log(tot3[a].value);
+			  otcom6 += parseInt(tot3[a].value ||0);
+		  }
+		  document.getElementById("otcom6").value = otcom6;
+		} 		  
+		/*if(j>0 || k>0 || l>0 || m>0 || n>0 || o>0 || p>0 || q>0 || r>0){
+			var comp6 = (parseInt(j)+parseInt(k)+parseInt(l)+parseInt(m)+parseInt(n)+parseInt(o)+parseInt(p)+parseInt(q)+parseInt(r));
+			var comp6z = String(comp6); 
+			
+		var compcalc6 = comp6z;
+		document.getElementById("ofund9").value = String(comp6); <!--subtotal to ofund9(OPERATIONS AND LOGISTICS)-->
+		}*/
+document.addEventListener("DOMContentLoaded", function() {
+	add();
 });	
 </script>
 
@@ -578,26 +696,21 @@ document.addEventListener("DOMContentLoaded", function() {
   font-weight: 400;
   src: local('RobotoDraft Italic'), local('RobotoDraft-Italic'), local('Roboto-Italic'), url('fonts/RobotoDraftItalic.woff2') format('woff2'), url('../fonts/RobotoDraftItalic.woff') format('woff');
 }
-
 .stepwizard-step p {
   margin-top: 10px;
 }
-
 .stepwizard-row {
   display: table-row;
 }
-
 .stepwizard {
   display: table;
   width: 100%;
   position: relative;
 }
-
 .stepwizard-step button[disabled] {
   opacity: 1 !important;
   filter: alpha(opacity=100) !important;
 }
-
 .stepwizard-row:before {
   top: 14px;
   bottom: 0;
@@ -607,15 +720,12 @@ document.addEventListener("DOMContentLoaded", function() {
   height: 1px;
   background-color: #ccc;
   z-order: 0;
-
 }
-
 .stepwizard-step {
   display: table-cell;
   text-align: center;
   position: relative;
 }
-
 .btn-circle {
   width: 30px;
   height: 30px;
@@ -625,7 +735,6 @@ document.addEventListener("DOMContentLoaded", function() {
   line-height: 1.428571429;
   border-radius: 15px;
 }
-
 .nextBtn {
   float: right;
   width: 10%;
@@ -845,7 +954,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 echo '<div class="col-md-12">
           <label class="control-label" style="font-weight:bold">PROPOSED BUDGET</label>';
          echo " <p>State the approximate or anticipated cost of the project. Please note that Simbahayan's policy is to make a contribution to your project, but not to provide 100% of the cost. Therefore, it is important that you record the extent of funding counterparts to the project. Please prepare one budget proposal per date of implementation.</p>";
-
           echo '  <div class="row clearfix">
               <div clas="col-md-12">
                 <label class="control-label">1. Personnel</label>
@@ -870,9 +978,9 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td><input maxlength ="25" type="text" name="pname0['.$x.']" placeholder="Item" class="form-control" value="Student Volunteers"/></td>
 					  <td><input name="pquan0" type="text" id="pquan0" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 20px "/> x 
 					  <input type="text" id="pmon0" name="pmon0" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px;"  placeholder="Description" value="300"/> x <input name="pday0" type="text" id="pday0" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="pfund0" name="pfund0['.$x.']" placeholder="00.00" disabled class="form-control"/></td>
+                      <td><input type="number" id="pfund0" name="pfund0['.$x.']" placeholder="00.00" readonly class="form-control"/></td>
                       <td><input type="number" id="porg0" name="porg0['.$x.']" onkeyup="calc()" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id = "pcom0" name="pcom0['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id = "pcom0" name="pcom0['.$x.']" placeholder="Community Counterpart" readonly class="form-control"/></td>
 					 
                     </tr>';
 					
@@ -881,9 +989,9 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td><input type="text" name="pname1['.$x.']" placeholder="Item" class="form-control" value="Faculty/Admin/Support Staff Volunteers"/></td>
                       <td><input name="pquan1" type="text" id="pquan1" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 20px "/> x <input type="text" id="pmon1" name="pmon1" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px;"  placeholder="Description" value="1500"/> x 
 					  <input name="pday1" "type="text"  id="pday1" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id= "pfund1" name="pfund1['.$x.']" placeholder="00.00" disabled class="form-control"/></td>
+                      <td><input type="number" id= "pfund1" name="pfund1['.$x.']" placeholder="00.00" readonly class="form-control"/></td>
                       <td><input type="number" id="porg1" name="porg1['.$x.']" onkeyup="calc()" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id= "pcom1" name="pcom1['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id= "pcom1" name="pcom1['.$x.']" placeholder="Community Counterpart" readonly class="form-control"/></td>
           
 		  </tr>';
           echo '<tr id="per2">
@@ -891,8 +999,8 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td><input type="text" name="pname2['.$x.']" placeholder="Item" class="form-control" value="Volunteers from the Partner Community or Institution"/></td>
                       <td><input type="text" id="pquan2" name="pquan2" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 20px "/> x <input type="text" id="pmon2" name="pmon2" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px;" placeholder="Description" value="500"/> x 
 					  <input type="text" id="pday2" name="pday2"onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="pfund2" name="pfund2['.$x.']" placeholder="00.00" disabled class="form-control"/></td>
-                      <td><input type="number" id="porg2" name="porg2['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="pfund2" name="pfund2['.$x.']" placeholder="00.00" readonly class="form-control"/></td>
+                      <td><input type="number" id="porg2" name="porg2['.$x.']" placeholder="Organization Counterpart" readonly class="form-control"/></td>
                       <td><input type="number" id="pcom2" name="pcom2['.$x.']" onkeyup="calc()" placeholder="Community Counterpart" class="form-control"/></td>
          
 		 </tr>';
@@ -901,24 +1009,22 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td><input type="text" name="pname3['.$x.']" placeholder="Item" class="form-control" value="Volunteer External Resource Person (not from UST)"/></td>
                       <td><input type="text" id="pquan3" name="pquan3" onkeyup="calc()"  style="height: 35px;width:100px; border-radius: 5px; margin-left: 20px "/> x <input type="text" id="pmon3" name="pmon3" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px;" placeholder="Description" value="1500"/> x 
 					  <input type="text" id="pday3" name="pday3" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="pfund3" name="pfund3['.$x.']" placeholder="00.00" disabled class="form-control"/></td>
+                      <td><input type="number" id="pfund3" name="pfund3['.$x.']" placeholder="00.00" readonly class="form-control"/></td>
                       <td><input type="number" id="porg3" name="porg3['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="pcom3" name="pcom3['.$x.']" onkeyup="calc()" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="pcom3" name="pcom3['.$x.']" onkeyup="calc()" placeholder="Community Counterpart" readonly class="form-control"/></td>
           </tr>';
           echo '<tr id="per4">
             <td></td>
 					  <td></td>
 					  <td align="right"><b> Sub-Total 1:</b></td> 
-					  <td><input type="number" id="pfund4" name="pfund4['.$x.']" placeholder="00.00" disabled class="form-control"/></td>
-                      <td><input type="number" id="porg4" name="porg4['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="pcom4" name="pcom4['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="pfund4" name="pfund4['.$x.']" placeholder="00.00" readonly class="form-control"/></td>
+                      <td><input type="number" id="porg4" name="porg4['.$x.']" placeholder="Organization Counterpart" class="form-control tot2" onchange="add()" /></td>
+                      <td><input type="number" id="pcom4" name="pcom4['.$x.']" placeholder="Community Counterpart" class="form-control tot3" onchange="add()"/></td>
           </tr>
                   </tbody>
                 </table>
               </div>
             </div>';
-
-
          echo '   <div class="row clearfix">
               <div clas="col-md-12">
 			   <label class="control-label">2. Operations and Logistics (Compute and place the result on the appropriate counterpart.) </label>
@@ -938,28 +1044,28 @@ document.addEventListener("DOMContentLoaded", function() {
 					<tbody>
                     <tr id="opslog0">
                       <td>1</td>
-                      <td><input type="text" name="oname0['.$x.']" placeholder="Item" class="form-control" value="Lunch / Dinner"/></td>
-                      <td><input type="text" id= "oquan4" name = "oquan4" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px"/> x <input type="text" id="omon4" name="omon4" onkeyup="calc()"style="height: 35px;width:100px; border-radius: 5px;" placeholder="Description" value="90"/> x <input type="text" id="oday4" name = "oday4" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="ofund0" name="ofund0['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg0" name="oorg0['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom0" name="ocom0['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="text" name="oname0['.$x.']" placeholder="Item" class="form-control"  value="Lunch / Dinner"/></td>
+                      <td><input type="text" id= "oquan4" name = "oquan4" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 0px"/> x <input type="text" id="omon4" name="omon4" onkeyup="calc()"style="height: 35px;width:100px; border-radius: 5px; margin-right: 0px" placeholder="Description" value="90"/> x <input type="text" id="oday4" name = "oday4" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
+                      <td><input type="number" class="form-control sum" onchange="add()" id="ofund0" name="ofund0['.$x.']" placeholder="00.00"  /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg0" name="oorg0['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom0" name="ocom0['.$x.']" placeholder="Community Counterpart" /></td>
                     </tr>';
 					
 			echo '<tr id="opslog1">
             <td>2</td>
                       <td><input type="text" name="oname1['.$x.']" placeholder="Item" class="form-control" value="Snack"/></td>
                       <td><input type="text" id="oquan5" name="oquan5" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px"/> x <input type="text" id="omon5" name="omon5" onkeyup="calc()" style="height: 35px;width:100px; border-radius: 5px;" placeholder="Description" value="50"/> x <input type="text" id="oday5" name="oday5" onkeyup="calc()" style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="ofund1" name="ofund1['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg1" name="oorg1['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom1" name="ocom1['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" class="form-control sum" onchange="add()" id="ofund1" name="ofund1['.$x.']" placeholder="00.00" /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg1" name="oorg1['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom1" name="ocom1['.$x.']" placeholder="Community Counterpart" /></td>
           </tr>
           <tr id="opslog2">
             <td>3</td>
                       <td><input type="text" name="oname2['.$x.']" placeholder="Item" class="form-control" value="Venue and Facilities"/></td>
                       <td><input type="text"  id= "oquan6" name = "oquan6" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text"  id= "omon6" name = "omon6" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text"  id= "oday6" name = "oday6"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="ofund2" name="ofund2['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg2" name="oorg2['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom2" name="ocom2['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" class="form-control sum" onchange="add()" id="ofund2" name="ofund2['.$x.']" placeholder="00.00" /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg2" name="oorg2['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom2" name="ocom2['.$x.']" placeholder="Community Counterpart" /></td>
           </tr>
          
             <tr id ="opslog4"><input type="hidden" name="oname3['.$x.']" value="Transportation"/>
@@ -988,30 +1094,26 @@ document.addEventListener("DOMContentLoaded", function() {
 			<td><input type="text" id= "oquan7" name = "oquan7" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id= "omon7" name = "omon7" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="number" id= "oday7" name = "oday7" style="height:35px;width:100px; border-radius: 5px;"/><br><input type="number" id= "oquan8" name = "oquan8" style="height:35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="number" id= "omon8" name = "omon8" style="height:35px;width:100px; border-radius: 5px; margin-left: 0px; "/> x <input type="text" id= "oday8" name = "oday8" style="height:35px;width:100px; border-radius: 5px; margin-left: 0px;"/> <br><input type="text" id= "oquan9" name = "oquan9"  style="height:35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id= "omon9" name = "omon9" style="height:35px;width:100px; border-radius: 5px; margin-left: 0px;"/> x <input type="text" id= "oday9" name = "oday9" style="height:35px;width:100px; border-radius: 5px; margin-left: 0px;"/> </td></br>
 			
             <td><input type="hidden" name="oname7['.$x.']"/>
-			<input type="number" id="ofund3" name="ofund3" placeholder="00.00" class="form-control"/><input type="number" id="ofund4" name="ofund4" placeholder="00.00" class="form-control"/> <input type="number" id="ofund5" name="ofund5" placeholder="00.00" class="form-control"/></td>
+			<input type="number" class="form-control sum" onchange="add()" id="ofund3" name="ofund3" placeholder="00.00" /><input type="number" class="form-control sum" onchange="add()" id="ofund4" name="ofund4" placeholder="00.00" /> <input type="number" class="form-control sum" onchange="add()" id="ofund5" name="ofund5" placeholder="00.00" /></td>
 			
             <td><input type="hidden" name="oname8['.$x.']"/>
-			<input type="number" id="oorg3" name="oorg3" placeholder="Organization Counterpart" class="form-control"/> <input type="number" id="oorg4" name="oorg4" placeholder="Organization Counterpart" class="form-control"/> <input type="number" id="oorg5" name="oorg5" placeholder="Organization Counterpart" class="form-control"/></td>
+			<input type="number" class="form-control sum1" onchange="add()" id="oorg3" name="oorg3" placeholder="Organization Counterpart" /> <input type="number" class="form-control sum1" onchange="add()" id="oorg4" name="oorg4" placeholder="Organization Counterpart" /> <input type="number" class="form-control sum1" onchange="add()" id="oorg5" name="oorg5" placeholder="Organization Counterpart" /></td>
 			
             <td><input type="hidden" name="oname9['.$x.']"/>
-			<input type="number" id="ocom3" name="ocom3['.$x.']" placeholder="Community Counterpart" class="form-control"/> <input type="number" id="ocom4" name="ocom4['.$x.']" placeholder="Community Counterpart" class="form-control"/> <input type="number" id="ocom5" name="ocom5['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+			<input type="number" class="form-control sum2" onchange="add()" id="ocom3" name="ocom3['.$x.']" placeholder="Community Counterpart" class="form-control"/> <input type="number" class="form-control sum2" onchange="add()" id="ocom4" name="ocom4['.$x.']" placeholder="Community Counterpart" class="form-control"/> <input type="number" class="form-control sum2" onchange="add()" id="ocom5" name="ocom5['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
 			
-
 		  </p>
 		
-
 </td>
-
-
             
 			</tr>
 			<tr id="opslog3">
             <td>5</td>
                       <td><input type="text" name="oname4['.$x.']" placeholder="Item" class="form-control" value="Accommodation"/></td>
                      <td><input type="text" id="oquan10" name="oquan10" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="omon10" name="omon10" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="oday10" name="oday10"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="ofund6" name="ofund6['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg6" name="oorg6['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom6" name="ocom6['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" class="form-control sum" onchange="add()" id="ofund6" name="ofund6['.$x.']" placeholder="00.00" /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg6" name="oorg6['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom6" name="ocom6['.$x.']" placeholder="Community Counterpart" /></td>
 			
 		   </tr>
 		  
@@ -1020,39 +1122,34 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>6</td>
                       <td><input type="text" name="oname5['.$x.']" placeholder="Toll Fee" class="form-control"/></td>
                       <td><input type="text" id="oquan11" name="oquan11" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="omon11" name="omon11" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="oday11" name="oday11"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="ofund7" name="ofund7['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg7" name="oorg7['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom7" name="ocom7['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" class="form-control sum" onchange="add()" id="ofund7" name="ofund7['.$x.']" placeholder="00.00" /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg7" name="oorg7['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom7" name="ocom7['.$x.']" placeholder="Community Counterpart" /></td>
           </tr>
-
             <tr id="opslog6">
             <td>7</td>
                       <td><input type="text" name="oname6['.$x.']" placeholder="Communications" class="form-control"/></td>
                       <td><input type="text" id="oquan12" name="oquan12" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="omon12" name="omon12" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="oday12" name="oday12"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-					  <td><input type="number" id="ofund8" name="ofund8['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg8" name="oorg8['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom8" name="ocom8['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" class="form-control sum" onchange="add()" id="ofund8" name="ofund8['.$x.']" placeholder="00.00" /></td>
+                      <td><input type="number" class="form-control sum1" onchange="add()" id="oorg8" name="oorg8['.$x.']" placeholder="Organization Counterpart" /></td>
+                      <td><input type="number" class="form-control sum2" onchange="add()" id="ocom8" name="ocom8['.$x.']" placeholder="Community Counterpart" /></td>
          
 		 <tr id="opslog7">
             <td></td>
 					  <td></td>
 					  <td align="right"><b> Sub-Total 2:</b></td> 
-					  <td><input type="number" id="ofund9" name="ofund9['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="oorg9" name="oorg9['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="ocom9" name="ocom9['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="ofund9" name="ofund9['.$x.']" placeholder="00.00" class="form-control tot1" onchange="add()" /></td>
+                      <td><input type="number" id="oorg9" name="oorg9['.$x.']" placeholder="00.00" class="form-control tot2" onchange="add()"/></td>
+                      <td><input type="number" id="ocom9" name="ocom9['.$x.']" placeholder="00.00" class="form-control tot3" onchange="add()"/></td>
           
 		  </tr>
 		  </tr>
                  
 				 </tbody>
                   </table>
-
             
-
               </div>
             </div>';
-
-
          echo '   <div class="row clearfix">
               <div clas="col-md-12">
                 <table class="table table-bordered table-hover" id="materials">
@@ -1072,49 +1169,49 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td>1</td>
                       <td><input type="text" name="mname0['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="mquan13" name="mquan13" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="mmon13" name="mmon13" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="mday13" name="mday13"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="mfund0" name="mfund0['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg0" name="morg0['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom0" name="mcom0['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="mfund0" name="mfund0['.$x.']" placeholder="00.00" class="form-control sum3" onchange="add()"/></td>
+                      <td><input type="number" id="morg0" name="morg0['.$x.']" placeholder="Organization Counterpart" class="form-control sum4" onchange="add()"/></td>
+                      <td><input type="number" id="mcom0" name="mcom0['.$x.']" placeholder="Community Counterpart" class="form-control sum5" onchange="add()"/></td>
                     </tr>
                     <tr id="materials1">
             <td>2</td>
                       <td><input type="text" name="mname1['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="mquan14" name="mquan14"style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="mmon14" name="mmon14" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="mday14" name="mday14"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="mfund1" name="mfund1['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg1" name="morg1['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom1" name="mcom1['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="mfund1" name="mfund1['.$x.']" placeholder="00.00" class="form-control sum3" onchange="add()"/></td>
+                      <td><input type="number" id="morg1" name="morg1['.$x.']" placeholder="Organization Counterpart" class="form-control sum4" onchange="add()"/></td>
+                      <td><input type="number" id="mcom1" name="mcom1['.$x.']" placeholder="Community Counterpart" class="form-control sum5" onchange="add()"/></td>
           </tr>
           <tr id="materials2">
             <td>3</td>
                       <td><input type="text" name="mname2['.$x.']" placeholder="Item" class="form-control"/></td>
                      <td><input type="text" id="mquan15" name="mquan15" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="mmon15" name="mmon15" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="mday15" name="mday15"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="mfund2" name="mfund2['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg2" name="morg2['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom2" name="mcom2['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="mfund2" name="mfund2['.$x.']" placeholder="00.00" class="form-control sum3" onchange="add()"/></td>
+                      <td><input type="number" id="morg2" name="morg2['.$x.']" placeholder="Organization Counterpart" class="form-control sum4" onchange="add()"/></td>
+                      <td><input type="number" id="mcom2" name="mcom2['.$x.']" placeholder="Community Counterpart" class="form-control sum5" onchange="add()"/></td>
           </tr>
           <tr id="materials3">
             <td>4</td>
                       <td><input type="text" name="mname3['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="mquan16" name="mquan16" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="mmon16" name="mmon16" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="mday16" name="mday16"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="mfund3" name="mfund3['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg3" name="morg3['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom3" name="mcom3['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="mfund3" name="mfund3['.$x.']" placeholder="00.00" class="form-control sum3" onchange="add()"/></td>
+                      <td><input type="number" id="morg3" name="morg3['.$x.']" placeholder="Organization Counterpart" class="form-control sum4" onchange="add()"/></td>
+                      <td><input type="number" id="mcom3" name="mcom3['.$x.']" placeholder="Community Counterpart" class="form-control sum5" onchange="add()"/></td>
           </tr>
           <tr id="materials4">
             <td>5</td>
                       <td><input type="text" name="mname4['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="mquan17" name="mquan17" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="mmon17" name="mmon17" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="mday17" name="mday17"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="mfund4" name="mfund4['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg4" name="morg4['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom4" name="mcom4['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="mfund4" name="mfund4['.$x.']" placeholder="00.00" class="form-control sum3" onchange="add()"/></td>
+                      <td><input type="number" id="morg4" name="morg4['.$x.']" placeholder="Organization Counterpart" class="form-control sum4" onchange="add()"/></td>
+                      <td><input type="number" id="mcom4" name="mcom4['.$x.']" placeholder="Community Counterpart" class="form-control sum5" onchange="add()"/></td>
          
 				<tr id="mat1">
             <td></td>
 					  <td></td>
 					  <td align="right"><b> Sub-Total 3:</b></td> 
-					  <td><input type="number" id="mfund5" name="mfund5['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="morg5" name="morg5['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="mcom5" name="mcom5['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="mfund5" name="mfund5['.$x.']" placeholder="00.00" class="form-control tot1" onchange="add()"/></td>
+                      <td><input type="number" id="morg5" name="morg5['.$x.']" placeholder="Organization Counterpart" class="form-control tot2" onchange="add()"/></td>
+                      <td><input type="number" id="mcom5" name="mcom5['.$x.']" placeholder="Community Counterpart" class="form-control tot3" onchange="add()"/></td>
           
 		  </tr>
 		  </tr>
@@ -1122,8 +1219,6 @@ document.addEventListener("DOMContentLoaded", function() {
                   </table>
               </div>
             </div>';
-
-
          echo '   <div class="row clearfix">
               <div clas="col-md-12">
                 <table class="table table-bordered table-hover" id="others">
@@ -1143,49 +1238,49 @@ document.addEventListener("DOMContentLoaded", function() {
                       <td>1</td>
                       <td><input type="text" name="otname0['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="otquan18" name="otquan18" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="otmon18" name="otmon18" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="otday18" name="otday18"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="otfund0" name="otfund0['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg0" name="otorg0['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom0" name="otcom0['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="otfund0" name="otfund0['.$x.']" placeholder="00.00" class="form-control sum6" onchange="add()"/></td>
+                      <td><input type="number" id="otorg0" name="otorg0['.$x.']" placeholder="Organization Counterpart" class="form-control sum7" onchange="add()"/></td>
+                      <td><input type="number" id="otcom0" name="otcom0['.$x.']" placeholder="Community Counterpart" class="form-control sum8" onchange="add()"/></td>
                     </tr>
                     <tr id="others1">
             <td>2</td>
                       <td><input type="text" name="otname1['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="otquan19" name="otquan19" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="otmon19" name="otmon19" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="otday19" name="otday19"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="otfund1" name="otfund1['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg1" name="otorg1['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom1" name="otcom1['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="otfund1" name="otfund1['.$x.']" placeholder="00.00" class="form-control sum6" onchange="add()"/></td>
+                      <td><input type="number" id="otorg1" name="otorg1['.$x.']" placeholder="Organization Counterpart" class="form-control sum7" onchange="add()"/></td>
+                      <td><input type="number" id="otcom1" name="otcom1['.$x.']" placeholder="Community Counterpart" class="form-control sum8" onchange="add()"/></td>
           </tr>
           <tr id="others2">
             <td>3</td>
                       <td><input type="text" name="otname2['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="otquan20" name="otquan20" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="otmon20" name="otmon20" style="height: 35px;width:100px; border-radius: 5px;" "placeholder=""/> x <input type="text" id="otday20" name="otday20"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-                      <td><input type="number" id="otfund2" name="otfund2['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg2" name="otorg2['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom2" name="otcom2['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+                      <td><input type="number" id="otfund2" name="otfund2['.$x.']" placeholder="00.00" class="form-control sum6" onchange="add()"/></td>
+                      <td><input type="number" id="otorg2" name="otorg2['.$x.']" placeholder="Organization Counterpart" class="form-control sum7" onchange="add()"/></td>
+                      <td><input type="number" id="otcom2" name="otcom2['.$x.']" placeholder="Community Counterpart" class="form-control sum8" onchange="add()"/></td>
           </tr>
           <tr id="others3">
             <td>4</td>
                       <td><input type="text" name="otname3['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="otquan21" name="otquan21" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="otmon21" name="otmon21" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="otday21" name="otday21"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-					  <td><input type="number" id="otfund3" name="otfund3['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg3" name="otorg3['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom3" name="otcom3['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="otfund3" name="otfund3['.$x.']" placeholder="00.00" class="form-control sum6" onchange="add()"/></td>
+                      <td><input type="number" id="otorg3" name="otorg3['.$x.']" placeholder="Organization Counterpart" class="form-control sum7" onchange="add()"/></td>
+                      <td><input type="number" id="otcom3" name="otcom3['.$x.']" placeholder="Community Counterpart" class="form-control sum8" onchange="add()"/></td>
           </tr>
           <tr id="others4">
             <td>5</td>
                       <td><input type="text" name="otname4['.$x.']" placeholder="Item" class="form-control"/></td>
                       <td><input type="text" id="otquan22" name="otquan22" style="height: 35px;width:100px; border-radius: 5px; margin-left: 5px "/> x <input type="text" id="otmon22" name="otmon22" style="height: 35px;width:100px; border-radius: 5px;" placeholder=""/> x <input type="text" id="otday22" name="otday22"  style="height:35px;width:100px; border-radius: 5px;"/></td>
-					  <td><input type="number" id="otfund4" name="otfund4['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg4" name="otorg4['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom4" name="otcom4['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="otfund4" name="otfund4['.$x.']" placeholder="00.00" class="form-control sum6" onchange="add()"/></td>
+                      <td><input type="number" id="otorg4" name="otorg4['.$x.']" placeholder="Organization Counterpart" class="form-control sum7" onchange="add()"/></td>
+                      <td><input type="number" id="otcom4" name="otcom4['.$x.']" placeholder="Community Counterpart" class="form-control sum8" onchange="add()"/></td>
          
 		 <tr id="others5">
             <td></td>
 					  <td></td>
 					  <td align="right"><b> Sub-Total 4:</b></td> 
-					  <td><input type="number" id="otfund5" name="otfund5['.$x.']" placeholder="00.00" class="form-control"/></td>
-                      <td><input type="number" id="otorg5" name="otorg5['.$x.']" placeholder="Organization Counterpart" class="form-control"/></td>
-                      <td><input type="number" id="otcom5" name="otcom5['.$x.']" placeholder="Community Counterpart" class="form-control"/></td>
+					  <td><input type="number" id="otfund5" name="otfund5['.$x.']" placeholder="00.00" class="form-control tot1" onchange="add()"/></td>
+                      <td><input type="number" id="otorg5" name="otorg5['.$x.']" placeholder="Organization Counterpart" class="form-control tot2" onchange="add()"/></td>
+                      <td><input type="number" id="otcom5" name="otcom5['.$x.']" placeholder="Community Counterpart" class="form-control tot3" onchange="add()"/></td>
           
 		 <tr id="others6">
             <td></td>
@@ -1197,7 +1292,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		  
 		  </tr>
 		 </tr>
-
             
                   </tbody>
                   </table>
@@ -1205,10 +1299,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
               </div>
             </div>';
-
             echo '<!-- end of budget proposal -->';
                 }
-
         
         echo "<div class='col-md-6'>
           <input class='btn btn-success sbmtBtn btn-lg pull-right' style = 'color: #fff; background-color: #23cf5f; border-radius: 0; margin-top: 30px;' type='submit' value='Submit'/> 
@@ -1231,5 +1323,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 	</html>
-	
-	
