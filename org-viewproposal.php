@@ -319,9 +319,15 @@ while($row = mysqli_fetch_array($resulti)) {
                     else if ($vehicle == 0) {
                     echo '<a href ="vehiclerequest.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VEHICLE REQUEST</a>';
                     }
-                    if ($status == "Approved") {
-                    echo '<a href ="approvalpdf.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
-                    } */
+                    */
+                    
+                    if ($status == "Approved" && $affiliation == "University-Wide") {
+                    echo '<a href ="approvalpdf-univ.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
+                    }
+                    
+                    if ($status == "Approved" && $affiliation == "College-Based") {
+                    echo '<a href ="approvalpdf-college.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
+                    }
                     
                   echo '</div>';
                 echo '
