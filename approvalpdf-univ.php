@@ -2,7 +2,6 @@
 require('fpdf17/fpdf.php');
 include "mysql_connect.php";
 $d = $_GET['d'];
-
 $query = "SELECT * FROM approval_form where proposal_id = $d";
 $result = mysqli_query($link,$query);
 while ($row = mysqli_fetch_array($result)){
@@ -39,26 +38,38 @@ $orgres = mysqli_query($link, $org);
 while ($row = mysqli_fetch_array($orgres)){
     $proponent = $row['name'];
 }
-
-$progcoor = "SELECT signatory_name FROM order_signatory WHERE order_number = 1 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
+$progcoor = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 1 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
 $progresult = mysqli_query($link, $progcoor);
 while ($row = mysqli_fetch_array($progresult)){
     $prog_name = $row['signatory_name'];
+	$prog_num = $row['signatory_num'];
 }
 
-$dir = "SELECT signatory_name FROM order_signatory WHERE order_number = 2 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
+$progselect = "SELECT signature FROM signatory_profile WHERE user_id = $prog_num"; 
+$progresult = mysqli_query($link, $progselect);
+while ($row = mysqli_fetch_array($progresult)){
+  $progarea = $row['signature'];
+}
+
+$dir = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 2 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
 $dirresult = mysqli_query($link, $dir);
 while ($row = mysqli_fetch_array($dirresult)){
     $dir_name = $row['signatory_name'];
+	$dir_num = $row['signatory_num'];
+}
+
+$dirselect = "SELECT signature FROM signatory_profile WHERE user_id = $dir_num"; 
+$dirresult = mysqli_query($link, $dirselect);
+while ($row = mysqli_fetch_array($dirresult)){
+  $director = $row['signature'];
 }
 
 
-$logo1 = "images/logo2.jpg";
+$logo_1 = "images/logo_1.jpg";
 $logo2 = "images/logo2.jpg";
 $comdev = "images/krizsa.jpg";
-$progarea = "images/krizsa.jpg";
-$director = "images/krizsa.jpg";
-
+//$progarea = "images/krizsa.jpg";
+//$director = "images/krizsa.jpg";
 class PDF extends FPDF
 {
 // Page header
@@ -86,12 +97,10 @@ function WordWrap(&$text, $maxwidth)
     $lines = explode("\n", $text);
     $text = '';
     $count = 0;
-
     foreach ($lines as $line)
     {
         $words = preg_split('/ +/', $line);
         $width = 0;
-
         foreach ($words as $word)
         {
             $wordwidth = $this->GetStringWidth($word);
@@ -132,11 +141,9 @@ function WordWrap(&$text, $maxwidth)
     $text = rtrim($text);
     return $count;
 }
-
 function setReq($cash_req){ 
 $this->cash_req = $cash_req; 
 } 
-
 function setToday($date_today){ 
 $this->date_today = $date_today; 
 } 
@@ -146,7 +153,6 @@ $this->transpo_amt = $transpo_amt;
 function setAmtReq($req_amt){ 
 $this->req_amt = $req_amt; 
 }
-
 // // Page footer
 function Footer()
 {
@@ -162,18 +168,17 @@ function Footer()
     $this->Cell(40,5,'Cash Requisition Number:', '', 'L');
     $this->Cell(50,5,$cash_req, 'B', 0, 'C');
     $this->Cell(10,5,' ', '', 'R');
-    $this->Cell(15,5,'Amount:', '', 'R');
-    $this->Cell(30,5,$req_amt,'B', 0, 'C');
+    //$this->Cell(15,5,'Amount:', '', 'R');
+   // $this->Cell(30,5,$req_amt,'B', 0, 'C');
     $this->Cell(10,5,' ', '', 'R');
     $this->Cell(10,5,'Date:', '', 'R');
-    $this->Cell(20,5,$date_today,'B', 0, 'C');
+    $this->Cell(50,5,$date_today,'B', 0, 'C');
     $this->Ln(5);
-    $this->Cell(55,5,'Transportation (SCDO/Purchasing):', '', 'R');
-    $this->Cell(50,5,$transpo_amt,'B', 0, 'C');
+    //$this->Cell(55,5,'Transportation (SCDO/Purchasing):', '', 'R');
+   // $this->Cell(50,5,$transpo_amt,'B', 0, 'C');
     $this->Ln(5);
-    $this->Cell(190,5,'UST:S040-00F022  rev02  09/08/2015', '', 0, 'C');
+    $this->Cell(300,5,'UST:S040-00F022  rev02  09/08/2015', '', 0, 'C');
 }
-
 // function SetCol($col)
 // {
 //     // Set position at a given column
@@ -182,7 +187,6 @@ function Footer()
 //     $this->SetLeftMargin($x);
 //     $this->SetX($x);
 // }
-
 // function AcceptPageBreak()
 // {
 //     // Method accepting or not automatic page break
@@ -204,7 +208,6 @@ function Footer()
 //     }
 // }
 }
-
 // Instanciation of inherited class
 $pdf = new PDF();
 $pdf->setReq($cash_req); 
@@ -214,7 +217,7 @@ $pdf->setTranspo($transpo_amt);
 $pdf->AliasNbPages();
 $pdf->AddPage('P', 'Letter', 0);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(20, 20, $pdf->Image($logo1, 20, $pdf->GetY(), 20), 0, 0, 'L', false);
+$pdf->Cell(20, 20, $pdf->Image($logo_1, 20, $pdf->GetY(), 20), 0, 0, 'L', false);
 $pdf->Cell(150,5,'University of Santo Tomas','',0,'C',0);
 $pdf->Cell(20, 20, $pdf->Image($logo2, 160, $pdf->GetY(), 30), 0, 0, 'L', false);
 $pdf->Ln(5);
@@ -263,14 +266,12 @@ $pdf->Cell(95,5,'following requirements in order to be considered for funding ',
 $pdf->Cell(5,20,' ','',0,'L',0);
 $pdf->MultiCell(90,5,'','R','L',false);
 $old = $pdf->GetY();
-
 $pdf->Cell(95,5,'support: (Please check if accomplished and put an x','L',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(95,5,'if otherwise):','L',0,'L',0);
 $pdf->Ln(5);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
-
 $pdf-> SetY($old);
 $pdf->Cell(95,5,' ','L',0,'L',0);
 $pdf->Cell(95,$y-$old,' ','R',0,'L',0);
@@ -465,14 +466,12 @@ if ($y1>$y2){
     $pdf->Cell(95, $yheight1, ' ', 'LBR', 0, 'L', 0);
     $pdf->SetXY($x, $y2);
 }
-
 else {
     $pdf->SetXY($x+95, $y);
     $pdf->Cell(95, 5, '', 'LR', 0, 'L', 0);
     $pdf->Ln(5);
     $pdf->SetX($x+95);
 }
-
 if ($approve_director = 'Yes'){
     $pdf->SetFont('Arial','B',9);
     $pdf->MultiCell(95,5,'I hereby approve the abovementioned community development project/research proposal.','LR','L',false);
@@ -481,11 +480,8 @@ if ($approve_director = 'Yes'){
     $pdf->SetXY($x + 95, $y);
     $pdf->SetFont('Arial','',9);
     $pdf->MultiCell(95,5,'I hereby disapprove the abovementioned community development project/research proposal.','LR','L',false);
-
 }
-
 else {
-
     $pdf->SetFont('Arial','',9);
     $pdf->MultiCell(95,5,'I hereby approve the abovementioned community development project/research proposal.','LR','L',false);
     $x = $pdf->GetX();
@@ -509,7 +505,6 @@ if ($y3>$y4){
     $pdf->Cell(95, $yheight3, ' ', 'LBR', 0, 'L', 0);
     $pdf->SetXY($x, $y4);
 }
-
 else {
     $pdf->SetXY($x+95, $y);
     $pdf->Cell(95,5, '', 'LR', 0, 'L', 0);
