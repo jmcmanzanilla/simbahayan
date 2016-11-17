@@ -2,35 +2,11 @@
 require('fpdf17/fpdf.php');
 include "mysql_connect.php";
 $d = $_GET['d'];
-    /*$title= "";
-    $proponent= "";
-    $affiliation ="";
-    $prog_area = "";
-    $community = "";
-    $date = "";
-    $budget = "";
-    $reports = "";
-    $attendance = "";
-    $presence_profile = "";
-    $presence_moa = "";
-    $comments1 = "";
-    $reviewed = "";
-    $budget_code = "";
-    $comments2 = "";
-    $recommend_progarea = "";
-    $budget_tobe = "";
-    $comments3 = "";
-    $approve_director = "";
-    $finalbudget = "";
-    $finalbudget_code = "";
-    $cash_req = "";
-    $req_amt = "";
-    $date_today = "";
-    $transpo_amt = "";*/
-    
-$query = "SELECT * FROM approval_form where approval_id = $d";
+$query = "SELECT * FROM approval_form where proposal_id = $d";
 $result = mysqli_query($link,$query);
 while ($row = mysqli_fetch_array($result)){
+    $req_amt = "";
+    $transpo_amt = "";
     $title= $row['title'];
     $proponent= $row['proponent'];
     $affiliation = $row['affiliation'];
@@ -53,56 +29,34 @@ while ($row = mysqli_fetch_array($result)){
     $finalbudget = $row['finalbudget'];
     $finalbudget_code = $row['finalbudget_code'];
     $cash_req = $row['cash_req'];
+    //$req_amt = $row['req_amt'];
     $date_today = $row['date_today'];
-	$req_amt = $row['req_amt'];
-	$transpo_amt = $row['transpo_amt'];
+    //$transpo_amt = $row['transpo_amt'];
+	//$left_margin="";
+	//$right_margin="";
+	//$boolean_variable ="";
+	//$checkbox_size="";
+	//$check="";
+	
 }
-$title= $row['title'];
-    $proponent= $row['proponent'];
-    $affiliation = $row['affiliation'];
-    $prog_area = $row['prog_area'];
-    $community = $row['community'];
-    $date = $row['date'];
-    $budget = $row['budget'];
-    $reports = $row['reports'];
-    $attendance = $row['attendance'];
-    $presence_profile = $row['presence_profile'];
-    $presence_moa = $row['presence_moa'];
-    $comments1 = $row['comments1'];
-    $reviewed = $row['reviewed'];
-    $budget_code = $row['budget_code'];
-    $comments2 = $row['comments2'];
-    $recommend_progarea = $row['recommend_progarea'];
-    $budget_tobe = $row['budget_tobe'];
-    $comments3 = $row['comments3'];
-    $approve_director = $row['approve_director'];
-    $finalbudget = $row['finalbudget'];
-    $finalbudget_code = $row['finalbudget_code'];
-    $cash_req = $row['cash_req'];
-    $date_today = $row['date_today'];
-	$req_amt = $row['req_amt'];
-	$transpo_amt = $row['transpo_amt'];
-	//$comdev_name = $row['comdev_name'];
-/*
-$org = "SELECT user_id FROM login_user WHERE name = $proponent";
+$org = "SELECT name FROM login_user WHERE user_id = '$proponent'";
 $orgres = mysqli_query($link, $org);
 while ($row = mysqli_fetch_array($orgres)){
-    $org_id = $row['user_id'];
+    $proponent = $row['name'];
 }
-*/
-
-$comcoor = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 3 AND standard = 0 AND simbahayan = 0 AND univ_wide = 0 AND org_num = $proponent";
+$comdev_name = $row['comdev_name'];
+$comcoor = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 3 AND standard = 0 AND simbahayan = 0 AND univ_wide = 0";
 $comresult = mysqli_query($link, $comcoor);
 while ($row = mysqli_fetch_array($comresult)){
     $comdev_name = $row['signatory_name'];
-	$com_num = $row['signatory_num'];
+    $com_num = $row['signatory_num']; 
 }
-
+//$com_num = $row['signatory_num'];
 $comselect = "SELECT signature FROM signatory_profile WHERE user_id = $com_num"; 
 $comresult = mysqli_query($link, $comselect);
 while ($row = mysqli_fetch_array($comresult)){
   $comdev = $row['signature'];
-}
+} 
 
 $progcoor = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 1 AND standard = 1 AND simbahayan = 1 AND univ_wide = 0";
 $progresult = mysqli_query($link, $progcoor);
@@ -117,7 +71,7 @@ while ($row = mysqli_fetch_array($progresult)){
   $progarea = $row['signature'];
 }
 
-$dir = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 2 AND standard = 1 AND simbahayan = 1 AND univ_wide = 0";
+$dir = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 2 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
 $dirresult = mysqli_query($link, $dir);
 while ($row = mysqli_fetch_array($dirresult)){
     $dir_name = $row['signatory_name'];
@@ -130,9 +84,11 @@ while ($row = mysqli_fetch_array($dirresult)){
   $director = $row['signature'];
 }
 
+
 $logo_1 = "images/logo_1.jpg";
 $logo2 = "images/logo2.jpg";
 //$comdev = "images/krizsa.jpg";
+//$comdev = "";
 //$progarea = "images/krizsa.jpg";
 //$director = "images/krizsa.jpg";
 class PDF extends FPDF
@@ -231,16 +187,16 @@ function Footer()
     $this->SetFont('Arial','I',9);
     // Page number
     $this->Cell(40,5,'Cash Requisition Number:', '', 'L');
-    $this->Cell(50,5,$cash_req, 'B', 0, 'C');
+    $this->Cell(60,5,$cash_req, 'B', 0, 'C');
     $this->Cell(10,5,' ', '', 'R');
     //$this->Cell(15,5,'Amount:', '', 'R');
-    //$this->Cell(30,5,$req_amt,'B', 0, 'C');
+   // $this->Cell(30,5,$req_amt,'B', 0, 'C');
     $this->Cell(10,5,' ', '', 'R');
     $this->Cell(10,5,'Date:', '', 'R');
     $this->Cell(50,5,$date_today,'B', 0, 'C');
     $this->Ln(5);
     //$this->Cell(55,5,'Transportation (SCDO/Purchasing):', '', 'R');
-    //$this->Cell(50,5,$transpo_amt,'B', 0, 'C');
+   // $this->Cell(50,5,$transpo_amt,'B', 0, 'C');
     $this->Ln(5);
     $this->Cell(300,5,'UST:S040-00F022  rev02  09/08/2015', '', 0, 'C');
 }
@@ -328,8 +284,9 @@ $pdf->Cell(5,5,' ','',0,'L',0);
 $pdf->Cell(90,5,'Comments:','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(95,5,'following requirements in order to be considered for funding ','L',0,'L',0);
-$pdf->Cell(5,20,' ','',0,'L',0);
+$pdf->Cell(5,5,' ','',0,'L',0);
 $pdf->MultiCell(90,5,$comments1,'R','L',false);
+$pdf->MultiCell(190,0,'','R','L',false);
 $old = $pdf->GetY();
 $pdf->Cell(95,5,'support: (Please check if accomplished and put an x','L',0,'L',0);
 $pdf->Ln(5);
@@ -344,6 +301,11 @@ $pdf->Cell(95,$y-$old,' ','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',9);
 $pdf->SetXY($x, $y);
+//$pdf->SetX($left_margin);
+//if($boolean_variable == true)
+//$check = "3"; else $check = "";
+//$pdf->SetFont('ZapfDingbats','', 2);
+//$pdf->Cell($checkbox_size, $checkbox_size, $check, 1, 0);
 if ($reports = 'Yes'){
     $pdf->SetFont('Arial','B',9);
     $pdf->Cell(45,5,'Terminal and Expense','L',0,'L',0);
@@ -360,8 +322,8 @@ if ($presence_profile = 'Yes'){
 else {
 $pdf->Cell(45,5,'Presence of Profile of the chosen','',0,'LR',0);
 }
-$pdf->Cell(5,5,' ','',0,'L',0);
-$pdf->Cell(90,5,'I have thoroughly reviewed the community development','R',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'L',0);
+$pdf->Cell(87,5,'I have thoroughly reviewed the community development','R',0,'L',0);
 $pdf->Ln(5);
 if ($reports = 'Yes'){
     $pdf->SetFont('Arial','B',9);
@@ -381,30 +343,33 @@ if ($presence_profile = 'Yes'){
 else {
 $pdf->Cell(45,5,'partner community or institution','',0,'LR',0);
 }
-$pdf->Cell(90,5,'project /research proposal stated above; hence, I hereby','R',0,'L',0);
+$pdf->Cell(3,5,' ','',0,'L',0);
+$pdf->Cell(87,5,'project /research proposal stated above; hence, I hereby','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(45,5,' ','L',0,'L',0);
 $pdf->Cell(5,5,' ','',0,'LR',0);
 $pdf->Cell(45,5,' ','',0,'LR',0);
-$pdf->Cell(5,5,' ','',0,'LR',0);
-$pdf->Cell(90,5,'endorse it for processing.','R',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'LR',0);
+$pdf->Cell(87,5,'endorse it for processing.','R',0,'L',0);
+$pdf->Cell(5,10,' ','',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(45,5,' ','L',0,'L',0);
 $pdf->Cell(5,5,' ','',0,'L',0);
 $pdf->Cell(45,5,' ','',0,'L',0);
-$pdf->Cell(5,5,' ','',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'L',0);
 $pdf->Cell(45,5,'The assigned budget code is:','',0,'L',0);
-$pdf->Cell(45,5,' ','R',0,'L',0);
-$pdf->Ln(5);
+$pdf->MultiCell(42,5,$budget_code,'R','L',false);
+//$pdf->Cell(1,5,' ','R',0,'L',0);
+//$pdf->Ln(5);
 if ($attendance = 'Yes'){
     $pdf->SetFont('Arial','B',9);
-    $pdf->Cell(45,5,'Attendance in Community','L',0,'L',0);
+    $pdf->Cell(40,5,'Attendance in Community','L',0,'L',0);
     $pdf->SetFont('Arial','',9);
 }
 else {
 $pdf->Cell(45,5,'Attendance in Community','L',0,'L',0);
 }
-$pdf->Cell(5,5,' ','',0,'L',0);
+$pdf->Cell(10,5,' ','',0,'L',0);
 if ($presence_moa = 'Yes'){
     $pdf->SetFont('Arial','B',9);
     $pdf->Cell(45,5,'Presence of MOA/MOU with the','',0,'L',0);
@@ -412,11 +377,15 @@ if ($presence_moa = 'Yes'){
 }
 else {
 $pdf->Cell(45,5,'Presence of MOA/MOU with the','',0,'L',0);
+$pdf->Cell(5,10,' ','',0,'L',0);
 }
-$pdf->Cell(5,5,' ','',0,'L',0);
-$pdf->Cell(10,10,' ','',0,'L',0);
-$pdf->Cell( 70, 15, $pdf->Image($comdev, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
-$pdf->Cell(10,10,' ','R',0,'L',0);
+//$pdf->Cell(5,5,' ','',0,'L',0);
+$pdf->Cell(15,10,' ','',0,'L',0);
+$pdf->Cell(1, 10, $pdf->Image($comdev, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
+$pdf->Cell(45,10,' ','',0,'L',0);
+$pdf->Cell(5,10,' ','',0,'L',0);
+$pdf->Cell(5,10,' ','',0,'L',0);
+$pdf->Cell(5,10,' ','',0,'L',0);
 $pdf->Ln(5);
 if ($attendance = 'Yes'){
     $pdf->SetFont('Arial','B',9);
@@ -429,7 +398,7 @@ $pdf->Cell(45,5,'Development Orientation','L',0,'L',0);
 $pdf->Cell(5,5,' ','',0,'L',0);
 if ($presence_moa = 'Yes'){
     $pdf->SetFont('Arial','B',9);
-    $pdf->Cell(45,5,'chosen partner community or','',0,'L',0);
+    $pdf->Cell(30,5,'chosen partner community or','',0,'L',0);
     $pdf->SetFont('Arial','',9);
 }
 else {
@@ -594,10 +563,10 @@ $pdf->Cell( 70, 15, $pdf->Image($director, $pdf->GetX()+15, $pdf->GetY(), 33.78)
 $pdf->Cell(5,15,' ','R',0,'L',0);
 $pdf->Ln(15);
 $pdf->Cell(20,5,' ','L',0,'L',0);
-$pdf->Cell(70,5,$prog_name.$date_today,'B',0,'C',0);
+$pdf->Cell(70,5,$prog_name.' '.$date_today,'B',0,'C',0);
 $pdf->Cell(5,5,' ','R',0,'L',0);
 $pdf->Cell(20,5,' ','L',0,'L',0);
-$pdf->Cell(70,5,$dir_name.$date_today,'B',0,'C',0);
+$pdf->Cell(70,5,$dir_name.' '.$date_today,'B',0,'C',0);
 $pdf->Cell(5,5,' ','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(20,5,' ','LB',0,'L',0);

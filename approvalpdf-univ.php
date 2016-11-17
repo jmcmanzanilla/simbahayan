@@ -166,7 +166,7 @@ function Footer()
     $this->SetFont('Arial','I',9);
     // Page number
     $this->Cell(40,5,'Cash Requisition Number:', '', 'L');
-    $this->Cell(50,5,$cash_req, 'B', 0, 'C');
+    $this->Cell(60,5,$cash_req, 'B', 0, 'C');
     $this->Cell(10,5,' ', '', 'R');
     //$this->Cell(15,5,'Amount:', '', 'R');
    // $this->Cell(30,5,$req_amt,'B', 0, 'C');
@@ -295,8 +295,8 @@ if ($presence_profile = 'Yes'){
 else {
 $pdf->Cell(45,5,'Presence of Profile of the chosen','',0,'LR',0);
 }
-$pdf->Cell(5,5,' ','',0,'L',0);
-$pdf->Cell(90,5,'I have thoroughly reviewed the community development','R',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'L',0);
+$pdf->Cell(87,5,'I have thoroughly reviewed the community development','R',0,'L',0);
 $pdf->Ln(5);
 if ($reports = 'Yes'){
     $pdf->SetFont('Arial','B',9);
@@ -316,19 +316,20 @@ if ($presence_profile = 'Yes'){
 else {
 $pdf->Cell(45,5,'partner community or institution','',0,'LR',0);
 }
-$pdf->Cell(90,5,'project /research proposal stated above; hence, I hereby','R',0,'L',0);
+$pdf->Cell(3,5,' ','',0,'L',0);
+$pdf->Cell(87,5,'project /research proposal stated above; hence, I hereby','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(45,5,' ','L',0,'L',0);
 $pdf->Cell(5,5,' ','',0,'LR',0);
 $pdf->Cell(45,5,' ','',0,'LR',0);
-$pdf->Cell(5,5,' ','',0,'LR',0);
-$pdf->Cell(90,5,'endorse it for processing.','R',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'LR',0);
+$pdf->Cell(87,5,'endorse it for processing.','R',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(45,5,' ','L',0,'L',0);
 $pdf->Cell(5,5,' ','',0,'L',0);
 $pdf->Cell(45,5,' ','',0,'L',0);
-$pdf->Cell(5,5,' ','',0,'L',0);
-$pdf->Cell(45,5,'The assigned budget code is:','',0,'L',0);
+$pdf->Cell(8,5,' ','',0,'L',0);
+$pdf->Cell(42,5,'The assigned budget code is:','',0,'L',0);
 $pdf->Cell(45,5,' ','R',0,'L',0);
 $pdf->Ln(5);
 if ($attendance = 'Yes'){
