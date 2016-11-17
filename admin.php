@@ -227,7 +227,7 @@ span.text-content {
           </div>
           <div class = "col-md-2">
             <div class = "col-md-12">
-              <a href = "reports.php?page=1" style = "color: #fff; text-decoration: none; visibility:hidden"><div class = "home"><span class="glyphicon glyphicon-dashboard" style = "font-size: 30px; margin-left: 35%; margin-top: 30%;" aria-hidden="true"></span><center><p style = "font-size: 11px; color: #000; margin-top: 20px;">REPORTS</p></center><span class="text-content"><span>A summary of all submitted proposals and their statuses</span></span></div></a>
+              <a href = "reports.php?page=1" style = "color: #fff; text-decoration: none;"><div class = "home"><span class="glyphicon glyphicon-dashboard" style = "font-size: 30px; margin-left: 35%; margin-top: 30%;" aria-hidden="true"></span><center><p style = "font-size: 11px; color: #000; margin-top: 20px;">REPORTS</p></center><span class="text-content"><span>A summary of all submitted proposals and their statuses</span></span></div></a>
             </div>
           </div>
           <div class = "col-md-1">

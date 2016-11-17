@@ -11,7 +11,7 @@ $results = mysqli_query($link, $sqlselect);
 while($row = mysqli_fetch_array($results)) {
 	$college = $row['college'];
 	if ($college != "simbahayan") {
-	echo "<script type='text/javascript'>alert('You do not have permission to view reports.');window.location = 'signatory.php';</script>";
+	echo "<script type='text/javascript'>alert('You do not have permission to view reports.');window.location = 'admin.php';</script>";
 	}
 	}
 

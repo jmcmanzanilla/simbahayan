@@ -10,7 +10,7 @@
          }
          
         $to = $email;
-         $message = "<b>"Please be informed that a new announcement has been posted in the Simbahayan Proposal Tracking System.</b>";
+         $message = "<b>'Please be informed that a new announcement has been posted in the Simbahayan Proposal Tracking System.'</b>";
             $message .= "<h3>Subject: ".$subject."</h3>";
             $message .= "<h3>Announcement: ".$announcement."</h3>";
          
