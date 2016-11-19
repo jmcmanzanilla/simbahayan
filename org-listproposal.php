@@ -4,7 +4,6 @@ session_start();
 if(!isset($_SESSION['name'])){
 	header("location: index.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +49,6 @@ if(!isset($_SESSION['name'])){
   font-weight: 400;
   src: local('RobotoDraft Italic'), local('RobotoDraft-Italic'), local('Roboto-Italic'), url('fonts/RobotoDraftItalic.woff2') format('woff2'), url('../fonts/RobotoDraftItalic.woff') format('woff');
 }
-
 .dropbtn {
     background-color: #4CAF50;
     color: white;
@@ -59,12 +57,10 @@ if(!isset($_SESSION['name'])){
     border: none;
     cursor: pointer;
 }
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content {
     display: none;
     position: relative;
@@ -73,20 +69,16 @@ if(!isset($_SESSION['name'])){
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {background-color: #f1f1f1}
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
@@ -176,26 +168,26 @@ if(!isset($_SESSION['name'])){
         <tbody>
         
 		<?php
-
+		$page="";
     $tableName="proj_proposal";
 $targetpage = "org-listproposal.php";
 $limit = 5;
-
-          $id = $_SESSION['user_id'];
+$id = $_SESSION['user_id'];
 $query = "SELECT * FROM $tableName WHERE lead_org = $id";
 $result = mysqli_query($link,$query);
 $total_pages = mysqli_num_rows($result);
-
 $stages = 3;
+if (isset($_GET['page'])){
 $page = mysql_escape_string($_GET['page']);
+}
 if($page){
 $start = ($page - 1) * $limit;
 }else{
 $start = 0;
 }
 $name = $_SESSION['name'];
-                    $name = "";
-                    $pending = "";
+                    //$name = "";
+                    //$pending = "";
 					
 					$sql= "SELECT * FROM  proj_proposal WHERE lead_org = $id LIMIT $start, $limit";
 					$result = mysqli_query($link, $sql);					
@@ -254,6 +246,7 @@ $name = $_SESSION['name'];
                         echo '<th><div class="dropdown">
                                 <button class="dropbtn">Edit</button>
                                 <div class="dropdown-content" style="left:0;">';
+								echo '<a href="edit-projectproposal.php?d='.$proj_id.'">Project Proposal</a>';
                             if ($program_flow == 1) {
                                 echo '<a href="edit-budgetproposal.php?d='.$proj_id.'&&days=0">Budget Proposal</a>';
                             }
@@ -273,26 +266,21 @@ $name = $_SESSION['name'];
                     }
 					echo "</tr>";
 					}
-
           // Initial page num setup
 if ($page == 0){$page = 1;}
 $prev = $page - 1;
 $next = $page + 1;
 $lastpage = ceil($total_pages/$limit);
 $LastPagem1 = $lastpage - 1;
-
 $paginate = '';
 if($lastpage > 1)
 {
-
-
 $paginate .= "<ul class='pagination' style = 'float: right;'>";
 // Previous
 if ($page > 1){
 $paginate.= "<li><a href='org-listproposal.php?page=$prev'>Previous</a></li>";
 }else{
 $paginate.= "<li class='disabled'><a href = ''>Previous</a></li>"; }
-
 // Pages
 if ($lastpage < 7 + ($stages * 2)) // Not enough pages to breaking it up
 {
@@ -352,17 +340,13 @@ $paginate.= "<li><a href='org-listproposal.php?page=$counter'>$counter</a></li>"
 }
 }
 }
-
 // Next
 if ($page < $counter - 1){
 $paginate.= "<li><a href='org-listproposal.php?page=$next'>Next</a></li>";
 }else{
 $paginate.= "<li class='disabled'><a href = ''>Next</a></li>";
 }
-
 $paginate.= "</ul>";
-
-
 }
 echo $total_pages.' Results';
 // pagination
@@ -392,10 +376,8 @@ echo $paginate;
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {

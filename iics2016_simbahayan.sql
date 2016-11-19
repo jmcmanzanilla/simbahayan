@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2016 at 10:53 AM
+-- Generation Time: Nov 19, 2016 at 03:08 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `announcement` (
   `sender` varchar(50) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `announcement` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -70,20 +70,7 @@ CREATE TABLE IF NOT EXISTS `approval_form` (
   `signature_coor` blob NOT NULL,
   `signature_director` blob NOT NULL,
   `cashreqnum` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `approval_form`
---
-
-INSERT INTO `approval_form` (`approval_id`, `title`, `proponent`, `affiliation`, `prog_area`, `community`, `date`, `budget`, `reports`, `attendance`, `presence_profile`, `presence_moa`, `comments1`, `reviewed`, `budget_code`, `comments2`, `recommend_progarea`, `budget_tobe`, `comments3`, `approve_director`, `finalbudget`, `finalbudget_code`, `cash_req`, `date_today`, `transpo_date`, `proposal_id`, `signature_coor`, `signature_director`, `cashreqnum`) VALUES
-(1, 'TESTING 1', '65', 'University-Wide', 'Equitable and Inclusive Education', '111', '2016-10-20,', '111', '', '', '', '', '', '', '', '', 'Recommended', '1111', '', 'Yes', '1111', '1111', '', '', '', 45, '', '', 0),
-(2, 'TESTING 2', '65', 'University-Wide', 'Employability and Social Enterprise Development', '111', '2016-10-27,', '111', '', '', '', '', '', '', '', '', 'Recommended', '222', '', 'Yes', '222', '222', '', '', '', 46, '', '', 0),
-(3, 'TESTING 1', 'Computer Sciences Society', 'College-Based', 'Socio-pastoral Ministry and Evangelization', '111', '2016-10-28,', '1213', 'Yes', 'Yes', 'Yes', 'Yes', '', 'Yes', '1111', '', 'Recommended', '2121', '', 'Yes', '1232', '3123', '', '', '', 51, '', '', 0),
-(4, 'testing3', 'Information Systems Society', 'College-Based', 'Leadership, Organizational Development and Good Governance', 'tarlac', '2016-10-21,', '4234', 'Yes', 'Yes', 'Yes', 'Yes', 'ftsetset', 'Yes', 'iics03', 'ggdgdgd', 'Recommended', '12222', 'resrserserse', 'Yes', '12222', 'iics03', '', '', '', 109, '', '', 0),
-(5, 'TESTING 1', '65', 'University-Wide', 'Health and Wellness Development', 'tarlac', '2016-10-29,', '212', '', '', '', '', '', '', '', 'gggggg', 'Recommended', '11111', 'ggggg', 'Yes', '11111', 'weweq214', '', '', '', 1, '', '', 0),
-(6, 'TESTING1', '65', 'University-Wide', 'Equitable and Inclusive Education', 'tarlac', '2016-11-25,', '212', '', '', '', '', '', '', '', '', 'Recommended', '2222', '', 'Yes', '2222', 'wwww', '', '', '', 8, '', '', 0),
-(7, 'TESTING2', '65', 'University-Wide', 'Health and Wellness Development', 'fsdfs', '2016-11-19,', '212', '', '', '', '', '', '', '', '', 'Recommended', '1111', '', 'Yes', '1111', 'ffsdf', '', '', '', 9, '', '', 0);
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -96,322 +83,7 @@ CREATE TABLE IF NOT EXISTS `audit_trail` (
   `user_id` int(11) NOT NULL,
   `action` varchar(250) NOT NULL,
   `datetime` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=828 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `audit_trail`
---
-
-INSERT INTO `audit_trail` (`audit_id`, `user_id`, `action`, `datetime`) VALUES
-(519, 1, 'admin LOGGED IN.', '2016-09-18 13:41:59'),
-(520, 1, 'admin LOGGED OUT.', '2016-09-18 13:47:18'),
-(521, 1, 'admin LOGGED IN.', '2016-09-18 13:47:24'),
-(522, 1, 'admin LOGGED OUT.', '2016-09-18 13:53:43'),
-(523, 5, 'j_victoria LOGGED IN.', '2016-09-18 13:53:53'),
-(524, 5, 'j_victoria LOGGED OUT.', '2016-09-18 14:08:22'),
-(525, 1, 'admin LOGGED IN.', '2016-09-18 14:08:31'),
-(526, 1, 'admin LOGGED OUT.', '2016-09-18 15:04:30'),
-(527, 1, 'admin LOGGED IN.', '2016-09-18 15:04:38'),
-(528, 1, 'admin LOGGED OUT.', '2016-09-18 15:06:51'),
-(529, 1, 'admin LOGGED IN.', '2016-09-18 15:06:57'),
-(530, 1, 'admin LOGGED OUT.', '2016-09-18 15:13:56'),
-(531, 1, 'admin LOGGED IN.', '2016-09-18 15:15:31'),
-(532, 1, 'admin LOGGED OUT.', '2016-09-18 15:16:51'),
-(533, 65, 'earth_ust LOGGED IN.', '2016-09-18 15:17:07'),
-(534, 65, 'earth_ust LOGGED OUT.', '2016-09-18 18:46:47'),
-(535, 1, 'admin LOGGED IN.', '2016-09-18 18:46:55'),
-(536, 1, 'admin LOGGED OUT.', '2016-09-18 19:25:47'),
-(537, 65, 'earth_ust LOGGED IN.', '2016-09-18 19:29:09'),
-(538, 65, 'earth_ust LOGGED IN.', '2016-09-19 08:07:50'),
-(539, 65, 'earth_ust LOGGED OUT.', '2016-09-19 08:35:24'),
-(540, 66, 'earth_pres LOGGED IN.', '2016-09-19 08:35:34'),
-(541, 66, 'earth_pres LOGGED OUT.', '2016-09-19 14:54:14'),
-(542, 67, 'earth_adviser LOGGED IN.', '2016-09-19 14:54:22'),
-(543, 67, 'earth_adviser LOGGED OUT.', '2016-09-19 15:24:30'),
-(544, 67, 'earth_adviser LOGGED IN.', '2016-09-19 15:24:57'),
-(545, 67, 'earth_adviser LOGGED OUT.', '2016-09-19 15:25:38'),
-(546, 5, 'j_victoria LOGGED IN.', '2016-09-19 15:26:00'),
-(547, 5, 'j_victoria LOGGED OUT.', '2016-09-19 15:26:07'),
-(548, 7, 'f_alipao LOGGED IN.', '2016-09-19 15:26:15'),
-(549, 7, 'f_alipao LOGGED OUT.', '2016-09-19 15:26:38'),
-(550, 1, 'admin LOGGED IN.', '2016-09-19 15:27:22'),
-(551, 1, 'admin LOGGED OUT.', '2016-09-19 15:28:24'),
-(552, 5, 'j_victoria LOGGED IN.', '2016-09-19 15:28:31'),
-(553, 5, 'j_victoria LOGGED OUT.', '2016-09-19 15:28:54'),
-(554, 6, 'm_abenir LOGGED IN.', '2016-09-19 15:29:03'),
-(555, 6, 'm_abenir LOGGED OUT.', '2016-09-19 15:29:16'),
-(556, 67, 'earth_adviser LOGGED IN.', '2016-09-19 15:31:02'),
-(557, 67, 'earth_adviser LOGGED OUT.', '2016-09-19 15:31:41'),
-(558, 65, 'earth_ust LOGGED IN.', '2016-09-19 15:31:47'),
-(559, 65, 'earth_ust LOGGED OUT.', '2016-09-19 15:32:04'),
-(560, 66, 'earth_pres LOGGED IN.', '2016-09-19 15:32:10'),
-(561, 66, 'earth_pres LOGGED OUT.', '2016-09-19 15:32:30'),
-(562, 67, 'earth_adviser LOGGED IN.', '2016-09-19 15:32:36'),
-(563, 67, 'earth_adviser LOGGED OUT.', '2016-09-19 15:34:27'),
-(564, 5, 'j_victoria LOGGED IN.', '2016-09-19 15:34:34'),
-(565, 5, 'j_victoria LOGGED OUT.', '2016-09-19 15:35:43'),
-(566, 6, 'm_abenir LOGGED IN.', '2016-09-19 15:35:54'),
-(567, 6, 'm_abenir LOGGED OUT.', '2016-09-19 15:39:35'),
-(568, 16, 'ust_css LOGGED IN.', '2016-09-19 15:39:58'),
-(569, 16, 'ust_css LOGGED OUT.', '2016-09-19 15:48:05'),
-(570, 10, 'ust_iss LOGGED IN.', '2016-09-19 15:50:57'),
-(571, 10, 'ust_iss LOGGED OUT.', '2016-09-19 16:39:44'),
-(572, 11, 'iss_pres LOGGED IN.', '2016-09-19 16:40:44'),
-(573, 11, 'iss_pres LOGGED OUT.', '2016-09-19 16:44:23'),
-(574, 12, 'iss_adviser LOGGED IN.', '2016-09-19 16:44:29'),
-(575, 12, 'iss_adviser LOGGED OUT.', '2016-09-19 16:45:35'),
-(576, 13, 'm_domingo LOGGED IN.', '2016-09-19 16:46:04'),
-(577, 13, 'm_domingo LOGGED OUT.', '2016-09-19 16:46:15'),
-(578, 1, 'admin LOGGED IN.', '2016-09-19 16:46:27'),
-(579, 1, 'admin LOGGED OUT.', '2016-09-19 16:47:13'),
-(580, 8, 'k_balmeo LOGGED IN.', '2016-09-19 16:47:19'),
-(581, 8, 'k_balmeo LOGGED OUT.', '2016-09-19 16:48:22'),
-(582, 6, 'm_abenir LOGGED IN.', '2016-09-19 16:49:04'),
-(583, 6, 'm_abenir LOGGED OUT.', '2016-09-19 16:49:12'),
-(584, 14, 'a_santos LOGGED IN.', '2016-09-19 16:49:17'),
-(585, 14, 'a_santos LOGGED OUT.', '2016-09-19 16:49:57'),
-(586, 15, 'h_pama LOGGED IN.', '2016-09-19 16:50:18'),
-(587, 15, 'h_pama LOGGED OUT.', '2016-09-19 16:51:08'),
-(588, 7, 'f_alipao LOGGED IN.', '2016-09-19 16:51:37'),
-(589, 7, 'f_alipao LOGGED OUT.', '2016-09-19 16:52:14'),
-(590, 6, 'm_abenir LOGGED IN.', '2016-09-19 16:52:29'),
-(591, 65, 'earth_ust LOGGED IN.', '2016-09-20 08:17:03'),
-(592, 65, 'earth_ust LOGGED IN.', '2016-09-20 08:48:55'),
-(593, 65, 'earth_ust LOGGED OUT.', '2016-09-20 08:58:29'),
-(594, 66, 'earth_pres LOGGED IN.', '2016-09-20 08:58:40'),
-(595, 66, 'earth_pres LOGGED OUT.', '2016-09-20 08:59:17'),
-(596, 65, 'earth_ust LOGGED IN.', '2016-09-20 09:15:25'),
-(597, 65, 'earth_ust LOGGED OUT.', '2016-09-20 10:08:54'),
-(598, 66, 'earth_pres LOGGED IN.', '2016-09-20 10:09:04'),
-(599, 66, 'earth_pres LOGGED OUT.', '2016-09-20 10:11:31'),
-(600, 65, 'earth_ust LOGGED IN.', '2016-09-20 10:11:47'),
-(601, 65, 'earth_ust LOGGED OUT.', '2016-09-20 14:20:16'),
-(602, 65, 'earth_ust LOGGED IN.', '2016-09-20 14:20:22'),
-(603, 65, 'earth_ust LOGGED OUT.', '2016-09-20 16:36:41'),
-(604, 65, 'earth_ust LOGGED IN.', '2016-09-20 16:36:48'),
-(605, 65, 'earth_ust LOGGED IN.', '2016-09-20 19:49:27'),
-(606, 1, 'admin LOGGED IN.', '2016-09-21 09:10:41'),
-(607, 1, 'admin LOGGED OUT.', '2016-09-21 10:07:34'),
-(608, 66, 'earth_pres LOGGED IN.', '2016-09-21 10:07:49'),
-(609, 66, 'earth_pres LOGGED OUT.', '2016-09-21 10:08:53'),
-(610, 10, 'ust_iss LOGGED IN.', '2016-09-21 10:09:01'),
-(611, 10, 'ust_iss LOGGED OUT.', '2016-09-21 10:11:53'),
-(612, 65, 'earth_ust LOGGED IN.', '2016-09-21 10:11:59'),
-(613, 65, 'earth_ust LOGGED OUT.', '2016-09-21 10:17:41'),
-(614, 66, 'earth_pres LOGGED IN.', '2016-09-21 10:17:48'),
-(615, 66, 'earth_pres LOGGED OUT.', '2016-09-21 10:18:15'),
-(616, 67, 'earth_adviser LOGGED IN.', '2016-09-21 10:19:17'),
-(617, 67, 'earth_adviser LOGGED OUT.', '2016-09-21 10:22:10'),
-(618, 1, 'admin LOGGED IN.', '2016-09-21 10:22:23'),
-(619, 1, 'admin LOGGED OUT.', '2016-09-21 10:25:11'),
-(620, 1, 'admin LOGGED IN.', '2016-09-21 10:25:42'),
-(621, 1, 'admin LOGGED OUT.', '2016-09-21 10:35:48'),
-(622, 68, 'f1_nstp LOGGED IN.', '2016-09-21 10:36:09'),
-(623, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 10:49:57'),
-(624, 68, 'f1_nstp LOGGED IN.', '2016-09-21 10:50:05'),
-(625, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 10:50:09'),
-(626, 1, 'admin LOGGED IN.', '2016-09-21 10:50:15'),
-(627, 1, 'admin LOGGED OUT.', '2016-09-21 10:51:09'),
-(628, 1, 'admin LOGGED IN.', '2016-09-21 10:51:19'),
-(629, 1, 'admin LOGGED OUT.', '2016-09-21 10:52:14'),
-(630, 1, 'admin LOGGED IN.', '2016-09-21 10:52:35'),
-(631, 1, 'admin LOGGED OUT.', '2016-09-21 10:52:52'),
-(632, 57, 'NSTP-Moderator LOGGED IN.', '2016-09-21 10:52:59'),
-(633, 57, 'NSTP-Moderator LOGGED OUT.', '2016-09-21 10:53:59'),
-(634, 68, 'f1_nstp LOGGED IN.', '2016-09-21 10:54:13'),
-(635, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 11:14:31'),
-(636, 65, 'earth_ust LOGGED IN.', '2016-09-21 11:14:43'),
-(637, 65, 'earth_ust LOGGED OUT.', '2016-09-21 11:26:23'),
-(638, 68, 'f1_nstp LOGGED IN.', '2016-09-21 11:26:54'),
-(639, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 11:29:45'),
-(640, 65, 'earth_ust LOGGED IN.', '2016-09-21 11:30:01'),
-(641, 65, 'earth_ust LOGGED OUT.', '2016-09-21 11:37:31'),
-(642, 68, 'f1_nstp LOGGED IN.', '2016-09-21 11:37:55'),
-(643, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 11:55:57'),
-(644, 57, 'NSTP-Moderator LOGGED IN.', '2016-09-21 11:56:06'),
-(645, 57, 'NSTP-Moderator LOGGED OUT.', '2016-09-21 12:00:23'),
-(646, 65, 'earth_ust LOGGED IN.', '2016-09-21 13:01:42'),
-(647, 65, 'earth_ust LOGGED OUT.', '2016-09-21 13:15:50'),
-(648, 68, 'f1_nstp LOGGED IN.', '2016-09-21 13:16:01'),
-(649, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 13:17:14'),
-(650, 68, 'f1_nstp LOGGED IN.', '2016-09-21 13:18:14'),
-(651, 68, 'f1_nstp LOGGED OUT.', '2016-09-21 13:19:04'),
-(652, 57, 'NSTP-Moderator LOGGED IN.', '2016-09-21 13:19:17'),
-(653, 57, 'NSTP-Moderator LOGGED OUT.', '2016-09-21 13:29:30'),
-(654, 65, 'earth_ust LOGGED IN.', '2016-09-21 13:29:41'),
-(655, 65, 'earth_ust LOGGED OUT.', '2016-09-21 13:31:12'),
-(656, 65, 'earth_ust LOGGED IN.', '2016-09-21 13:39:51'),
-(657, 65, 'earth_ust LOGGED OUT.', '2016-09-21 14:09:31'),
-(658, 1, 'admin LOGGED IN.', '2016-09-21 14:09:41'),
-(659, 1, 'admin LOGGED OUT.', '2016-09-21 14:16:49'),
-(660, 1, 'admin LOGGED IN.', '2016-09-21 14:17:15'),
-(661, 1, 'admin LOGGED OUT.', '2016-09-21 14:24:35'),
-(662, 69, 'marc_abenir LOGGED IN.', '2016-09-21 14:24:51'),
-(663, 69, 'marc_abenir LOGGED OUT.', '2016-09-21 14:34:26'),
-(664, 1, 'admin LOGGED IN.', '2016-09-21 14:34:37'),
-(665, 1, 'admin LOGGED OUT.', '2016-09-21 14:34:50'),
-(666, 69, 'marc_abenir LOGGED IN.', '2016-09-21 14:35:04'),
-(667, 69, 'marc_abenir LOGGED OUT.', '2016-09-21 14:38:54'),
-(668, 10, 'ust_iss LOGGED IN.', '2016-09-21 14:39:19'),
-(669, 10, 'ust_iss LOGGED OUT.', '2016-09-21 14:43:21'),
-(670, 11, 'iss_pres LOGGED IN.', '2016-09-21 14:43:57'),
-(671, 11, 'iss_pres LOGGED OUT.', '2016-09-21 14:46:00'),
-(672, 12, 'iss_adviser LOGGED IN.', '2016-09-21 14:46:10'),
-(673, 12, 'iss_adviser LOGGED OUT.', '2016-09-21 14:46:55'),
-(674, 10, 'ust_iss LOGGED IN.', '2016-09-21 14:47:14'),
-(675, 10, 'ust_iss LOGGED OUT.', '2016-09-21 14:47:53'),
-(676, 10, 'ust_iss LOGGED IN.', '2016-09-21 14:48:43'),
-(677, 10, 'ust_iss LOGGED OUT.', '2016-09-21 14:51:39'),
-(678, 11, 'iss_pres LOGGED IN.', '2016-09-21 14:51:48'),
-(679, 11, 'iss_pres LOGGED OUT.', '2016-09-21 14:52:42'),
-(680, 10, 'ust_iss LOGGED IN.', '2016-09-21 14:52:53'),
-(681, 10, 'ust_iss LOGGED OUT.', '2016-09-21 14:59:53'),
-(682, 12, 'iss_adviser LOGGED IN.', '2016-09-21 15:00:03'),
-(683, 12, 'iss_adviser LOGGED OUT.', '2016-09-21 15:01:49'),
-(684, 11, 'iss_pres LOGGED IN.', '2016-09-21 15:02:03'),
-(685, 11, 'iss_pres LOGGED OUT.', '2016-09-21 15:02:45'),
-(686, 12, 'iss_adviser LOGGED IN.', '2016-09-21 15:02:53'),
-(687, 12, 'iss_adviser LOGGED OUT.', '2016-09-21 15:14:42'),
-(688, 12, 'iss_adviser LOGGED IN.', '2016-09-21 15:14:57'),
-(689, 12, 'iss_adviser LOGGED OUT.', '2016-09-21 15:16:16'),
-(690, 10, 'ust_iss LOGGED IN.', '2016-09-21 15:16:23'),
-(691, 10, 'ust_iss LOGGED OUT.', '2016-09-21 15:21:03'),
-(692, 10, 'ust_iss LOGGED IN.', '2016-09-21 15:21:10'),
-(693, 10, 'ust_iss LOGGED OUT.', '2016-09-21 15:21:28'),
-(694, 11, 'iss_pres LOGGED IN.', '2016-09-21 15:21:35'),
-(695, 11, 'iss_pres LOGGED OUT.', '2016-09-21 15:22:37'),
-(696, 12, 'iss_adviser LOGGED IN.', '2016-09-21 15:22:46'),
-(697, 12, 'iss_adviser LOGGED OUT.', '2016-09-21 15:23:10'),
-(698, 8, 'k_balmeo LOGGED IN.', '2016-09-21 15:23:20'),
-(699, 8, 'k_balmeo LOGGED OUT.', '2016-09-21 15:23:59'),
-(700, 14, 'a_santos LOGGED IN.', '2016-09-21 15:24:32'),
-(701, 14, 'a_santos LOGGED OUT.', '2016-09-21 15:24:54'),
-(702, 8, 'k_balmeo LOGGED IN.', '2016-09-21 15:25:00'),
-(703, 8, 'k_balmeo LOGGED OUT.', '2016-09-21 15:26:08'),
-(704, 14, 'a_santos LOGGED IN.', '2016-09-21 15:26:24'),
-(705, 14, 'a_santos LOGGED OUT.', '2016-09-21 15:26:41'),
-(706, 15, 'h_pama LOGGED IN.', '2016-09-21 15:26:50'),
-(707, 15, 'h_pama LOGGED OUT.', '2016-09-21 15:29:25'),
-(708, 7, 'f_alipao LOGGED IN.', '2016-09-21 15:29:47'),
-(709, 7, 'f_alipao LOGGED OUT.', '2016-09-21 15:31:16'),
-(710, 6, 'm_abenir LOGGED IN.', '2016-09-21 15:31:45'),
-(711, 6, 'm_abenir LOGGED OUT.', '2016-09-21 15:33:27'),
-(712, 10, 'ust_iss LOGGED IN.', '2016-09-21 15:33:36'),
-(713, 10, 'ust_iss LOGGED OUT.', '2016-09-21 15:38:29'),
-(714, 69, 'marc_abenir LOGGED IN.', '2016-09-21 15:39:42'),
-(715, 69, 'marc_abenir LOGGED OUT.', '2016-09-21 15:45:52'),
-(716, 1, 'admin LOGGED IN.', '2016-09-21 15:45:58'),
-(717, 1, 'admin LOGGED OUT.', '2016-09-21 15:46:18'),
-(718, 65, 'earth_ust LOGGED IN.', '2016-09-21 15:46:44'),
-(719, 65, 'earth_ust LOGGED OUT.', '2016-09-21 15:49:35'),
-(720, 6, 'm_abenir LOGGED IN.', '2016-09-21 15:49:44'),
-(721, 6, 'm_abenir LOGGED OUT.', '2016-09-21 16:23:04'),
-(722, 65, 'earth_ust LOGGED IN.', '2016-09-22 09:12:57'),
-(723, 65, 'earth_ust LOGGED IN.', '2016-09-22 10:24:17'),
-(724, 65, 'earth_ust LOGGED IN.', '2016-09-23 08:52:02'),
-(725, 65, 'earth_ust LOGGED IN.', '2016-09-26 10:09:44'),
-(726, 65, 'earth_ust LOGGED OUT.', '2016-09-26 13:43:56'),
-(727, 5, 'j_victoria LOGGED IN.', '2016-09-26 13:44:26'),
-(728, 5, 'j_victoria LOGGED OUT.', '2016-09-26 13:44:43'),
-(729, 65, 'earth_ust LOGGED IN.', '2016-09-26 13:45:15'),
-(730, 65, 'earth_ust LOGGED OUT.', '2016-09-26 13:54:24'),
-(731, 57, 'NSTP-Moderator LOGGED IN.', '2016-09-26 13:54:50'),
-(732, 57, 'NSTP-Moderator LOGGED OUT.', '2016-09-26 14:51:27'),
-(733, 65, 'earth_ust LOGGED IN.', '2016-09-26 14:51:37'),
-(734, 65, 'earth_ust LOGGED IN.', '2016-09-27 09:42:07'),
-(735, 65, 'earth_ust LOGGED IN.', '2016-09-29 08:51:07'),
-(736, 65, 'earth_ust LOGGED OUT.', '2016-09-29 13:41:46'),
-(737, 65, 'earth_ust LOGGED IN.', '2016-09-29 13:42:17'),
-(738, 65, 'earth_ust LOGGED IN.', '2016-09-30 13:41:12'),
-(739, 65, 'earth_ust LOGGED IN.', '2016-10-03 12:40:11'),
-(740, 65, 'earth_ust LOGGED OUT.', '2016-10-03 12:40:49'),
-(741, 66, 'earth_pres LOGGED IN.', '2016-10-03 12:40:57'),
-(742, 66, 'earth_pres LOGGED OUT.', '2016-10-03 12:42:21'),
-(743, 67, 'earth_adviser LOGGED IN.', '2016-10-03 12:42:37'),
-(744, 67, 'earth_adviser LOGGED OUT.', '2016-10-03 12:43:25'),
-(745, 5, 'j_victoria LOGGED IN.', '2016-10-03 12:43:37'),
-(746, 5, 'j_victoria LOGGED OUT.', '2016-10-03 12:44:25'),
-(747, 6, 'm_abenir LOGGED IN.', '2016-10-03 12:44:33'),
-(748, 6, 'm_abenir LOGGED OUT.', '2016-10-03 12:56:25'),
-(749, 65, 'earth_ust LOGGED IN.', '2016-10-03 13:00:44'),
-(750, 65, 'earth_ust LOGGED OUT.', '2016-10-03 13:01:00'),
-(751, 6, 'm_abenir LOGGED IN.', '2016-10-03 13:15:07'),
-(752, 65, 'earth_ust LOGGED IN.', '2016-10-04 09:24:22'),
-(753, 65, 'earth_ust LOGGED IN.', '2016-10-05 11:37:33'),
-(754, 65, 'earth_ust LOGGED OUT.', '2016-10-05 15:44:24'),
-(755, 6, 'm_abenir LOGGED IN.', '2016-10-05 15:44:35'),
-(756, 6, 'm_abenir LOGGED OUT.', '2016-10-05 15:44:50'),
-(757, 65, 'earth_ust LOGGED IN.', '2016-10-05 15:46:58'),
-(758, 65, 'earth_ust LOGGED IN.', '2016-10-07 09:09:15'),
-(759, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:22:53'),
-(760, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:23:40'),
-(761, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:23:47'),
-(762, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:23:51'),
-(763, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:27:02'),
-(764, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:28:30'),
-(765, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:28:51'),
-(766, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:29:12'),
-(767, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:29:29'),
-(768, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:29:32'),
-(769, 6, 'm_abenir LOGGED IN.', '2016-10-10 08:29:43'),
-(770, 6, 'm_abenir LOGGED OUT.', '2016-10-10 08:30:19'),
-(771, 6, 'm_abenir LOGGED IN.', '2016-10-10 08:30:32'),
-(772, 6, 'm_abenir LOGGED OUT.', '2016-10-10 08:30:36'),
-(773, 6, 'm_abenir LOGGED IN.', '2016-10-10 08:30:49'),
-(774, 6, 'm_abenir LOGGED OUT.', '2016-10-10 08:31:49'),
-(775, 65, 'earth_ust LOGGED IN.', '2016-10-10 08:59:18'),
-(776, 65, 'earth_ust LOGGED OUT.', '2016-10-10 08:59:42'),
-(777, 65, 'earth_ust LOGGED IN.', '2016-10-10 09:00:33'),
-(778, 65, 'earth_ust LOGGED OUT.', '2016-10-10 09:01:49'),
-(779, 65, 'earth_ust LOGGED IN.', '2016-10-10 09:01:54'),
-(780, 65, 'earth_ust LOGGED OUT.', '2016-10-10 09:01:57'),
-(781, 65, 'earth_ust LOGGED IN.', '2016-10-10 09:02:42'),
-(782, 65, 'earth_ust LOGGED OUT.', '2016-10-10 09:02:45'),
-(783, 65, 'earth_ust LOGGED IN.', '2016-10-10 09:03:34'),
-(784, 65, 'earth_ust LOGGED OUT.', '2016-10-10 09:05:51'),
-(785, 65, 'earth_ust LOGGED IN.', '2016-10-10 09:05:57'),
-(786, 65, 'earth_ust LOGGED OUT.', '2016-10-10 09:06:00'),
-(787, 6, 'm_abenir LOGGED IN.', '2016-10-10 10:51:25'),
-(788, 6, 'm_abenir LOGGED OUT.', '2016-10-10 10:51:44'),
-(789, 5, 'j_victoria LOGGED IN.', '2016-10-10 10:51:51'),
-(790, 5, 'j_victoria LOGGED OUT.', '2016-10-10 10:51:54'),
-(791, 5, 'j_victoria LOGGED IN.', '2016-10-10 10:52:02'),
-(792, 5, 'j_victoria LOGGED OUT.', '2016-10-10 10:52:37'),
-(793, 6, 'm_abenir LOGGED IN.', '2016-10-10 10:52:47'),
-(794, 6, 'm_abenir LOGGED OUT.', '2016-10-10 10:52:56'),
-(795, 5, 'j_victoria LOGGED IN.', '2016-10-10 10:53:10'),
-(796, 5, 'j_victoria LOGGED OUT.', '2016-10-10 10:53:12'),
-(797, 6, 'm_abenir LOGGED IN.', '2016-10-10 10:53:37'),
-(798, 5, 'j_victoria LOGGED IN.', '2016-10-10 10:59:03'),
-(799, 5, 'j_victoria LOGGED OUT.', '2016-10-10 10:59:19'),
-(800, 6, 'm_abenir LOGGED IN.', '2016-10-10 11:00:06'),
-(801, 6, 'm_abenir LOGGED OUT.', '2016-10-10 11:01:10'),
-(802, 65, 'earth_ust LOGGED IN.', '2016-10-10 13:14:13'),
-(803, 65, 'earth_ust LOGGED OUT.', '2016-10-10 14:15:37'),
-(804, 65, 'earth_ust LOGGED IN.', '2016-10-10 14:29:18'),
-(805, 65, 'earth_ust LOGGED IN.', '2016-10-11 08:41:45'),
-(806, 65, 'earth_ust LOGGED OUT.', '2016-10-11 13:04:55'),
-(807, 66, 'earth_pres LOGGED IN.', '2016-10-11 13:05:05'),
-(808, 66, 'earth_pres LOGGED OUT.', '2016-10-11 13:05:37'),
-(809, 67, 'earth_adviser LOGGED IN.', '2016-10-11 13:05:46'),
-(810, 67, 'earth_adviser LOGGED OUT.', '2016-10-11 13:06:08'),
-(811, 5, 'j_victoria LOGGED IN.', '2016-10-11 13:06:20'),
-(812, 5, 'j_victoria LOGGED OUT.', '2016-10-11 13:07:04'),
-(813, 6, 'm_abenir LOGGED IN.', '2016-10-11 13:07:22'),
-(814, 6, 'm_abenir LOGGED OUT.', '2016-10-11 13:37:17'),
-(815, 65, 'earth_ust LOGGED IN.', '2016-10-11 13:37:23'),
-(816, 65, 'earth_ust LOGGED OUT.', '2016-10-11 13:43:21'),
-(817, 66, 'earth_pres LOGGED IN.', '2016-10-11 13:43:27'),
-(818, 66, 'earth_pres LOGGED OUT.', '2016-10-11 13:43:52'),
-(819, 67, 'earth_adviser LOGGED IN.', '2016-10-11 13:44:08'),
-(820, 67, 'earth_adviser LOGGED OUT.', '2016-10-11 13:44:25'),
-(821, 5, 'j_victoria LOGGED IN.', '2016-10-11 13:44:33'),
-(822, 5, 'j_victoria LOGGED OUT.', '2016-10-11 13:45:12'),
-(823, 6, 'm_abenir LOGGED IN.', '2016-10-11 13:45:21'),
-(824, 6, 'm_abenir LOGGED OUT.', '2016-10-11 14:34:37'),
-(825, 65, 'earth_ust LOGGED IN.', '2016-10-11 14:34:58'),
-(826, 65, 'earth_ust LOGGED OUT.', '2016-10-11 14:36:52'),
-(827, 66, 'earth_pres LOGGED IN.', '2016-10-11 14:37:04');
+) ENGINE=InnoDB AUTO_INCREMENT=1179 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -564,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `budget_proposal` (
   `totalfund` int(11) NOT NULL,
   `totalorg` int(11) NOT NULL,
   `totalcom` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `budget_proposal`
@@ -603,7 +275,29 @@ INSERT INTO `budget_proposal` (`budget_id`, `proposal_id`, `proj_evaluation`, `p
 (30, 2, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (31, 8, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 (32, 9, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, 10, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(33, 10, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(34, 11, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(35, 12, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(36, 13, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(37, 14, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(38, 15, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X', 1, 1, 1, 'Snack', 'X50X', 1, 1, 1, 'Venue and Facilities', 'XX', 1, 1, 1, 'Transportation', 'XX, XX, XX', '', '1,1,1', '', '1,1,1', '', '1,1,1', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 6, 6, 6, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 0, 0, 0, 4, 4, 4, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 0, 0, 0, 4, 4, 4, 14, 3314, 514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(39, 16, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 1, 1, 1, 'Snack', '1X50X1', 1, 1, 1, 'Venue and Facilities', '1X1111X1', 1, 1, 1, 'Transportation', '1X1111X1, 1X1111X1, 1X1111X1', '', '1,1,1', '', '1,1,1', '', '1,1,1', 'Accommodation', '1X1111X1', 1, 1, 1, '', '1X1111X1', 1, 1, 1, '', '1X1111X1', 1, 1, 1, 9, 9, 9, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 5, 5, 5, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 5, 5, 5, 19, 3319, 519, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(40, 17, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(41, 18, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 2, 0, 0, '', 'XX', 3, 0, 0, '', 'XX', 3, 0, 0, 8, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(42, 19, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(43, 20, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(44, 21, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 2, 2, 2, 'Snack', 'X50X', 2, 2, 2, 'Venue and Facilities', 'XX', 2, 2, 2, 'Transportation', 'XX, XX, XX', '', '2,2,2', '', '2,2,2', '', '2,2,2', 'Accommodation', 'XX', 2, 2, 2, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 14, 14, 14, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 0, 2, '', 'XX', 2, 0, 0, 10, 6, 8, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 0, 0, 2, '', 'XX', 0, 0, 0, 6, 6, 8, 30, 3326, 530, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(45, 22, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(46, 23, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(47, 24, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(48, 25, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(49, 26, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(50, 27, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(51, 28, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(52, 29, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(53, 30, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(54, 31, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(55, 32, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -685,16 +379,7 @@ CREATE TABLE IF NOT EXISTS `cover_letter` (
   `position1` varchar(100) NOT NULL,
   `title` varchar(1000) NOT NULL,
   `proposal_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cover_letter`
---
-
-INSERT INTO `cover_letter` (`cover_id`, `iso`, `year`, `date`, `address_name`, `address_position`, `address_company1`, `address_company2`, `salutation`, `body`, `closing`, `proj_head1`, `position1`, `title`, `proposal_id`) VALUES
-(4, '', 'AY 2015-2016', 'October 11, 2016', 'DR. MARK ANTHONY D. ABENIR, DSD', 'Director - UST Simbahayan', 'University of Santo Tomas', 'Espana, manila', 'Greetings!', 'TESTING1TESTING1TESTING1TESTING1', 'Respectfully yours,', 'Abigail D.. Brioles', 'Project Head', 'TESTING1', 8),
-(5, '', 'AY 2015-2016', 'October 11, 2016', 'DR. MARK ANTHONY D. ABENIR, DSD', 'Director - UST Simbahayan', 'University of Santo Tomas', 'Espana, manila', 'Greetings!', 'fdsfsfdfsfdsf', 'Respectfully yours,', 'Abigail D.. Brioles', 'Project Head', 'TESTING2', 9),
-(6, '', 'AY 2015-2016', 'October 11, 2016', 'DR. MARK ANTHONY D. ABENIR, DSD', 'Director - UST Simbahayan', 'University of Santo Tomas', 'Espana, manila', 'Greetings!', 'dfsdfdfsdfsdf', 'Respectfully yours,', 'Abigail D.. Brioles', 'Project Head', 'TESTING3', 10);
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -712,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `login_user` (
   `college` varchar(100) NOT NULL,
   `profile` int(11) NOT NULL,
   `reference` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_user`
@@ -721,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `login_user` (
 INSERT INTO `login_user` (`user_id`, `username`, `password`, `name`, `email`, `account_type`, `college`, `profile`, `reference`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'System Administrator', 'jmcmanzanilla@gmail.com', 'Administrator', '', 1, 0),
 (5, 'j_victoria', '49704d02ade8a8ff9e335618ea48d730', 'Jasmin Victoria', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
-(6, 'm_abenir', '49704d02ade8a8ff9e335618ea48d730', 'Mark Abenir', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
+(6, 'm_abenir', '49704d02ade8a8ff9e335618ea48d730', 'Mark Anthony D. Abenir', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
 (7, 'f_alipao', '49704d02ade8a8ff9e335618ea48d730', 'Froilan Alipao', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
 (8, 'k_balmeo', '585c3c82d99a3eba07296eca302ebc38', 'Khrisnamonte Balmeo', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 1),
 (10, 'ust_iss', '585c3c82d99a3eba07296eca302ebc38', 'Information Systems Society', 'jmcmanzanilla@gmail.com', 'Organization', 'iics', 1, 8),
@@ -734,8 +419,7 @@ INSERT INTO `login_user` (`user_id`, `username`, `password`, `name`, `email`, `a
 (65, 'earth_ust', '3a52573b62196e8b56a19f9d9e1ac1b3', 'EARTH - UST', 'eust@gmail.com', 'Organization', 'univwide', 1, 1),
 (66, 'earth_pres', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Adriel Benitez', 'ab@gmail.com', 'Signatory', 'univwide', 1, 1),
 (67, 'earth_adviser', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Luis Padilla', 'lp@gmail.com', 'Signatory', 'univwide', 1, 1),
-(68, 'f1_nstp', '00b1abfcf441b71b77b642c0b209ef0a', 'Rhea Ylagan', 'ry@gmail.com', 'Organization', 'nstp', 1, 1),
-(69, 'marc_abenir', '49704d02ade8a8ff9e335618ea48d730', 'mark abenir', 'ma@gmail.com', 'Signatory', 'simbahayan', 1, 1);
+(68, 'f1_nstp', '00b1abfcf441b71b77b642c0b209ef0a', 'Rhea Ylagan', 'ry@gmail.com', 'Organization', 'nstp', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -784,14 +468,14 @@ INSERT INTO `order_signatory` (`signatory_id`, `org_num`, `order_number`, `signa
 (24, 16, 1, 11, 'Krizsa Tanaleon', 8, 0, 0, 0, 0),
 (25, 16, 2, 12, 'Salve Diaz', 8, 0, 0, 0, 0),
 (26, 16, 3, 8, 'Khrisnamonte Balmeo', 8, 0, 0, 0, 0),
-(69, 0, 1, 7, 'Froilan Alipao', 1, 1, 1, 0, 0),
-(70, 0, 2, 6, 'Mark Abenir', 1, 1, 1, 0, 0),
-(79, 0, 1, 57, 'Jose Ricarte B. Origenes', 57, 1, 0, 0, 1),
-(80, 0, 2, 6, 'Mark Abenir', 57, 1, 0, 0, 1),
+(69, 0, 1, 7, 'Asst. Prof. Froilan Alipao, MA', 1, 1, 1, 0, 0),
+(70, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 1, 1, 1, 0, 0),
+(79, 0, 1, 57, 'Assoc. Prof. Jose Ricarte B. Origenes', 57, 1, 0, 0, 1),
+(80, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 57, 1, 0, 0, 1),
 (81, 65, 1, 66, 'Adriel Benitez', 1, 0, 0, 1, 0),
 (82, 65, 2, 67, 'Luis Padilla', 1, 0, 0, 1, 0),
 (83, 0, 1, 5, 'Jasmin Victoria', 1, 1, 1, 1, 0),
-(84, 0, 2, 6, 'Mark Abenir', 1, 1, 1, 1, 0);
+(84, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 1, 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -880,18 +564,7 @@ CREATE TABLE IF NOT EXISTS `program_flow` (
   `time15` varchar(100) NOT NULL,
   `description15` varchar(100) NOT NULL,
   `person15` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `program_flow`
---
-
-INSERT INTO `program_flow` (`program_id`, `proposal_id`, `date`, `address`, `time0`, `description0`, `person0`, `time1`, `description1`, `person1`, `time2`, `description2`, `person2`, `time3`, `description3`, `person3`, `time4`, `description4`, `person4`, `time5`, `description5`, `person5`, `time6`, `description6`, `person6`, `time7`, `description7`, `person7`, `time8`, `description8`, `person8`, `time9`, `description9`, `person9`, `time10`, `description10`, `person10`, `time11`, `description11`, `person11`, `time12`, `description12`, `person12`, `time13`, `description13`, `person13`, `time14`, `description14`, `person14`, `time15`, `description15`, `person15`) VALUES
-(1, 1, '2016-10-29', 'testing', '11:00 AM - 05:00 PM', 'testing', 'testing', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', ''),
-(2, 2, '2016-11-25', 'dfgdgdg', '11:00 AM - 05:00 PM', 'fdsfsf', 'fdsf', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', ''),
-(3, 8, '2016-11-25', 'TESTING1', '11:00 AM - 05:00 PM', 'TESTING1', 'TESTING1', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', ''),
-(4, 9, '2016-11-19', 'esrerw', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', ''),
-(5, 10, '2016-11-19', 'gdfgs', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '');
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -953,16 +626,7 @@ CREATE TABLE IF NOT EXISTS `proj_proposal` (
   `edit` int(11) NOT NULL,
   `program_flow` int(11) NOT NULL,
   `target_date` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `proj_proposal`
---
-
-INSERT INTO `proj_proposal` (`proposal_id`, `days`, `page`, `lead_org`, `affiliation`, `college`, `lname1`, `fname1`, `mi1`, `cnum1`, `email1`, `lname2`, `fname2`, `mi2`, `cnum2`, `email2`, `collab`, `proj_title`, `prog_areadev`, `community`, `participants`, `comser_budget`, `org_budget`, `com_budget`, `proj_background`, `proj_background1`, `proj_background2`, `proj_background3`, `gen_objective`, `spec_obj1`, `exp_result1`, `spec_obj2`, `exp_result2`, `spec_obj3`, `exp_result3`, `spec_obj4`, `exp_result4`, `spec_obj5`, `exp_result5`, `proj_evaluation`, `proj_evaluation1`, `status`, `signatory_position`, `pending`, `budget`, `approved`, `cover`, `vehicle`, `upload_date`, `terminal`, `edit`, `program_flow`, `target_date`) VALUES
-(8, 1, 0, '65', 'University-Wide', 'NA - University Wide', 'Brioles', 'Abigail', 'D.', '09123456764', 'eust@gmail.com', 'dgfg', 'fgdg', 'j', '5345454', 'fcv@gmail.com', 'na', 'TESTING1', 'Equitable and Inclusive Education', 'tarlac', 12, 212, 212, 212, 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'TESTING1', 'Pending', '', 'Complete', 1, '', 1, 0, '2016-10-11', 0, 0, 1, '2016-11-25,'),
-(9, 1, 0, '65', 'University-Wide', 'NA - University Wide', 'Brioles', 'Abigail', 'D.', '09123456764', 'eust@gmail.com', 'sdfsd', 'fdf', 'd', '3423434', 'dfs@gmail.com', 'na', 'TESTING2', 'Health and Wellness Development', 'fsdfs', 12, 212, 12, 212, 'dasdwa', 'rewerwer', 'rer', 'erwr', 'rwerr', 'er', 'erewr', 'wr', 'erwr', 'rewr', 'er', 'ewre', 'rerw', 'rer', 'rerw', 'rerwr', 'rwrer', 'Pending', '', 'Complete', 1, '', 1, 0, '2016-10-11', 0, 0, 1, '2016-11-19,'),
-(10, 1, 0, '65', 'University-Wide', 'NA - University Wide', 'Brioles', 'Abigail', 'D.', '09123456764', 'eust@gmail.com', 'dsgsfg', 'fdsfdsf', 'd', '4324342', 'fdfs@gmail.com', 'na', 'TESTING3', 'Health and Wellness Development', 'fsfsf', 12, 1212, 121, 212, 'fsfsaf', 'fasf', 'asf', 'sfaf', 'sfaf', 'fsf', 'fs', 'afs', 'fsfs', 'fsf', 'sfas', 'fasf', 'fsf', 'sfsf', 'safs', 'fafsaf', 'faf', 'Pending', '', '66', 1, '', 1, 0, '2016-10-11', 0, 0, 1, '2016-11-19,');
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -989,20 +653,7 @@ CREATE TABLE IF NOT EXISTS `report` (
   `staff` int(11) NOT NULL,
   `alumni` int(11) NOT NULL,
   `remarks` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `report`
---
-
-INSERT INTO `report` (`proposal_id`, `date_received`, `lead_org`, `proj_title`, `proj_area`, `beneficiaries`, `date_target`, `budget_approved`, `budget_code`, `report_id`, `transaction_code`, `cr_code`, `student`, `faculty`, `admin`, `staff`, `alumni`, `remarks`) VALUES
-(45, '0000-00-00', '', '', '', 0, '', '', '', 1, 0, 0, 0, 0, 0, 0, 0, ''),
-(46, '0000-00-00', '', '', '', 0, '', '', '', 2, 0, 0, 0, 0, 0, 0, 0, ''),
-(51, '0000-00-00', '', '', '', 0, '', '', '', 3, 0, 0, 0, 0, 0, 0, 0, ''),
-(109, '0000-00-00', '', '', '', 0, '', '', '', 4, 0, 0, 0, 0, 0, 0, 0, ''),
-(1, '0000-00-00', 'System Administrator', '', '', 0, '', '', '', 5, 0, 0, 0, 0, 0, 0, 0, ''),
-(8, '0000-00-00', 'Khrisnamonte Balmeo', '', '', 0, '', '', '', 6, 0, 0, 0, 0, 0, 0, 0, ''),
-(9, '0000-00-00', '', '', '', 0, '', '', '', 7, 0, 0, 0, 0, 0, 0, 0, '');
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1105,17 +756,17 @@ INSERT INTO `signatory_profile` (`signatory_id`, `user_id`, `fname`, `mi`, `lnam
 (4, 5, 'Jasmin', 'D.', 'Victoria', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/rovinesig.png'),
 (5, 7, 'Froilan', 'D.', 'Alipao', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/qq.jpg'),
 (6, 6, 'Mark', 'D.', 'Abenir', 'Simbahayan Director', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/earthadv.jpg'),
-(8, 12, 'Salve', 'L', 'Diaz', 'Organization Adviser', 'Institute of Information and Computing Sciences', 'asc.anastacio@gmail.com', '09175253752', 'asdfgfh', 'What is the name of your fattest cat?', 'Kuting', 'uploads/nstpfaci.jpg'),
+(8, 12, 'Salve', 'L', 'Diaz', 'Organization Adviser', 'Institute of Information and Computing Sciences', 'asc.anastacio@gmail.com', '09175253752', 'asdfgfh', 'What is the name of your fattest cat?', 'Kuting', 'uploads/nstpmode.jpg'),
 (9, 11, 'Krizsa Marie', 'D', 'Tanaleon', 'Organization President', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09159105104', 'QC', 'Yes?', 'NO', 'uploads/Krizsa.jpg'),
 (10, 17, 'Manuel', 'D.', 'Arepentido', 'Budget Officer', 'Simbahayan', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Dog''s Name', 'Duke', ''),
 (11, 19, 'Krizsa Marie', 'Dela Pena', 'Tanaleon', 'College Community Development Coordinator', 'Faculty of Engineering', 'krizsamarietanaleon@gmail.com', '09173274123', 'esfrtgreh', 'Hello?', 'Hi', 'uploads/hahaha.jpg'),
 (12, 20, 'Carissa', 'V', 'Gaviola', 'Organization Adviser', 'NA - University Wide', 'cavgangelica@gmail.com', '1234567', 'sdlkfrje', 'hi', 'hello', 'uploads/qq.jpg'),
 (13, 22, 'Joan Marie', 'Calma', 'Manzanilla', 'College Community Development Coordinator', 'National Service Training Program (NSTP)', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Nakamove on ka na?', 'Secret', 'uploads/fgfd.png'),
 (19, 53, 'raymond', 's', 'chen', 'Organization President', 'Institute of Information and Computing Sciences', 'rr@gmail.com', '24413231', 'manila', 'good?', 'no', 'uploads/hahaha.jpg'),
-(20, 14, 'Alex', 'A', 'Santos', 'Director', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123456764', 'Metro Manila', 'good?', 'no', 'uploads/rovinesig.png'),
-(21, 15, 'Hermel', 'S', 'Pama', 'College Regent', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123454332', 'Metro Manila', 'good?', 'no', 'uploads/hahaha.jpg'),
+(20, 14, 'Alex', 'A', 'Santos', 'IICS Director', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123456764', 'Metro Manila', 'good?', 'no', 'uploads/rovinesig.png'),
+(21, 15, 'Hermel', 'S', 'Pama', 'College Regent', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123454332', 'Metro Manila', 'good?', 'no', 'uploads/s6.jpg'),
 (22, 13, 'Mylene', 'A', 'Domingo', 'Department Chairman', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '2134242342', 'manila', 'good?', 'no', 'uploads/hahaha.jpg'),
-(25, 57, 'Jose Ricarte', 'B.', 'Origenes', 'NSTP Moderator', 'National Service Training Program (NSTP)', 'jr@gmail.com', '09157772345', 'manila', 'good?', 'yes', 'uploads/nstpmode.jpg'),
+(25, 57, 'Jose Ricarte', 'B.', 'Origenes', 'NSTP Moderator', 'National Service Training Program (NSTP)', 'jr@gmail.com', '09157772345', 'manila', 'good?', 'yes', 'uploads/qq.jpg'),
 (33, 66, 'Adriel', 'L.', 'Benitez', 'Organization President', 'NA - University Wide', 'ab@gmail.com', '09787577455', 'manila', 'good?', 'yes', 'uploads/earthpress.jpg'),
 (34, 67, 'Luis', 'A.', 'Padilla', 'Organization Adviser', 'NA - University Wide', 'lp@gmail.com', '09975647866', 'manila', 'pet name?', 'mocha', 'uploads/earthadv.jpg'),
 (35, 69, 'Mark', 'D.', 'Abenir', 'Simbahayan Director', 'Simbahayan ', 'ma@gmail.com', '6464565465465', 'Metro Manila', 'color?', 'blue', 'uploads/earthpress.png');
@@ -1148,25 +799,7 @@ CREATE TABLE IF NOT EXISTS `status_update` (
   `user_id` int(11) NOT NULL,
   `action` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `status_update`
---
-
-INSERT INTO `status_update` (`update_id`, `date`, `proposal_id`, `user_id`, `action`, `reason`) VALUES
-(1, 0, 1, 66, 'Approved', ''),
-(2, 0, 1, 67, 'Approved', ''),
-(3, 0, 1, 5, 'Approved', ''),
-(4, 0, 1, 6, 'Approved', ''),
-(5, 0, 8, 66, 'Approved', ''),
-(6, 0, 8, 67, 'Approved', ''),
-(7, 0, 8, 5, 'Approved', ''),
-(8, 0, 8, 6, 'Approved', ''),
-(9, 0, 9, 66, 'Approved', ''),
-(10, 0, 9, 67, 'Approved', ''),
-(11, 0, 9, 5, 'Approved', ''),
-(12, 0, 9, 6, 'Approved', '');
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1198,9 +831,9 @@ CREATE TABLE IF NOT EXISTS `student_profile` (
 INSERT INTO `student_profile` (`org_id`, `user_id`, `org_name`, `affiliation`, `college`, `fname`, `mi`, `lname`, `position`, `email`, `contact_number`, `signature`, `security_question`, `answer`) VALUES
 (3, 10, 'Information Systems Society', 'College-Based', 'Institute of Information and Computing Sciences', 'Nicolo Joseph', 'A.', 'Punzalan', 'Organization Community Development Representative', 'jmcmanzanilla@gmail.com', '09177245421', 'uploads/earthust.jpg', 'What is the name of your dog?', 'Sushi'),
 (9, 16, 'Computer Sciences Society', 'College-Based', 'Institute of Information and Computing Sciences', 'Angelica', 'Santos', 'Gonzales', 'Project Head', 'jmcmanzanilla@gmail.com', '09157772345', 'uploads/hahaha.jpg', 'you good?', 'no'),
-(10, 58, 'Rhea Ylagan', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'K.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09787577455', 'uploads/nstpfaci.jpg', 'okay?', 'yes'),
+(10, 58, 'Rhea Ylagan', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'K.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09787577455', 'uploads/earthust.jpg', 'okay?', 'yes'),
 (11, 65, 'EARTH - UST', 'University-Wide', 'NA - University Wide', 'Abigail', 'D.', 'Brioles', 'Organization Community Development Representative', 'eust@gmail.com', '09123456764', 'uploads/earthust.jpg', 'still good?', 'yes'),
-(12, 68, 'F1-NSTP', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'B.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09123456764', 'uploads/nstpfaci.jpg', 'favorite color?', 'pink');
+(12, 68, 'F1-NSTP', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'B.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09123456764', 'uploads/earthust.jpg', 'favorite color?', 'pink');
 
 -- --------------------------------------------------------
 
@@ -1366,22 +999,22 @@ ALTER TABLE `vehiclerequest`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `approval_form`
 --
 ALTER TABLE `approval_form`
-  MODIFY `approval_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `approval_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=828;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1179;
 --
 -- AUTO_INCREMENT for table `budget_proposal`
 --
 ALTER TABLE `budget_proposal`
-  MODIFY `budget_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+  MODIFY `budget_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `college_list`
 --
@@ -1396,12 +1029,12 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `cover_letter`
 --
 ALTER TABLE `cover_letter`
-  MODIFY `cover_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `cover_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `login_user`
 --
 ALTER TABLE `login_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=70;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
 --
 -- AUTO_INCREMENT for table `order_signatory`
 --
@@ -1416,17 +1049,17 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `program_flow`
 --
 ALTER TABLE `program_flow`
-  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `proj_proposal`
 --
 ALTER TABLE `proj_proposal`
-  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `signatory_profile`
 --
@@ -1441,7 +1074,7 @@ ALTER TABLE `simbahayan_order`
 -- AUTO_INCREMENT for table `status_update`
 --
 ALTER TABLE `status_update`
-  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104;
 --
 -- AUTO_INCREMENT for table `student_profile`
 --
