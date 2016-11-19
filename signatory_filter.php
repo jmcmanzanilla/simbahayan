@@ -178,7 +178,7 @@ if(!isset($_SESSION['name'])){
                     $y++;
 					while($row = mysqli_fetch_array($result)) {
 					echo "<tr>";
-					echo "<th>" . $row['date'] . "</th>";
+					echo "<th>" . $row['target_date'] . "</th>";
 					echo "<th>" . $row['proposal_id'] . "</th>";
 					echo "<th>" . $row['proj_title'] . "</th>";
 					echo "<th>" . $row['status'] . "</th>";

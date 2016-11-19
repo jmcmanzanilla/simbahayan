@@ -10,14 +10,14 @@
          }
          
         $to = $email;
-         $message = "<b>'Please be informed that a new announcement has been posted in the Simbahayan Proposal Tracking System.'</b>";
+			$message  = "<b>'Please be informed that a new announcement has been posted in the Simbahayan Proposal Tracking System.'</b>";
             $message .= "<h3>Subject: ".$subject."</h3>";
             $message .= "<h3>Announcement: ".$announcement."</h3>";
          
          $header = "From: noreply@simbahayan.com \r\n" .
                 'Content-Type: text/html; charset=ISO-8859-1'."\r\n".
                 'MIME-Version: 1.0'."\r\n\r\n";
-         $retval = mail ($to,$subject,$message,$header);
+         $retval = mail ($to, $subject, $message, $header);
           if( $retval == true ) {
             echo "<script type='text/javascript'>window.location = 'add-announcement.php';</script>";
          }else {
