@@ -230,6 +230,10 @@ while($row = mysqli_fetch_array($resulti)) {
                     else if ($affiliation == "College-Based"){
                     echo '<a href = "projectproposalpdf-college.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF)</a>';
                     }
+					if ($affiliation == "None - NSTP") {
+                    echo '<a href = "projectproposalpdf-nstp.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF) </a>';
+                    }
+					
                     echo '<a href = "viewterminal.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">TERMINAL REPORT</a>';
                    
                     if ($affiliation == "University-Wide") {
@@ -238,9 +242,7 @@ while($row = mysqli_fetch_array($resulti)) {
                         else if ($affiliation == "College-Based"){
                     echo '<a href = "coverletterpdf-college.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">COVER LETTER</a>';
                     }
-					if ($affiliation == "None - NSTP") {
-                    echo '<a href = "projectproposalpdf-nstp.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF) </a>';
-                    }
+					
 					
 					if ($status == "Approved" && $affiliation == "University-Wide") {
                     echo '<a href ="approvalpdf-univ.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
