@@ -45,7 +45,6 @@ while ($row = mysqli_fetch_array($result)){
    $proj_evaluation = $row['proj_evaluation'];
    $proj_evaluation1 = $row['proj_evaluation1'];		//added proj_evaluation1
 }
-
 $query2 = "SELECT * FROM budget_proposal WHERE proposal_id = $d";
 $result2 = mysqli_query($link, $query2);
 while ($row = mysqli_fetch_array($result2)){
@@ -177,7 +176,6 @@ while ($row = mysqli_fetch_array($result2)){
    //$proj_evaluation = $row['proj_evaluation'];
   // $proj_evaluation1 = $row['proj_evaluation1'];  //added proj_evaluation1
 }
-
 //eto daw ung mga undefined variable sa collegePDF 
 $query2 = "SELECT * FROM budget_proposal WHERE proposal_id = $d";
 $result2 = mysqli_query($link, $query2);
@@ -313,9 +311,7 @@ while ($row = mysqli_fetch_array($result2)){
    $otorg6 = $row['otorg6'];
    $otcom6 = $row['otcom6'];
 }
-
 //-------
-
 $progsql = "SELECT * FROM program_flow WHERE proposal_id = $d";
 $resultsql = mysqli_query($link, $progsql);
 while ($row = mysqli_fetch_array($resultsql)){
@@ -386,29 +382,24 @@ while ($row = mysqli_fetch_array($resultsql)){
    $description15 = $row['description15'];
    $person15 = $row['person15'];
  }
-
 $orgsql = "SELECT org_name, signature FROM student_profile WHERE user_id = $lead_org";
 $orgresult = mysqli_query($link, $orgsql);
 while ($row = mysqli_fetch_array($orgresult)){
   $org_name = $row['org_name'];
   $projhead1 = $row['signature'];
  }
-
 $count = "SELECT count(signatory_num) as counting FROM order_signatory WHERE org_num = $lead_org";
 $cresult = mysqli_query($link, $count);
 while($row = mysqli_fetch_array($cresult)) {
 	$resultcount = $row['counting'];
 }
-
 if ($resultcount == 4){
-
 $pressql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
  $resultpres = mysqli_query($link, $pressql);
  while ($row = mysqli_fetch_array($resultpres)){
   $pres_name = $row['signatory_name'];
   $president_num = $row['signatory_num'];
  }
-
 $presselect = "SELECT signature FROM signatory_profile WHERE user_id = $president_num"; 
 $presult = mysqli_query($link, $presselect);
 while ($row = mysqli_fetch_array($presult)){
@@ -426,20 +417,17 @@ $aresult = mysqli_query($link, $aresselect);
 while ($row = mysqli_fetch_array($aresult)){
   $adviser1 = $row['signature'];
 }
-
  $coorsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
  $resultcoor = mysqli_query($link, $coorsql);
  while ($row = mysqli_fetch_array($resultcoor)){
   $coor_name = $row['signatory_name'];
   $coor_num = $row['signatory_num'];
  }
-
   $coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
 $coorresult = mysqli_query($link, $coorselect);
 while ($row = mysqli_fetch_array($coorresult)){
   $coordinator = $row['signature'];
 }
-
  $chairsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 4";
  $resultchair = mysqli_query($link, $chairsql);
  while ($row = mysqli_fetch_array($resultchair)){
@@ -452,23 +440,17 @@ $chairresult = mysqli_query($link, $chairselect);
 while ($row = mysqli_fetch_array($chairresult)){
   $chair = $row['signature'];
 } 
-
   /*$deansql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 5";
  $resultdean = mysqli_query($link, $deansql);
  while ($row = mysqli_fetch_array($resultdean)){
-
   $dean_name = $row['signatory_name'];
  }
-
   $regsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 5";
  $resultreg = mysqli_query($link, $regsql);
  while ($row = mysqli_fetch_array($resultreg)){
-
   $reg_name = $row['signatory_name'];
  }*/
-
 }
-
 else {
 $pressql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
  $resultpres = mysqli_query($link, $pressql);
@@ -482,62 +464,52 @@ $presult = mysqli_query($link, $presselect);
 while ($row = mysqli_fetch_array($presult)){
   $president = $row['signature'];
 }
-
  $advsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 2";
  $resultadv = mysqli_query($link, $advsql);
  while ($row = mysqli_fetch_array($resultadv)){
   $adv_name = $row['signatory_name'];
   $adviser_num = $row['signatory_num'];
  }
-
  $adselect = "SELECT signature FROM signatory_profile WHERE user_id = $adviser_num"; 
 $adresult = mysqli_query($link, $adselect);
 while ($row = mysqli_fetch_array($adresult)){
   $adviser1 = $row['signature'];
 }
-
  $coorsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
  $resultcoor = mysqli_query($link, $coorsql);
  while ($row = mysqli_fetch_array($resultcoor)){
   $coor_name = $row['signatory_name'];
   $coor_num = $row['signatory_num'];
  }
-
  $coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
 $coorresult = mysqli_query($link, $coorselect);
 while ($row = mysqli_fetch_array($coorresult)){
   $coordinator = $row['signature'];
 }
-
 }
-
 $deansql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
  $resultdean = mysqli_query($link, $deansql);
  while ($row = mysqli_fetch_array($resultdean)){
   $dean_num = $row['signatory_num'];
   $dean_name = $row['signatory_name'];
  }
-
  $collegedean = "SELECT signature, college FROM signatory_profile WHERE user_id = $dean_num";
  $resultcollege = mysqli_query($link, $collegedean);
  while ($row = mysqli_fetch_array($resultcollege)){
   $college_dean = $row['college'];
   $dean = $row['signature'];
  }
-
-  $regsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1";
+  $regsql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
  $resultreg = mysqli_query($link, $regsql);
  while ($row = mysqli_fetch_array($resultreg)){
   $reg_name = $row['signatory_name'];
   $reg_num = $row['signatory_num'];
  }
-
  $regselect = "SELECT signature FROM signatory_profile WHERE user_id = $reg_num"; 
 $regresult = mysqli_query($link, $regselect);
 while ($row = mysqli_fetch_array($regresult)){
   $regent = $row['signature'];
 }
-
 $logo1 = "images/logo_1.jpg";
 $logo2 = "images/logo2.jpg";
 /*
@@ -549,22 +521,17 @@ $chair = "images/krizsa.jpg";
 $dean = "images/krizsa.jpg";
 $regent = "images/krizsa.jpg";
 */
-
-
 class PDF extends FPDF
 {
   function setProj($proj_title){ 
       $this->proj_title = $proj_title; 
     } 
-
     function getProj(){
         return $this->proj_title;
     }
-
     function setOrg($org_name){ 
       $this->org_name = $org_name; 
     } 
-
     function getOrg(){
         return $this->org_name;
     }
@@ -597,12 +564,10 @@ function WordWrap(&$text, $maxwidth)
     $lines = explode("\n", $text);
     $text = '';
     $count = 0;
-
     foreach ($lines as $line)
     {
         $words = preg_split('/ +/', $line);
         $width = 0;
-
         foreach ($words as $word)
         {
             $wordwidth = $this->GetStringWidth($word);
@@ -643,7 +608,6 @@ function WordWrap(&$text, $maxwidth)
     $text = rtrim($text);
     return $count;
 }
-
 // // Page footer
 function Footer()
 {
@@ -655,7 +619,6 @@ function Footer()
     $this->Cell(140,5,'UST-SIMBAHAYAN Community Development Project Proposal Form   UST:S040-00-FO21 rev 02 08/08/15', 'C');
     $this->Cell(0,5,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
-
 // function SetCol($col)
 // {
 //     // Set position at a given column
@@ -664,7 +627,6 @@ function Footer()
 //     $this->SetLeftMargin($x);
 //     $this->SetX($x);
 // }
-
 // function AcceptPageBreak()
 // {
 //     // Method accepting or not automatic page break
@@ -683,11 +645,9 @@ function Footer()
 //         $this->SetCol(0);
 //         // Page break
 //         return true;
-
 //     }
 // }
 }
-
 // Instanciation of inherited class
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -846,7 +806,6 @@ $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'What specific University Community Development Program (UCDP) success indicator is it trying to address?','LBR','L',false);
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(190,5,$proj_background3,'LBR', 'L', false);
-
 $pdf->MultiCell(190,5,'GENERAL OBJECTIVE: What is the overall intention of your community development project?  What does it realistically intend to achieve within the duration of the project? Only state one general objective. (Please write inside the box provided below)','LTBR','L',false);
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(190,5,$gen_objective,'LBR','L',false);
@@ -969,7 +928,6 @@ else {
   $pdf->Cell(95, $yheight5, ' ', 'LBR', 0, 'L', 0);
   $pdf->SetXY($x, $y2);
   }
-
   
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'PROPOSED PROGRAM FLOW: What is the sequence of events that needs to be followed in order to guide the successful implementation and completion of your community development project? (Please fill out the matrix provided below)','LTR','L',false);
@@ -979,113 +937,77 @@ $pdf->SetFont('Arial','B',10);
 $pdf->Cell(95,5,'Date: '.$date,'LTBR',0,'L',0);
 $pdf->Cell(95,5,'Venue: '.$address,'LTBR',0,'L',0);
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,'Time','LBR',0,'C',0);
 $pdf->Cell(100,5,'Activity Description','LBR',0,'C',0);
 $pdf->Cell(60,5,'Person/Group Responsible','LBR',0,'C',0);
-
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',9);
-
 $pdf->Cell(30,5,$time0,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description0,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person0,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time1,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description1,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person1,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time2,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description2,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person2,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time3,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description3,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person3,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time4,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description4,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person4,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time5,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description5,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person5,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time6,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description6,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person6,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time7,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description7,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person7,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time8,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description8,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person8,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time9,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description9,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person9,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time10,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description10,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person10,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time11,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description11,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person11,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time12,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description12,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person12,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time13,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description13,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person13,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time14,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description14,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person14,'LBR',0,'C',0);
-
 $pdf->Ln(5);
-
 $pdf->Cell(30,5,$time15,'LBR',0,'C',0);
 $pdf->Cell(100,5,$description15,'LBR',0,'C',0);
 $pdf->Cell(60,5,$person15,'LBR',0,'C',0);
-
 $pdf->Ln(5);
 $flow--;
 }
-
-
 $budget = $days;
 $pdf->AddPage('L', 'Letter', 0);
 while($budget !=0) {
@@ -1283,7 +1205,6 @@ $pdf->Cell(42,5,$otcom6,'LTBR',0,'R',0);
 $pdf->Ln(5);
 $budget--;
 }
-
 $pdf->AddPage('L', 'Letter', 0);
 $budget = $days;
 $pdf->Ln(5);  
@@ -1292,7 +1213,6 @@ $pdf->Cell(260,5,'Budget Proposal Summary','TRBL',0,'C',0);
 $pdf->Ln(5);
 while($budget !=0) {
   $pdf->SetFont('Arial','B',9);
-
   $pdf->Cell(260,5,'Budget for (insert date):','TRBL',0,'L',0);
   $pdf->Ln(5);
   $pdf->SetFont('Arial','',9);
@@ -1358,7 +1278,6 @@ $pdf->Ln(5);
 //$pdf->MultiCell(190,5,$position2.','.$org_name,'','L',false);
 $pdf->MultiCell(190,5,'Project Head 2, '.$proj_title,'','L',false);
 $pdf->Ln(5);*/
-
 if ($resultcount == 4){
 $pdf->Cell(190,5,'Noted by:','',0,'L',0);
 $pdf->Ln(10);
@@ -1394,7 +1313,6 @@ $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Ln(10);
 }
-
 else{
 $pdf->Cell(190,5,'Noted by:','',0,'L',0);
 $pdf->Ln(10);
@@ -1425,9 +1343,7 @@ $pdf->Cell(95,5,'Community Development Coordinator','',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Ln(10);
-
 }
-
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell( 40, 40, $pdf->Image($dean, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Cell( 40, 40, $pdf->Image($regent, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
@@ -1442,7 +1358,5 @@ $pdf->Ln(5);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Ln(10);
-
-
 $pdf->Output();
 ?>

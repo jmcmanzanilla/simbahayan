@@ -378,7 +378,9 @@ while($row = mysqli_fetch_array($resulti)) {
 					echo "<th> <a href='signatory-viewproposal.php?d=$proj_id'>View</a></th>";
                     //echo"<th> <a href='projectproposalpdf-college.php?d=$proj_id&&days=$days'>View</a></th>";
                     }
-					
+					if ($affiliation == "None - NSTP"){
+					echo "<th> <a href='signatory-viewproposal.php?d=$proj_id'>View</a></th>";
+					}
 					echo "</tr>";
                     }
                     }

@@ -142,9 +142,9 @@ if(!isset($_SESSION['name'])){
 
                    <?php
 
-                        include "mysql_connect.php";
-
-                         $d = $_GET['d'];
+                     include "mysql_connect.php";
+                     $d = $_GET['d'];
+					 
                     if ($affiliation == "College-Based") {
                     $sql = "SELECT * FROM approval_form WHERE proposal_id = $d";
                     $result1 = mysqli_query($link, $sql);
@@ -177,10 +177,38 @@ if(!isset($_SESSION['name'])){
                     }
                     }
                     else if ($affiliation == "University-Wide") {
-                    $sql="SELECT * FROM approval_form where proposal_id = '".$d."'";
+                    $sql="SELECT * FROM approval_form where proposal_id = $d";
                     $result = mysqli_query($link,$sql);
-
-                    while($row = mysqli_fetch_array($result)) {
+					
+					while ($row = mysqli_fetch_array($result)){
+                      $title= $row['title'];
+                      $proponent= $row['proponent'];
+                      $affiliation = $row['affiliation'];
+                      $prog_area = $row['prog_area'];
+                      $community = $row['community'];
+                      $date = $row['date'];
+                      $budget = $row['budget'];
+                      $reports = $row['reports'];
+                      $attendance = $row['attendance'];
+                      $presence_profile = $row['presence_profile'];
+                      $presence_moa = $row['presence_moa'];
+                      $comments1 = $row['comments1'];
+                      $reviewed = $row['reviewed'];
+                      $budget_code = $row['budget_code'];
+                      $comments2 = $row['comments2'];
+                      $recommend_progarea = $row['recommend_progarea'];
+                      $budget_tobe = $row['budget_tobe'];
+                      $comments3 = $row['comments3'];
+                      $approve_director = $row['approve_director'];
+                      $finalbudget = $row['finalbudget'];
+                      $finalbudget_code = $row['finalbudget_code'];
+                      $cash_req = $row['cash_req'];
+                      $date_today = $row['date_today'];
+                      $transpo_date = $row['transpo_date'];
+					}
+					}
+					
+                   /* while($row = mysqli_fetch_array($result)) {
                         $title= $row['title'];
                       $proponent= $row['proponent'];
                       $affiliation = $row['affiliation'];
@@ -199,7 +227,64 @@ if(!isset($_SESSION['name'])){
                       $recommend_progarea = $row['recommend_progarea'];
                       $budget_tobe = $row['budget_tobe'];
                     }
+                    }*/
+					
+					 
+					if ($affiliation == "None - NSTP") {
+                    $sql = "SELECT * FROM approval_form WHERE proposal_id = $d";
+                    $result2 = mysqli_query($link, $sql);
+                    while ($row = mysqli_fetch_array($result2)){
+                      $title= $row['title'];
+                      $proponent= $row['proponent'];
+                      $affiliation = $row['affiliation'];
+                      $prog_area = $row['prog_area'];
+                      $community = $row['community'];
+                      $date = $row['date'];
+                      $budget = $row['budget'];
+                      $reports = $row['reports'];
+                      $attendance = $row['attendance'];
+                      $presence_profile = $row['presence_profile'];
+                      $presence_moa = $row['presence_moa'];
+                      $comments1 = $row['comments1'];
+                      $reviewed = $row['reviewed'];
+                      $budget_code = $row['budget_code'];
+                      $comments2 = $row['comments2'];
+                      $recommend_progarea = $row['recommend_progarea'];
+                      $budget_tobe = $row['budget_tobe'];
+                      $comments3 = $row['comments3'];
+                      $approve_director = $row['approve_director'];
+                      $finalbudget = $row['finalbudget'];
+                      $finalbudget_code = $row['finalbudget_code'];
+                      $cash_req = $row['cash_req'];
+                      $date_today = $row['date_today'];
+                      $transpo_date = $row['transpo_date'];
+
                     }
+                    }
+					/*$title= $row['title'];
+                      $proponent= $row['proponent'];
+                      $affiliation = $row['affiliation'];
+                      $prog_area = $row['prog_area'];
+                      $community = $row['community'];
+                      $date = $row['date'];
+                      $budget = $row['budget'];
+                      $reports = $row['reports'];
+                      $attendance = $row['attendance'];
+                      $presence_profile = $row['presence_profile'];
+                      $presence_moa = $row['presence_moa'];
+                      $comments1 = $row['comments1'];
+                      $reviewed = $row['reviewed'];
+                      $budget_code = $row['budget_code'];
+                      $comments2 = $row['comments2'];
+                      $recommend_progarea = $row['recommend_progarea'];
+                      $budget_tobe = $row['budget_tobe'];
+                      $comments3 = $row['comments3'];
+                      $approve_director = $row['approve_director'];
+                      $finalbudget = $row['finalbudget'];
+                      $finalbudget_code = $row['finalbudget_code'];
+                      $cash_req = $row['cash_req'];
+                      $date_today = $row['date_today'];
+                      $transpo_date = $row['transpo_date']; */
                     ?>
 
         <div class  = "col-md-12"><label class = "control-label">Project Title</label>
@@ -309,6 +394,12 @@ if(!isset($_SESSION['name'])){
             </div>
             <div class = "col-md-6" style = "margin-top: 20px;">
       <label class = "control-label"> Final Budget Code</label><input name = "finalbudget_code"  type="text" style = "margin-left: 10px;" class="form-control" required="required"/>
+            </div>
+			 <div class = "col-md-6" style = "margin-top: 20px;">
+      <label class = "control-label"> Cash Requisition number: </label><input name = "cashreq"  type="text" style = "margin-left: 10px;" class="form-control"/>
+            </div>
+			<div class = "col-md-6" style = "margin-top: 20px;">
+      <label class = "control-label"> Date: </label><input name = "date"  type="text" style = "margin-left: 10px;" class="form-control"/>
             </div>
 
 

@@ -3,6 +3,7 @@ require('fpdf17/fpdf.php');
 include "mysql_connect.php";
 $d = $_GET['d'];
 $days = $_GET['days'];
+
 $query = "SELECT * FROM proj_proposal WHERE proposal_id = $d";
 $result = mysqli_query($link,$query);
 while ($row = mysqli_fetch_array($result)){
@@ -178,144 +179,6 @@ while ($row = mysqli_fetch_array($result2)){
    //$proj_evaluation1 = $row['proj_evaluation1']; //added proj_evaluation1
 }
 
-//eto daw ung mga undefined variable sa collegePDF 
-$query2 = "SELECT * FROM budget_proposal WHERE proposal_id = $d";
-$result2 = mysqli_query($link, $query2);
-while ($row = mysqli_fetch_array($result2)){
-   $chair_name = "";
-   $college_dean = "";
-   $pname0 = $row['pname0']; //P
-   $pmail0 = $row['pmail0'];
-   $pfund0 = $row['pfund0'];
-   $porg0 = $row['porg0'];
-   $pcom0 = $row['pcom0'];
-   $pname1 = $row['pname1'];
-   $pmail1 = $row['pmail1'];
-   $pfund1 = $row['pfund1'];
-   $porg1 = $row['porg1'];
-   $pcom1 = $row['pcom1'];
-   $pname2 = $row['pname2'];
-   $pmail2 = $row['pmail2'];
-   $pfund2 = $row['pfund2'];
-   $porg2 = $row['porg2'];
-   $pcom2 = $row['pcom2'];
-   $pname3 = $row['pname3'];
-   $pmail3 = $row['pmail3'];
-   $pfund3 = $row['pfund3'];
-   $porg3 = $row['porg3'];
-   $pcom3 = $row['pcom3'];
-   $pname4 = $row['pname4'];
-   $pmail4 = $row['pmail4'];
-   $pfund4 = $row['pfund4'];
-   $porg4 = $row['porg4'];
-   $pcom4 = $row['pcom4']; 
-   $oname0 = $row['oname0']; //O
-   $omail0 = $row['omail0'];
-   $ofund0 = $row['ofund0'];
-   $oorg0 = $row['oorg0'];
-   $ocom0 = $row['ocom0'];
-   $oname1 = $row['oname1']; //O
-   $omail1 = $row['omail1'];
-   $ofund1 = $row['ofund1'];
-   $oorg1 = $row['oorg1'];
-   $ocom1 = $row['ocom1'];
-   $oname2 = $row['oname2']; //O
-   $omail2 = $row['omail2'];
-   $ofund2 = $row['ofund2'];
-   $oorg2 = $row['oorg2'];
-   $ocom2 = $row['ocom2'];
-   $oname3 = $row['oname3']; //O
-   $omail3 = $row['omail3'];
-   //$ofund3 = $row['ofund3'];
-   //$oorg3 = $row['oorg3'];
-   //$ocom3 = $row['ocom3'];
-   $oname7 = $row['oname7']; //O
-   $omail7 = $row['omail7'];
-   $oname8 = $row['oname8']; //O
-   $omail8 = $row['omail8'];
-   $oname9 = $row['oname9']; //O
-   $omail9 = $row['omail9'];
-   $oname4 = $row['oname4']; //O
-   $omail4 = $row['omail4'];
-   $ofund6 = $row['ofund6'];
-   $oorg6 = $row['oorg6'];
-   $ocom6 = $row['ocom6'];
-   $oname5 = $row['oname5']; //O
-   $omail5 = $row['omail5'];
-   $ofund7 = $row['ofund7'];
-   $oorg7 = $row['oorg7'];
-   $ocom7 = $row['ocom7'];
-   $oname6 = $row['oname6']; //O
-   $omail6 = $row['omail6'];
-   $ofund8 = $row['ofund8'];
-   $oorg8 = $row['oorg8'];
-   $ocom8 = $row['ocom8'];
-   $ofund9 = $row['ofund9'];
-   $oorg9 = $row['oorg9'];
-   $ocom9 = $row['ocom9'];
-   $mname0 = $row['mname0']; //M
-   $mmail0 = $row['mmail0'];
-   $mfund0 = $row['mfund0'];
-   $morg0 = $row['morg0'];
-   $mcom0 = $row['mcom0'];
-   $mname1 = $row['mname1']; //M
-   $mmail1 = $row['mmail1'];
-   $mfund1 = $row['mfund1'];
-   $morg1 = $row['morg1'];
-   $mcom1 = $row['mcom1'];
-   $mname2 = $row['mname2']; //M
-   $mmail2 = $row['mmail2'];
-   $mfund2 = $row['mfund2'];
-   $morg2 = $row['morg2'];
-   $mcom2 = $row['mcom2'];
-   $mname3 = $row['mname3']; //M
-   $mmail3 = $row['mmail3'];
-   $mfund3 = $row['mfund3'];
-   $morg3= $row['morg3'];
-   $mcom3 = $row['mcom3'];
-   $mname4 = $row['mname4']; //M
-   $mmail4 = $row['mmail4'];
-   $mfund4 = $row['mfund4'];
-   $morg4 = $row['morg4'];
-   $mcom4 = $row['mcom4'];
-   $mfund5 = $row['mfund5'];
-   $morg5 = $row['morg5'];
-   $mcom5 = $row['mcom5'];
-   $otname0 = $row['otname0']; //OT
-   $otmail0 = $row['otmail0'];
-   $otfund0 = $row['otfund0'];
-   $otorg0 = $row['otorg0'];
-   $otcom0 = $row['otcom0'];
-   $otname1 = $row['otname1']; //OT
-   $otmail1 = $row['otmail1'];
-   $otfund1 = $row['otfund1'];
-   $otorg1 = $row['otorg1'];
-   $otcom1 = $row['otcom1'];
-   $otname2 = $row['otname2']; //OT
-   $otmail2 = $row['otmail2'];
-   $otfund2 = $row['otfund2'];
-   $otorg2 = $row['otorg2'];
-   $otcom2 = $row['otcom2'];
-   $otname3 = $row['otname3']; //OT
-   $otmail3 = $row['otmail3'];
-   $otfund3 = $row['otfund3'];
-   $otorg3 = $row['otorg3'];
-   $otcom3 = $row['otcom3'];
-   $otname4 = $row['otname4']; //OT
-   $otmail4 = $row['otmail4'];
-   $otfund4 = $row['otfund4'];
-   $otorg4 = $row['otorg4'];
-   $otcom4 = $row['otcom4'];
-   $otfund5 = $row['otfund5'];
-   $otorg5 = $row['otorg5'];
-   $otcom5 = $row['otcom5'];
-   $otfund6 = $row['otfund6'];
-   $otorg6 = $row['otorg6'];
-   $otcom6 = $row['otcom6'];
-}
-
-//-------
-
 $progsql = "SELECT * FROM program_flow WHERE proposal_id = $d";
 $resultsql = mysqli_query($link, $progsql);
 while ($row = mysqli_fetch_array($resultsql)){
@@ -385,133 +248,62 @@ while ($row = mysqli_fetch_array($resultsql)){
    $time15 = $row['time15'];						//added additional boxes for Program Flow
    $description15 = $row['description15'];
    $person15 = $row['person15'];
+   
+ 
  }
 
-$modesql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
+ $sqli = "SELECT org_name, signature FROM student_profile where user_id = $lead_org";
+$sqlr = mysqli_query($link, $sqli);
+while ($row = mysqli_fetch_array($sqlr)){
+  $org_name = $row['org_name'];
+  $facilitator = $row['signature'];
+ }
+ 
+ $modesql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 1";
  $resultmode = mysqli_query($link, $modesql);
- while ($row = mysqli_fetch_array($resultmode)){ //Kinukuha ko yung signatory name nung unang signatory para sa specific org.
-                                                 //Para kapag nagsubmit, yun yung unang makakakita nung sinubmit.
-
+ while ($row = mysqli_fetch_array($resultmode)){
   $mode_name = $row['signatory_name'];
+  $moderator_num = $row['signatory_num'];
  }
+ 
+$modeselect = "SELECT signature FROM signatory_profile WHERE user_id = $moderator_num"; 
+$modesult = mysqli_query($link, $modeselect);
+while ($row = mysqli_fetch_array($modesult)){
+  $moderator = $row['signature'];
+}
 
- $directsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 2";
+ $directsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 1 AND univ_wide = 0 AND standard = 1";
  $resultdirect = mysqli_query($link, $directsql);
- while ($row = mysqli_fetch_array($resultdirect)){ //Tapos yung pangalawa ang kinukuha mo yung pangalawa dun sa                                                       //order under sa specific org na yan
-
+ while ($row = mysqli_fetch_array($resultdirect)){                                                       
   $direct_name = $row['signatory_name'];
+  $director_num = $row['signatory_num'];
  }
  
- 
- 
- 
- 
- 
- /*if ($position == NSTP Moderator && $position == Simbahayan Director){
-	 echo
- }*/
- 
-
- /*$coorsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
- $resultcoor = mysqli_query($link, $coorsql);
- while ($row = mysqli_fetch_array($resultcoor)){
-
-  $coor_name = $row['signatory_name'];
- }
-
- $chairsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 4";
- $resultchair = mysqli_query($link, $chairsql);
- while ($row = mysqli_fetch_array($resultchair)){
-
-  $chair_name = $row['signatory_name'];
- }*/
-
-  /*$deansql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 5";
- $resultdean = mysqli_query($link, $deansql);
- while ($row = mysqli_fetch_array($resultdean)){
-
-  $dean_name = $row['signatory_name'];
- }
-
-  $regsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 5";
- $resultreg = mysqli_query($link, $regsql);
- while ($row = mysqli_fetch_array($resultreg)){
-
-  $reg_name = $row['signatory_name'];
- }*/
-
-
-
-/*else {
-$pressql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 1";
- $resultpres = mysqli_query($link, $pressql);
- while ($row = mysqli_fetch_array($resultpres)){
-
-  $pres_name = $row['signatory_name'];
- }
-
- $advsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 2";
- $resultadv = mysqli_query($link, $advsql);
- while ($row = mysqli_fetch_array($resultadv)){
-
-  $adv_name = $row['signatory_name'];
- }
-
- $coorsql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
- $resultcoor = mysqli_query($link, $coorsql);
- while ($row = mysqli_fetch_array($resultcoor)){
-
-  $coor_name = $row['signatory_name'];
- }
-
-
+ $direcselect = "SELECT signature FROM signatory_profile WHERE user_id = $director_num"; 
+$direcresult = mysqli_query($link, $direcselect);
+while ($row = mysqli_fetch_array($direcresult)){
+  $director = $row['signature'];
 }
 
 
-  $deansql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1";
- $resultdean = mysqli_query($link, $deansql);
- while ($row = mysqli_fetch_array($resultdean)){
-  $signatory_num = $row['signatory_num'];
-  $dean_name = $row['signatory_name'];
- }
 
- $collegedean = "SELECT college FROM signatory_profile WHERE user_id = $signatory_num";
- $resultcollege = mysqli_query($link, $collegedean);
- while ($row = mysqli_fetch_array($resultcollege)){
-  $college_dean = $row['college'];
- }
-
-  $regsql = "SELECT signatory_name FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1";
- $resultreg = mysqli_query($link, $regsql);
- while ($row = mysqli_fetch_array($resultreg)){
-
-  $reg_name = $row['signatory_name'];
- }
-
- //org_name 
- $orgsql = "SELECT org_name FROM student_profile WHERE user_id = $lead_org";
- $orgresult = mysqli_query($link, $orgsql);
- while (mysqli_fetch_array($orgresult)){
-  $org_name = $row['org_name'];
- }*/
-
-//$moderator = "images/krizsa.jpg";
-//$director = "images/krizsa.jpg";
-//$mode_name = "ASSOC. PROF. JOSE RICARTE ORIGENES";
-//$direct_name = "DR. MARK ANTHONY ABENIR, DSD";
-$logo1 = "images/logo_1.jpg";
+$logo_1 = "images/logo_1.jpg";
 $logo2 = "images/logo2.jpg";
-//$president = "images/krizsa.jpg";
-//$adviser1 = "images/krizsa.jpg";
+
+//$moderator = "";
+//$mode_name = "";
+//$direct_name = "";
+//$mode_name = $row['signatory_name'];
+//$direct_name = $row['signatory_name'];
+//$moderator = "images/krizsa.jpg";
+//$director  = "images/krizsa.jpg";
+
+
 //$adviser2 = "images/krizsa.jpg";
 //$coordinator = "images/krizsa.jpg";
 //$chair = "images/krizsa.jpg";
 //$dean = "images/krizsa.jpg";
 //$regent = "images/krizsa.jpg";
-$org_name = "";
-$chair="";
-
-
 
 class PDF extends FPDF
 {
@@ -528,7 +320,7 @@ class PDF extends FPDF
     } 
 
     function getOrg(){
-        return $this->org_name;
+        return $this->org_bname;
     }
 // Page header
 function Header()
@@ -649,7 +441,8 @@ function Footer()
 //     }
 // }
 }
-
+//$date="";
+//$address="";
 // Instanciation of inherited class
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -657,7 +450,7 @@ $pdf->setProj($proj_title);
 $pdf->setOrg($org_name); 
 $pdf->AddPage('P', 'Letter', 0);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(20, 20, $pdf->Image($logo1, 20, $pdf->GetY(), 20), 0, 0, 'L', false);
+$pdf->Cell(20, 20, $pdf->Image($logo_1, 20, $pdf->GetY(), 20), 0, 0, 'L', false);
 $pdf->Cell(150,5,'University of Santo Tomas','',0,'C',0);
 $pdf->Cell(20, 20, $pdf->Image($logo2, 160, $pdf->GetY(), 30), 0, 0, 'L', false);
 $pdf->Ln(5);
@@ -790,9 +583,9 @@ $pdf->Ln(5);
 $pdf->Cell(190,5,'Project Details','LBR',0,'C',0);
 $pdf->Ln(5);
 $pdf->SetFont('Arial','B',10);
-$pdf->MultiCell(190,5,'PROJECT BACKGROUND: What specific problem or need in the partner community or institution does your organization wish to address? Why is it important? How is the project related to your chosen program area? (Please write inside the box provided below)','LBR','L',false);
+$pdf->MultiCell(190,5,'PROJECT BACKGROUND: What specific problem or need in the partner community or institution does your organization wish to address?','LBR','L',false);
 $pdf->SetFont('Arial','',10);
-$pdf->MultiCell(190,5,$proj_background,'LBR', 'L', false);
+$pdf->MultiCell(190,5,$proj_background,'LBR','L', false);
 //$pdf->Ln(5); added proj_background1
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'Why is it important?','LBR','L',false);
@@ -809,6 +602,7 @@ $pdf->MultiCell(190,5,'What specific University Community Development Program (U
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(190,5,$proj_background3,'LBR', 'L', false);
 
+$pdf->Ln(10);
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'GENERAL OBJECTIVE: What is the overall intention of your community development project?  What does it realistically intend to achieve within the duration of the project? Only state one general objective. (Please write inside the box provided below)','LTBR','L',false);
 $pdf->SetFont('Arial','',10);
@@ -820,6 +614,7 @@ $pdf->Cell(95,5,'Specific Objectives','LBR',0,'L',0);
 $pdf->Cell(95,5,'Expected Results','LBR',0,'L',0);
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',9);
+
 //Spec1
 $x = $pdf->GetX();
 $y = $pdf->GetY();
@@ -864,6 +659,7 @@ else {
   $pdf->Cell(95, $yheight2, ' ', 'LBR', 0, 'L', 0);
   $pdf->SetXY($x, $y2);
   }
+  
 //Spec3
 $x = $pdf->GetX();
 $y = $pdf->GetY();
@@ -932,7 +728,8 @@ else {
   $pdf->Cell(95, $yheight5, ' ', 'LBR', 0, 'L', 0);
   $pdf->SetXY($x, $y2);
   }
-  
+
+
 
 $pdf->SetFont('Arial','B',10);
 $pdf->MultiCell(190,5,'PROPOSED PROGRAM FLOW: What is the sequence of events that needs to be followed in order to guide the successful implementation and completion of your community development project? (Please fill out the matrix provided below)','LTR','L',false);
@@ -1048,7 +845,6 @@ $pdf->Ln(5);
 $flow--;
 }
 
-
 $budget = $days;
 $pdf->AddPage('L', 'Letter', 0);
 while($budget !=0) {
@@ -1071,7 +867,7 @@ $pdf->Cell(42,5,'Counterpart','LBR',0,'C',0);
 $pdf->Cell(42,5,'Counterpart','RBL',0,'C',0);
 $pdf->Ln(5);
 $pdf->SetFont('Arial','B',9);
-$pdf->Cell(260,5,'1. Personnel–Theoretical Counterpart (please add or delete sub-items and corresponding rows when necessary)','RBL',0,'L',0);
+$pdf->Cell(260,5,'1. Personnel-Theoretical Counterpart (please add or delete sub-items and corresponding rows when necessary)','RBL',0,'L',0);
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',8);
 $pdf->Cell(82,5,'Student Volunteers','LTBR',0,'R',0);
@@ -1292,7 +1088,7 @@ $pdf->SetFont('Arial','B',9);
   $pdf->Cell(42,5,' ','LTBR',0,'R',0);
   $pdf->Cell(42,5,' ','LTBR',0,'R',0);
   $pdf->Ln(10);
-$pdf->MultiCell(260,5,"PROJECT EVALUATION: How will the project's achievements be evaluated? What needs to be done in order to know whether the community development project has achieved its general and specific objectives?",'LBTR','L',false);
+$pdf->MultiCell(260,5,"PROJECT EVALUATION: How will the project's achievements be evaluated?",'LBTR','L',false);
 $pdf->SetFont('Arial','',10);
 $pdf->MultiCell(260,5,$proj_evaluation,'LBR','L',false);
 $pdf->SetFont('Arial','B',10);
@@ -1304,15 +1100,15 @@ $pdf->AddPage('P', 'Letter', 0);
 $pdf->Cell(190,5,'Prepared by:','',0,'L',0);
 $pdf->Ln(15);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($chair, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+$pdf->Cell( 40, 40, $pdf->Image($facilitator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(190,5,$fname1.' '.$mi1.' '.$lname1,'',0,'L',0);
 $pdf->SetFont('Arial','',11);
 $pdf->Ln(5);
+$pdf->MultiCell(190,5,'NSTP-Facilitator, '.$proj_title,'','L',false);
 //$pdf->MultiCell(190,5,$position1.','.$org_name,'','L',false);
-$pdf->MultiCell(190,5,'NSTP-Faculty','L',false);
-$pdf->Ln(5);
-$pdf->SetFont('Arial','',11);
+$pdf->Ln(10);
+//$pdf->SetFont('Arial','',11);
 /*$pdf->Cell( 40, 40, $pdf->Image($chair, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(190,5,$fname2.' '.$mi2.' '.$lname2,'',0,'L',0);
@@ -1321,35 +1117,30 @@ $pdf->Ln(5);
 //$pdf->MultiCell(190,5,$position2.','.$org_name,'','L',false);
 $pdf->MultiCell(190,5,'Project Head 2, '.$proj_title,'','L',false);
 $pdf->Ln(5);*/
-$pdf->Cell(190,5,'Endorsed by:','',0,'L',0);
-$pdf->Ln(10);
+$pdf->Cell(190,5,'Noted by:','',0,'L',0);
+$pdf->Ln(5);
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell( 40, 40, $pdf->Image($moderator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
-$pdf->Cell(95,5,$mode_name,'',0,'L',0);
+//$pdf->Ln(15);
+$pdf->Cell(95,5,$mode_name,'',0,'L',0);//moderator
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',11);
-$pdf->Cell(95,5,'Moderator','',0,'L',0);
-$pdf->Ln(5);
-$pdf->Cell(95,5,'UST-NSTP','',0,'L',0);
-$pdf->Ln(5);
-$pdf->Cell(95,5,$org_name,'',0,'L',0);
-$pdf->Ln(10);
-$pdf->SetFont('Arial','',11);
+$pdf->Cell(95,5,'NSTP-Moderator','',0,'L',0);
+$pdf->Ln(15);
 $pdf->Cell(190,5,'Approved by:','',0,'L',0);
-$pdf->Ln(10);
+$pdf->Ln(5);
 $pdf->SetFont('Arial','B',11);
 $pdf->Cell( 40, 40, $pdf->Image($director, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
-$pdf->Cell(95,5,$direct_name,'',0,'L',0);
+$pdf->Cell(95,5,$direct_name,'',0,'L',0);//director
 $pdf->Ln(5);
 $pdf->SetFont('Arial','',11);
-$pdf->Cell(95,5,'Director','',0,'L',0);
+$pdf->Cell(95,5,'UST Simbahayan Director','',0,'L',0);
 $pdf->Ln(5);
-$pdf->Cell(95,5,'UST SIMBAHAYAN Community Development Office','',0,'L',0);
-$pdf->Ln(5);
-$pdf->Cell(95,5,$org_name,'',0,'L',0);
-$pdf->Cell(95,5,$org_name,'',0,'L',0);
+//$pdf->Cell(95,5,$org_name,'',0,'L',0);//org
+//$pdf->Cell(95,5,$org_name,'',0,'L',0);
 $pdf->Ln(10);
+$pdf->SetFont('Arial','',11);
 $pdf->Output();
 ?>

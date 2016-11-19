@@ -57,8 +57,8 @@ while ($row = mysqli_fetch_array($result)){
     $closing = $row['closing'];
     $proj_head1 = $row['proj_head1'];
     $position1 = $row['position1'];
-    $proj_head2 = $row['proj_head2'];
-    $position2 = $row['position2'];
+    //$proj_head2 = $row['proj_head2'];
+    //$position2 = $row['position2'];
     $title = $row['title'];
 
 }
@@ -187,7 +187,7 @@ while ($row = mysqli_fetch_array($coorresult)){
 
 }
 
-$deansql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
+ $deansql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
  $resultdean = mysqli_query($link, $deansql);
  while ($row = mysqli_fetch_array($resultdean)){
   $dean_num = $row['signatory_num'];
@@ -201,7 +201,7 @@ $deansql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 1
   $dean = $row['signature'];
  }
 
-  $regsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1";
+  $regsql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
  $resultreg = mysqli_query($link, $regsql);
  while ($row = mysqli_fetch_array($resultreg)){
   $reg_name = $row['signatory_name'];
@@ -214,6 +214,19 @@ while ($row = mysqli_fetch_array($regresult)){
   $regent = $row['signature'];
 }
 
+$direcsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 1 AND univ_wide = 0 AND standard = 1";
+ $resultdirec = mysqli_query($link, $direcsql);
+ while ($row = mysqli_fetch_array($resultdirec)){
+  $direc_name = $row['signatory_name'];
+  $direc_num = $row['signatory_num'];
+ }
+
+ $direcselect = "SELECT signature FROM signatory_profile WHERE user_id = $direc_num"; 
+$direcresult = mysqli_query($link, $direcselect);
+while ($row = mysqli_fetch_array($direcresult)){
+  $direct = $row['signature'];
+}
+
 //$org_name = "Information Systems Society";
 //$projhead1 = "images/krizsa.jpg";
 //$projhead2 = "images/krizsa.jpg";
@@ -224,7 +237,7 @@ while ($row = mysqli_fetch_array($regresult)){
 //$chair = "images/krizsa.jpg";
 //$dean = "images/krizsa.jpg";
 //$regent = "images/krizsa.jpg";
-$chair_name = "";
+//$chair_name = "";
 
 
 class PDF extends FPDF
@@ -443,7 +456,7 @@ $pdf->Cell(95,5,'Adviser','',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(95,5,$org_name,'',0,'L',0);
 $pdf->Cell(95,5,$org_name,'',0,'L',0);
-$pdf->Ln(10);
+$pdf->Ln(15);
 $pdf->SetFont('Arial','',11);
 $pdf->Cell(190,5,'Endorsed by:','',0,'L',0);
 $pdf->Ln(10);
@@ -473,7 +486,16 @@ $pdf->Cell(95,5,'Regent','',0,'L',0);
 $pdf->Ln(5);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
+$pdf->Ln(15);
+$pdf->Cell(190,5,'Approved by:','',0,'L',0);
 $pdf->Ln(10);
-
+$pdf->SetFont('Arial','B',11);
+$pdf->Cell( 40, 40, $pdf->Image($direct, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+$pdf->Ln(15);
+$pdf->Cell(95,5,$direc_name,'',0,'L',0);
+$pdf->Ln(5);
+$pdf->SetFont('Arial','',11);
+$pdf->Cell(95,5,'Director, UST SIMBAHAYAN','',0,'L',0);
+$pdf->Ln(5);
 $pdf->Output();
 ?>

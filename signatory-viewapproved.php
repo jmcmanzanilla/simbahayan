@@ -214,9 +214,11 @@ while($row = mysqli_fetch_array($result)) {
     $terminal = $row['terminal'];
 	$lead_org = $row['lead_org'];
     $status = $row['status'];
+	
 	echo "</table>";
 	
 }
+$lead_org = $row['lead_org'];
 $sqli="SELECT affiliation FROM student_profile where user_id = '".$lead_org."'";
 $resulti = mysqli_query($link,$sqli);
 while($row = mysqli_fetch_array($resulti)) {
@@ -225,12 +227,16 @@ while($row = mysqli_fetch_array($resulti)) {
                 echo '</div>
                 <div class = "col-md-4">
                   <div class = "col-md-12">';
+				  $affiliation = $row['affiliation'];
                     if ($affiliation == "University-Wide") {
-                    echo '<a href = "projectproposalpdf-univ.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">PROJECT PROPOSAL (PDF)</a>';
+                    echo '<a href = "projectproposalpdf-univ.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF)</a>';
                     }
                     else if ($affiliation == "College-Based"){
                     echo '<a href = "projectproposalpdf-college.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF)</a>';
                     }
+					if ($affiliation == "Nones - NSTP"){
+					echo '<a href = "projectproposalpdf-nstp.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VIEW PROJECT PROPOSAL (PDF)</a>';	
+					}
 					echo '<a href ="viewterminal.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">TERMINAL REPORT</a>';
 
                     
@@ -242,7 +248,7 @@ while($row = mysqli_fetch_array($resulti)) {
                     }
                     
 
-					echo '<a href ="vehiclerequestpdf.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VEHICLE REQUEST</a>';
+					/*echo '<a href ="vehiclerequestpdf.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">VEHICLE REQUEST</a>';
                     
                     if ($status == "Approved") {
                         if ($affiliation == "University-Wide") {
@@ -250,8 +256,8 @@ while($row = mysqli_fetch_array($resulti)) {
                     }
                         else if ($affiliation == "College-Based"){
                     echo '<a href = "approvalpdf-college.php?d='.$d.'&&days='.$days.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
-                    }
-                    }
+                    } */
+                    
                     
                   echo '</div>';
                 echo '

@@ -12,7 +12,6 @@ while($row = mysqli_fetch_array($resultedit)) {
     $days = $row['days'];
 }
 if(isset($_POST['submitted'])){
-
 	
 	$key = $d;
 	$comment = $_POST['comment'];
@@ -81,12 +80,10 @@ if(isset($_POST['submitted'])){
     border: none;
     cursor: pointer;
 }
-
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content {
     display: none;
     position: relative;
@@ -95,20 +92,16 @@ if(isset($_POST['submitted'])){
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-
 .dropdown-content a:hover {background-color: #f1f1f1}
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
@@ -140,9 +133,9 @@ if(isset($_POST['submitted'])){
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav" style = "margin-left: 120px; margin-top: 30px;">
-    <li><a href="org.php"><b>WORKSPACE</b></a></li>
-    <li><a href="org-profile.php"><b>PROFILE</b></a></li>
-    <li class="active"><a href="org-listproposal.php"><b>PROPOSALS</b><span class="sr-only">(current)</span></a></li> 
+    <li><a href="org.php?page=1"><b>WORKSPACE</b></a></li>
+    <li><a href="org-profile.php?page=1"><b>PROFILE</b></a></li>
+    <li class="active"><a href="org-listproposal.php?page=1"><b>PROPOSALS</b><span class="sr-only">(current)</span></a></li> 
   </ul>
   <ul class="nav navbar-nav navbar-right" style = "margin-top: 30px;">
     <li><a href="org-profile.php"><b><?php echo $_SESSION['name'];?></b></a></li>
@@ -175,9 +168,9 @@ if(isset($_POST['submitted'])){
 								<span class="caret"></span>
 								</button>
                                 <div class="dropdown-menu" role="menu" style="left:700px;font-size: 15px;">';								
-                                echo '<a href="edit-budgetproposal.php?d='.$d.'&&days='.$days.'">Budget Proposal</a> <br>';
-							   
+                                echo '<a href="edit-budgetproposal.php?d='.$d.'&&days='.$days.'">Budget Proposal</a> <br>';					
                                 echo '<a href="edit-coverletter.php?d='.$d.'">Cover Letter</a><br>';
+								echo '<a href="edit-projectproposal.php?d='.$d.'">Project Proposal</a>';
                                // echo '<a href="edit-vehiclerequest.php?d='.$d.'">Vehicle Request</a><br>';
                             echo '</div>
                         </div>';
@@ -191,7 +184,6 @@ if(isset($_POST['submitted'])){
 $key=$d;
 $sql="SELECT * FROM proj_proposal where proposal_id = '".$d."'";
 $result = mysqli_query($link,$sql);
-
 while($row = mysqli_fetch_array($result)) {
 	echo "<table>";
     echo "<tr>";
@@ -327,6 +319,10 @@ while($row = mysqli_fetch_array($resulti)) {
                     
                     if ($status == "Approved" && $affiliation == "College-Based") {
                     echo '<a href ="approvalpdf-college.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
+                    }
+					
+					if ($status == "Approved" && $affiliation == "None - NSTP") {
+                    echo '<a href ="approvalpdf-nstp.php?d='.$d.'" style = "color: #fab303;" class = "btn btn-default btn-md btn-block col-md-12">ENDORSEMENT</a>';
                     }
                     
                   echo '</div>';
