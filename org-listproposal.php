@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['name'])){
 	header("location: index.php");
 }
+$refcollege = $_SESSION['college'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -234,7 +235,7 @@ $name = $_SESSION['name'];
                             if ($program_flow == 0) {
                                 echo '<a href="budget-proposal.php?d='.$proj_id.'&&days=0">Budget Proposal</a>';
                             }
-                            if ($cover_letter == 0) {    
+                            if ($cover_letter == 0 && $refcollege != 'nstp') {  
                                 echo '<a href="cover-letter.php?d='.$proj_id.'">Cover Letter</a>';
                             }
                            /* if ($vehicle_request == 0) {    
@@ -250,7 +251,7 @@ $name = $_SESSION['name'];
                             if ($program_flow == 1) {
                                 echo '<a href="edit-budgetproposal.php?d='.$proj_id.'&&days=0">Budget Proposal</a>';
                             }
-                            if ($cover_letter == 1) {    
+                            if ($cover_letter == 1 && $refcollege != 'nstp') {    
                                 echo '<a href="edit-coverletter.php?d='.$proj_id.'">Cover Letter</a>';
                             }
                           /*  if ($vehicle_request == 1) {    
