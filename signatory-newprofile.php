@@ -6,11 +6,11 @@ if(!isset($_SESSION['name'])){
 }
 if(isset($_POST['submitted'])){
 
-  $target = $_SERVER['DOCUMENT_ROOT'] . "/USTSIMBAHAYAN/uploads/";  
+/*  $target = $_SERVER['DOCUMENT_ROOT'] . "/USTSIMBAHAYAN/uploads/";  
     $target_file = $target . basename( $_FILES['file']['name']) ;  
     $file = $_FILES['file']['name'];
     $file_path = mysqli_real_escape_string($link, $target_file);
-  $file_path1 = "uploads/" .$file;
+  $file_path1 = "uploads/" .$file; */
 
     $id = $_SESSION['user_id'];
     $lname = $_POST['lname'];
@@ -24,11 +24,11 @@ if(isset($_POST['submitted'])){
     $security_question = $_POST['security_question'];
     $answer = $_POST['answer'];
         
-  if(move_uploaded_file($_FILES['file']['tmp_name'], $target_file))  { 
+ // if(move_uploaded_file($_FILES['file']['tmp_name'], $target_file))  { 
   
   $sqlprofile = "UPDATE login_user SET profile = 1 WHERE user_id = $id ";
         
-    $sqlinsert = "INSERT INTO signatory_profile (user_id, fname, mi, lname, address, contact_number, email, college, position, security_question, answer, signature) VALUES ('$id','$fname', '$mi', '$lname', '$address', '$contact_number','$email','$college','$position', '$security_question', '$answer', '$file_path1')";
+    $sqlinsert = "INSERT INTO signatory_profile (user_id, fname, mi, lname, address, contact_number, email, college, position, security_question, answer) VALUES ('$id','$fname', '$mi', '$lname', '$address', '$contact_number','$email','$college','$position', '$security_question', '$answer')";
     
   if(!mysqli_query($link, $sqlprofile)){
          die("<script type='text/javascript'>alert('UNABLE TO CREATE PROFILE!'); window.history.go(-1);</script>");
@@ -40,7 +40,7 @@ if(isset($_POST['submitted'])){
     echo "<script type='text/javascript'>alert('SUCCESSFULLY CREATED PROFILE!'); window.location = 'signatory-profile.php';</script>";
 
 }
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -175,8 +175,7 @@ if(isset($_POST['submitted'])){
     <input maxlength="100" type="text" required="required" class="form-control" name="security_question"/>
      <label class="control-label">ANSWER:</label>
     <input maxlength="100" type="text" required="required" class="form-control" name="answer"/>
-    <label class="control-label" style = "color: #000;"> Upload Signature </label>
-          <input style = "margin-top: 0px;" pattern="?=n" id = "f" name="file" class="form-control"  accept="image/*" type="file" accept="application/pdf" required="required" /><br />
+    
     </div>
     
     <div class = "col-md-4"></div>

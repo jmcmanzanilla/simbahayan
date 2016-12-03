@@ -87,7 +87,7 @@ while($row = mysqli_fetch_array($results)) {
     <li><a href="signatory.php"><b>WORKSPACE</b><span class="sr-only">(current)</span></a></li>
     <li><a href="signatory-profile.php"><b>PROFILE</b></a></li>
     <li class="active"><a href="manage-order-step1.php"><b>SIGNATORIES</b></a></li> 
-	<li><a href="signatory-listproposal.php"><b>PROPOSALS</b></a></li> 
+	<li><a href="signatory-listproposal.php?page=1"><b>PROPOSALS</b></a></li> 
   </ul>
   <ul class="nav navbar-nav navbar-right" style = "margin-top: 30px;">
     <li><a href="signatory-profile.php"><b><?php echo $_SESSION['name'];?></b></a></li>
@@ -114,20 +114,22 @@ while($row = mysqli_fetch_array($results)) {
                   <div class = "col-md-12" style = "margin-top: 30px; font-size: 16px;">
 
                  <table class = "table table-hover">
-				
-				
-				  <tr><a href = 'manage-order-standard.php'>Standard</a></tr>
+				  <tr><a href = "manage-order-standard.php">Standard</a></tr>
 				 <?php
+				 
+				 
 				 $sql="SELECT * FROM login_user where account_type='Organization' AND reference=$id";
 					$result = mysqli_query($link, $sql);
 					$position = $row['position'];
 					while($row = mysqli_fetch_array($result)) {
 					echo "<tr>";
-					if ($position == "College Community Development Coordinator") {
-					echo "<td><a href='manage-order1.php?d=".$row['user_id']."'>".$row['name']."</a></td>";
+					//if ($position == "College Community Development Coordinator") {
+					echo "<td><a href='manage-simbahayan-2.php?d=".$row['user_id']."'>".$row['name']."</a></td>";
 					echo "</tr>";	
+					
+					//}
 					}
-					}
+					
 				 ?>
 				 
 				 

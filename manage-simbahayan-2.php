@@ -100,24 +100,24 @@ for ($x=0; $x <= 1; $x++) {
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a href="admin.php"><img src= "images/ust_logo1.png" style = "height: 90px;"></a>
-<a href="admin.php"><img src= "images/simba_logo.png" style = "height: 90px;"></a>
+<a href="signatory.php"><img src= "images/ust_logo1.png" style = "height: 90px;"></a>
+<a href="signatory.php"><img src= "images/simba_logo.png" style = "height: 90px;"></a>
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
   <ul class="nav navbar-nav" style = "margin-left: 120px; margin-top: 30px;">
-    <li><a href="admin.php"><b>WORKSPACE</b><span class="sr-only">(current)</span></a></li>
-    <li><a href="admin-profile.php"><b>PROFILE</b></a></li>
-<li class="active"><a href="manage-simbahayan-1.php"><b>MANAGE SIGNATORIES</b></a></li>
+    <li><a href="signatory.php"><b>WORKSPACE</b><span class="sr-only">(current)</span></a></li>
+    <li><a href="signatory-profile.php"><b>PROFILE</b></a></li>
+<li class="active"><a href="manage-order-step1.php"><b>MANAGE SIGNATORIES</b></a></li>
   </ul>
   <ul class="nav navbar-nav navbar-right" style = "margin-top: 30px;">
-    <li><a href="admin-profile.php"><b><?php echo $_SESSION['name'];?></b></a></li>
+    <li><a href="signatory-profile.php"><b><?php echo $_SESSION['name'];?></b></a></li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
                   <ul class="dropdown-menu">
-                  <li><a href="admin-profile.php">View Profile</a></li>
-<li><a href="changepassword-admin.php">Change Password</a></li>
+                  <li><a href="signatory-profile.php">View Profile</a></li>
+<li><a href="changepassword-signatory.php">Change Password</a></li>
                 <li><a href="logout.php">Sign Out</a></li>
       </ul>
     </li>
