@@ -124,7 +124,7 @@ while($row = mysqli_fetch_array($results)) {
 					while($row = mysqli_fetch_array($result)) {
 					echo "<tr>";
 					//if ($position == "College Community Development Coordinator") {
-					echo "<td><a href='manage-simbahayan-2.php?d=".$row['user_id']."'>".$row['name']."</a></td>";
+					echo "<td><a href='manage-order1.php?d=".$row['user_id']."'>".$row['name']."</a></td>";
 					echo "</tr>";	
 					
 					//}

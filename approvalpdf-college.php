@@ -51,12 +51,12 @@ while ($row = mysqli_fetch_array($comresult)){
     $comdev_name = $row['signatory_name'];
     $com_num = $row['signatory_num']; 
 }
-//$com_num = $row['signatory_num'];
+/*$com_num = $row['signatory_num'];
 $comselect = "SELECT signature FROM signatory_profile WHERE user_id = $com_num"; 
 $comresult = mysqli_query($link, $comselect);
 while ($row = mysqli_fetch_array($comresult)){
   $comdev = $row['signature'];
-} 
+} */
 
 $progcoor = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 1 AND standard = 1 AND simbahayan = 1 AND univ_wide = 0";
 $progresult = mysqli_query($link, $progcoor);
@@ -65,11 +65,11 @@ while ($row = mysqli_fetch_array($progresult)){
 	$prog_num = $row['signatory_num'];
 }
 
-$progselect = "SELECT signature FROM signatory_profile WHERE user_id = $prog_num"; 
+/*$progselect = "SELECT signature FROM signatory_profile WHERE user_id = $prog_num"; 
 $progresult = mysqli_query($link, $progselect);
 while ($row = mysqli_fetch_array($progresult)){
   $progarea = $row['signature'];
-}
+}*/
 
 $dir = "SELECT signatory_name, signatory_num FROM order_signatory WHERE order_number = 2 AND standard = 1 AND simbahayan = 1 AND univ_wide = 1";
 $dirresult = mysqli_query($link, $dir);
@@ -78,11 +78,11 @@ while ($row = mysqli_fetch_array($dirresult)){
 	$dir_num = $row['signatory_num'];
 }
 
-$dirselect = "SELECT signature FROM signatory_profile WHERE user_id = $dir_num"; 
+/*$dirselect = "SELECT signature FROM signatory_profile WHERE user_id = $dir_num"; 
 $dirresult = mysqli_query($link, $dirselect);
 while ($row = mysqli_fetch_array($dirresult)){
   $director = $row['signature'];
-}
+}*/
 
 
 $logo_1 = "images/logo_1.jpg";
@@ -381,7 +381,7 @@ $pdf->Cell(5,10,' ','',0,'L',0);
 }
 //$pdf->Cell(5,5,' ','',0,'L',0);
 $pdf->Cell(15,10,' ','',0,'L',0);
-$pdf->Cell(1, 10, $pdf->Image($comdev, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
+//$pdf->Cell(1, 10, $pdf->Image($comdev, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
 $pdf->Cell(45,10,' ','',0,'L',0);
 $pdf->Cell(5,10,' ','',0,'L',0);
 $pdf->Cell(5,10,' ','',0,'L',0);
@@ -555,12 +555,12 @@ $pdf->Cell(95,5,' ','LR',0,'L',0);
 $pdf->Cell(45,5,'Final Budget Code is:','L',0,'L',0);
 $pdf->Cell(50,5,$finalbudget_code,'R',0,'L',0);
 $pdf->Ln(5);
-$pdf->Cell(20,15,' ','L',0,'L',0);
-$pdf->Cell( 70, 15, $pdf->Image($progarea, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
-$pdf->Cell(5,15,' ','R',0,'L',0);
-$pdf->Cell(20,15,' ','L',0,'L',0);
-$pdf->Cell( 70, 15, $pdf->Image($director, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
-$pdf->Cell(5,15,' ','R',0,'L',0);
+$pdf->Cell(70,15,' ','L',0,'L',0);
+//$pdf->Cell( 70, 15, $pdf->Image($progarea, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
+$pdf->Cell(25,15,' ','R',0,'L',0);
+$pdf->Cell(70,15,' ','L',0,'L',0);
+//$pdf->Cell( 70, 15, $pdf->Image($director, $pdf->GetX()+15, $pdf->GetY(), 33.78), 0, 0, 'C', false );
+$pdf->Cell(25,15,' ','R',0,'L',0);
 $pdf->Ln(15);
 $pdf->Cell(20,5,' ','L',0,'L',0);
 $pdf->Cell(70,5,$prog_name.' '.$date_today,'B',0,'C',0);

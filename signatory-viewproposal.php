@@ -23,7 +23,29 @@ if(isset($_POST['submitted'])){
 	echo "<script type='text/javascript'>alert('COMMENT ADDED'); window.location = 'signatory-viewproposal.php?d=$d';</script>";
 	
 	}
+	
+/*<body>
+<script type="text/javascript">
+window.alert("VIEW FIRST THE PROJECT PROPOSAL BEFORE APPROVING!")
+</script>
+</body> */
+
+$message = "VIEW FIRST THE PROJECT PROPOSAL BEFORE APPROVING!";
+echo "<script type='text/javascript'>alert('$message');</script>";
+
+
+/*if ($status == "Approved"){
+	
+	echo "<script type='text/javascript'>alert('PROJECT PROPOSAL ALREADY APPROVED!');</script>";
+}
+else{
+	echo "<script type='text/javascript'>alert('$message');</script>";
+}*/
+
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,6 +199,15 @@ while($row = mysqli_fetch_array($result)) {
 	echo "<tr>";
 	echo "<th> Project Background: </th>";
 	echo "<td>" . $row['proj_background'] . "</td>";
+	echo "<tr>";
+	echo "<th>";
+	echo "<td>" . $row['proj_background1'] . "</td>";
+	echo "<tr>";
+	echo "<th>";
+	echo "<td>" . $row['proj_background2'] . "</td>";
+	echo "<tr>";
+	echo "<th>";
+	echo "<td>" . $row['proj_background3'] . "</td>";
 	echo "</tr>";
 	echo "<tr>";
 	echo "<th> General Objective:  </th>";
@@ -186,6 +217,9 @@ while($row = mysqli_fetch_array($result)) {
 	echo "<tr>";
 	echo "<th> Project Evaluation:  </th>";
 	echo "<td>" . $row['proj_evaluation'] . "</td>";
+	echo "<tr>";
+	echo "<th>";
+	echo "<td>" . $row['proj_evaluation1'] . "</td>";
 	echo "</tr>";
 	
 	echo "<tr>";
@@ -203,6 +237,14 @@ while($row = mysqli_fetch_array($result)) {
 	echo "<tr>";
     echo "<td>" . $row['spec_obj3'] . "</td>";
     echo "<td>" . $row['exp_result3'] . "</td>";
+	echo "<tr>";
+	//echo "<th>";
+	echo "<td>" . $row['spec_obj4'] . "</td>";
+    echo "<td>" . $row['exp_result4'] . "</td>";
+	echo "<tr>";
+	//echo "<th>";
+	echo "<td>" . $row['spec_obj5'] . "</td>";
+    echo "<td>" . $row['exp_result5'] . "</td>";
 	echo "</tr>";
 	$days = $row['days'];
     $lead_org = $row['lead_org'];

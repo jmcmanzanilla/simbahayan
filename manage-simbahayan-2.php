@@ -109,7 +109,7 @@ for ($x=0; $x <= 1; $x++) {
   <ul class="nav navbar-nav" style = "margin-left: 120px; margin-top: 30px;">
     <li><a href="signatory.php"><b>WORKSPACE</b><span class="sr-only">(current)</span></a></li>
     <li><a href="signatory-profile.php"><b>PROFILE</b></a></li>
-<li class="active"><a href="manage-order-step1.php"><b>MANAGE SIGNATORIES</b></a></li>
+<li class="active"><a href="manage-simbahayan-1.php"><b>MANAGE SIGNATORIES</b></a></li>
   </ul>
   <ul class="nav navbar-nav navbar-right" style = "margin-top: 30px;">
     <li><a href="signatory-profile.php"><b><?php echo $_SESSION['name'];?></b></a></li>

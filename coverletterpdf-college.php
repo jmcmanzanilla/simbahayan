@@ -85,11 +85,11 @@ $pressql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_
   $president_num = $row['signatory_num'];
  }
 
-$presselect = "SELECT signature FROM signatory_profile WHERE user_id = $president_num"; 
+/*$presselect = "SELECT signature FROM signatory_profile WHERE user_id = $president_num"; 
 $presult = mysqli_query($link, $presselect);
 while ($row = mysqli_fetch_array($presult)){
   $president = $row['signature'];
-}
+}*/
  
  $advsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 2";
  $resultadv = mysqli_query($link, $advsql);
@@ -97,11 +97,12 @@ while ($row = mysqli_fetch_array($presult)){
   $adv_name = $row['signatory_name'];
   $adviser_num = $row['signatory_num'];
  }
-$aresselect = "SELECT signature FROM signatory_profile WHERE user_id = $adviser_num"; 
+ 
+/*$aresselect = "SELECT signature FROM signatory_profile WHERE user_id = $adviser_num"; 
 $aresult = mysqli_query($link, $aresselect);
 while ($row = mysqli_fetch_array($aresult)){
   $adviser1 = $row['signature'];
-}
+}*/
 
  $coorsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
  $resultcoor = mysqli_query($link, $coorsql);
@@ -110,11 +111,11 @@ while ($row = mysqli_fetch_array($aresult)){
   $coor_num = $row['signatory_num'];
  }
 
-  $coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
+/*$coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
 $coorresult = mysqli_query($link, $coorselect);
 while ($row = mysqli_fetch_array($coorresult)){
   $coordinator = $row['signature'];
-}
+}*/
 
  $chairsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 4";
  $resultchair = mysqli_query($link, $chairsql);
@@ -123,11 +124,11 @@ while ($row = mysqli_fetch_array($coorresult)){
   $chair_num = $row['signatory_num'];
  }
  
- $chairselect = "SELECT signature FROM signatory_profile WHERE user_id = $chair_num"; 
+/*$chairselect = "SELECT signature FROM signatory_profile WHERE user_id = $chair_num"; 
 $chairresult = mysqli_query($link, $chairselect);
 while ($row = mysqli_fetch_array($chairresult)){
   $chair = $row['signature'];
-} 
+} */
 
   /*$deansql = "SELECT signatory_name FROM order_signatory WHERE org_num = $lead_org AND order_number = 5";
  $resultdean = mysqli_query($link, $deansql);
@@ -153,11 +154,11 @@ $pressql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_
   $president_num = $row['signatory_num'];
  }
  
- $presselect = "SELECT signature FROM signatory_profile WHERE user_id = $president_num"; 
+/*$presselect = "SELECT signature FROM signatory_profile WHERE user_id = $president_num"; 
 $presult = mysqli_query($link, $presselect);
 while ($row = mysqli_fetch_array($presult)){
   $president = $row['signature'];
-}
+}*/
 
  $advsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 2";
  $resultadv = mysqli_query($link, $advsql);
@@ -166,11 +167,11 @@ while ($row = mysqli_fetch_array($presult)){
   $adviser_num = $row['signatory_num'];
  }
 
- $adselect = "SELECT signature FROM signatory_profile WHERE user_id = $adviser_num"; 
+/*$adselect = "SELECT signature FROM signatory_profile WHERE user_id = $adviser_num"; 
 $adresult = mysqli_query($link, $adselect);
 while ($row = mysqli_fetch_array($adresult)){
   $adviser1 = $row['signature'];
-}
+}*/
 
  $coorsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = $lead_org AND order_number = 3";
  $resultcoor = mysqli_query($link, $coorsql);
@@ -179,11 +180,11 @@ while ($row = mysqli_fetch_array($adresult)){
   $coor_num = $row['signatory_num'];
  }
 
- $coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
+/*$coorselect = "SELECT signature FROM signatory_profile WHERE user_id = $coor_num"; 
 $coorresult = mysqli_query($link, $coorselect);
 while ($row = mysqli_fetch_array($coorresult)){
   $coordinator = $row['signature'];
-}
+}*/
 
 }
 
@@ -194,12 +195,12 @@ while ($row = mysqli_fetch_array($coorresult)){
   $dean_name = $row['signatory_name'];
  }
 
- $collegedean = "SELECT signature, college FROM signatory_profile WHERE user_id = $dean_num";
+/*$collegedean = "SELECT signature, college FROM signatory_profile WHERE user_id = $dean_num";
  $resultcollege = mysqli_query($link, $collegedean);
  while ($row = mysqli_fetch_array($resultcollege)){
   $college_dean = $row['college'];
   $dean = $row['signature'];
- }
+ }*/
 
   $regsql = "SELECT * FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 0 AND univ_wide = 0 AND standard = 1 AND nstp = 0";
  $resultreg = mysqli_query($link, $regsql);
@@ -208,11 +209,11 @@ while ($row = mysqli_fetch_array($coorresult)){
   $reg_num = $row['signatory_num'];
  }
 
- $regselect = "SELECT signature FROM signatory_profile WHERE user_id = $reg_num"; 
+ /*$regselect = "SELECT signature FROM signatory_profile WHERE user_id = $reg_num"; 
 $regresult = mysqli_query($link, $regselect);
 while ($row = mysqli_fetch_array($regresult)){
   $regent = $row['signature'];
-}
+}*/
 
 $direcsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org_num = 0 AND order_number = 2 AND simbahayan = 1 AND univ_wide = 0 AND standard = 1";
  $resultdirec = mysqli_query($link, $direcsql);
@@ -221,11 +222,11 @@ $direcsql = "SELECT signatory_name, signatory_num FROM order_signatory WHERE org
   $direc_num = $row['signatory_num'];
  }
 
- $direcselect = "SELECT signature FROM signatory_profile WHERE user_id = $direc_num"; 
+ /*$direcselect = "SELECT signature FROM signatory_profile WHERE user_id = $direc_num"; 
 $direcresult = mysqli_query($link, $direcselect);
 while ($row = mysqli_fetch_array($direcresult)){
   $direct = $row['signature'];
-}
+}*/
 
 //$org_name = "Information Systems Society";
 //$projhead1 = "images/krizsa.jpg";
@@ -397,7 +398,7 @@ $pdf->SetXY($x+95, $y);
 $pdf->MultiCell(95,5,'',false);
 $x = $pdf->GetX();
 $y = $pdf->GetY();
-$pdf->MultiCell(95,5,'Project Head 1, '.$title,'','L',false);
+//$pdf->MultiCell(95,5,'Project Head 1, '.$title,'','L',false);
 $pdf->SetXY($x+95, $y);
 $pdf->MultiCell(95,5,'',false);
 $pdf->AddPage('P', 'Letter', 0);
@@ -408,8 +409,8 @@ if ($resultcount == 4){
 $pdf->Cell(190,5,'Noted by:','',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($president, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
-$pdf->Cell( 40, 40, $pdf->Image($adviser1, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($president, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($adviser1, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$pres_name,'',0,'L',0);
 $pdf->Cell(95,5,$adv_name,'',0,'L',0);
@@ -422,11 +423,11 @@ $pdf->Cell(95,5,$org_name,'',0,'L',0);
 $pdf->Cell(95,5,$org_name,'',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','',11);
-$pdf->Cell(190,5,'Endorsed by:','',0,'L',0);
+$pdf->Cell(190,15,'Endorsed by:','',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($coordinator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
-$pdf->Cell( 40, 40, $pdf->Image($chair, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($coordinator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($chair, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$coor_name,'',0,'L',0);
 $pdf->Cell(95,5,$chair_name,'',0,'L',0);
@@ -444,8 +445,8 @@ else{
 $pdf->Cell(190,5,'Noted by:','',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($president, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
-$pdf->Cell( 40, 40, $pdf->Image($adviser1, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($president, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($adviser1, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$pres_name,'',0,'L',0);
 $pdf->Cell(95,5,$adv_name,'',0,'L',0);
@@ -461,7 +462,7 @@ $pdf->SetFont('Arial','',11);
 $pdf->Cell(190,5,'Endorsed by:','',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($coordinator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($coordinator, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$coor_name,'',0,'L',0);
 $pdf->Ln(5);
@@ -474,8 +475,8 @@ $pdf->Ln(10);
 }
 
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($dean, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
-$pdf->Cell( 40, 40, $pdf->Image($regent, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($dean, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($regent, 110, $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$dean_name,'',0,'L',0);
 $pdf->Cell(95,5,$reg_name,'',0,'L',0);
@@ -487,10 +488,10 @@ $pdf->Ln(5);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Cell(95,5,$college_dean,'',0,'L',0);
 $pdf->Ln(15);
-$pdf->Cell(190,5,'Approved by:','',0,'L',0);
+$pdf->Cell(190,15,'Approved by:','',0,'L',0);
 $pdf->Ln(10);
 $pdf->SetFont('Arial','B',11);
-$pdf->Cell( 40, 40, $pdf->Image($direct, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
+//$pdf->Cell( 40, 40, $pdf->Image($direct, $pdf->GetX(), $pdf->GetY(), 33.78), 0, 0, 'L', false );
 $pdf->Ln(15);
 $pdf->Cell(95,5,$direc_name,'',0,'L',0);
 $pdf->Ln(5);
