@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2016 at 03:08 PM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: Feb 09, 2017 at 06:12 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `iics2016_simbahayan`
@@ -26,13 +26,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `announcement`
 --
 
-CREATE TABLE IF NOT EXISTS `announcement` (
+CREATE TABLE `announcement` (
   `announcement_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `sender` varchar(50) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `announcement` varchar(300) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `announcement` (
 -- Table structure for table `approval_form`
 --
 
-CREATE TABLE IF NOT EXISTS `approval_form` (
+CREATE TABLE `approval_form` (
   `approval_id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
   `proponent` varchar(100) NOT NULL,
@@ -70,7 +70,14 @@ CREATE TABLE IF NOT EXISTS `approval_form` (
   `signature_coor` blob NOT NULL,
   `signature_director` blob NOT NULL,
   `cashreqnum` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `approval_form`
+--
+
+INSERT INTO `approval_form` (`approval_id`, `title`, `proponent`, `affiliation`, `prog_area`, `community`, `date`, `budget`, `reports`, `attendance`, `presence_profile`, `presence_moa`, `comments1`, `reviewed`, `budget_code`, `comments2`, `recommend_progarea`, `budget_tobe`, `comments3`, `approve_director`, `finalbudget`, `finalbudget_code`, `cash_req`, `date_today`, `transpo_date`, `proposal_id`, `signature_coor`, `signature_director`, `cashreqnum`) VALUES
+(4, 'testing1', '25', 'University-Wide', 'Health and Wellness Development', 'tarlac', '2017-03-31,', '212', '', '', '', '', '', '', '', 'drgrgrg', 'Recommended', '11111', 'fgdfgdfg', 'Yes', '1122212', '1234', '', '', '', 9, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -78,12 +85,49 @@ CREATE TABLE IF NOT EXISTS `approval_form` (
 -- Table structure for table `audit_trail`
 --
 
-CREATE TABLE IF NOT EXISTS `audit_trail` (
+CREATE TABLE `audit_trail` (
   `audit_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `action` varchar(250) NOT NULL,
   `datetime` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1179 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `audit_trail`
+--
+
+INSERT INTO `audit_trail` (`audit_id`, `user_id`, `action`, `datetime`) VALUES
+(1773, 1, 'admin LOGGED IN.', '2017-02-09 12:34:26'),
+(1774, 1, 'admin LOGGED OUT.', '2017-02-09 12:45:10'),
+(1775, 20, 'm_abenir LOGGED IN.', '2017-02-09 12:45:35'),
+(1776, 20, 'm_abenir LOGGED OUT.', '2017-02-09 12:46:32'),
+(1777, 22, 'f_alipao LOGGED IN.', '2017-02-09 12:46:38'),
+(1778, 22, 'f_alipao LOGGED OUT.', '2017-02-09 12:47:45'),
+(1779, 21, 'j_victoria LOGGED IN.', '2017-02-09 12:47:52'),
+(1780, 21, 'j_victoria LOGGED OUT.', '2017-02-09 12:48:49'),
+(1781, 25, 'earth_ust LOGGED IN.', '2017-02-09 12:49:05'),
+(1782, 25, 'earth_ust LOGGED OUT.', '2017-02-09 12:50:58'),
+(1783, 26, 'earth_pres LOGGED IN.', '2017-02-09 12:51:06'),
+(1784, 26, 'earth_pres LOGGED OUT.', '2017-02-09 12:51:35'),
+(1785, 27, 'earth_adviser LOGGED IN.', '2017-02-09 12:51:41'),
+(1786, 27, 'earth_adviser LOGGED OUT.', '2017-02-09 13:03:51'),
+(1787, 24, 'k_balmeo LOGGED IN.', '2017-02-09 13:03:58'),
+(1788, 24, 'k_balmeo LOGGED OUT.', '2017-02-09 13:04:43'),
+(1789, 23, 'simbahayancoor LOGGED IN.', '2017-02-09 13:05:23'),
+(1790, 23, 'simbahayancoor LOGGED OUT.', '2017-02-09 13:06:06'),
+(1791, 25, 'earth_ust LOGGED IN.', '2017-02-09 13:06:17'),
+(1792, 25, 'earth_ust LOGGED OUT.', '2017-02-09 13:06:24'),
+(1793, 1, 'admin LOGGED IN.', '2017-02-09 13:06:28'),
+(1794, 1, 'admin LOGGED OUT.', '2017-02-09 13:07:53'),
+(1795, 25, 'earth_ust LOGGED IN.', '2017-02-09 13:07:57'),
+(1796, 25, 'earth_ust LOGGED OUT.', '2017-02-09 13:09:27'),
+(1797, 26, 'earth_pres LOGGED IN.', '2017-02-09 13:09:34'),
+(1798, 26, 'earth_pres LOGGED OUT.', '2017-02-09 13:09:54'),
+(1799, 27, 'earth_adviser LOGGED IN.', '2017-02-09 13:09:59'),
+(1800, 27, 'earth_adviser LOGGED OUT.', '2017-02-09 13:10:15'),
+(1801, 23, 'simbahayancoor LOGGED IN.', '2017-02-09 13:11:10'),
+(1802, 23, 'simbahayancoor LOGGED OUT.', '2017-02-09 13:11:32'),
+(1803, 20, 'm_abenir LOGGED IN.', '2017-02-09 13:11:41');
 
 -- --------------------------------------------------------
 
@@ -91,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `audit_trail` (
 -- Table structure for table `budget_proposal`
 --
 
-CREATE TABLE IF NOT EXISTS `budget_proposal` (
+CREATE TABLE `budget_proposal` (
   `budget_id` int(11) NOT NULL,
   `proposal_id` int(11) NOT NULL,
   `proj_evaluation` varchar(255) NOT NULL,
@@ -236,68 +280,14 @@ CREATE TABLE IF NOT EXISTS `budget_proposal` (
   `totalfund` int(11) NOT NULL,
   `totalorg` int(11) NOT NULL,
   `totalcom` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `budget_proposal`
 --
 
 INSERT INTO `budget_proposal` (`budget_id`, `proposal_id`, `proj_evaluation`, `proj_evaluation1`, `pname0`, `pmail0`, `pfund0`, `porg0`, `pcom0`, `pname1`, `pmail1`, `pfund1`, `porg1`, `pcom1`, `pname2`, `pmail2`, `pfund2`, `porg2`, `pcom2`, `pname3`, `pmail3`, `pfund3`, `porg3`, `pcom3`, `pname4`, `pmail4`, `pfund4`, `porg4`, `pcom4`, `oname0`, `omail0`, `ofund0`, `oorg0`, `ocom0`, `oname1`, `omail1`, `ofund1`, `oorg1`, `ocom1`, `oname2`, `omail2`, `ofund2`, `oorg2`, `ocom2`, `oname3`, `omail3`, `oname7`, `omail7`, `oname8`, `omail8`, `oname9`, `omail9`, `oname4`, `omail4`, `ofund6`, `oorg6`, `ocom6`, `oname5`, `omail5`, `ofund7`, `oorg7`, `ocom7`, `oname6`, `omail6`, `ofund8`, `oorg8`, `ocom8`, `ofund9`, `oorg9`, `ocom9`, `mname0`, `mmail0`, `mfund0`, `morg0`, `mcom0`, `mname1`, `mmail1`, `mfund1`, `morg1`, `mcom1`, `mname2`, `mmail2`, `mfund2`, `morg2`, `mcom2`, `mname3`, `mmail3`, `mfund3`, `morg3`, `mcom3`, `mname4`, `mmail4`, `mfund4`, `morg4`, `mcom4`, `mfund5`, `morg5`, `mcom5`, `otname0`, `otmail0`, `otfund0`, `otorg0`, `otcom0`, `otname1`, `otmail1`, `otfund1`, `otorg1`, `otcom1`, `otname2`, `otmail2`, `otfund2`, `otorg2`, `otcom2`, `otname3`, `otmail3`, `otfund3`, `otorg3`, `otcom3`, `otname4`, `otmail4`, `otfund4`, `otorg4`, `otcom4`, `otfund5`, `otorg5`, `otcom5`, `otfund6`, `otorg6`, `otcom6`, `ptotalfund`, `ptotalorg`, `ptotalcom`, `ototalfund`, `ototalorg`, `ototalcom`, `mtotalfund`, `mtotalorg`, `mtotalcom`, `ottotalfund`, `ottotalorg`, `ottotalcom`, `totalfund`, `totalorg`, `totalcom`) VALUES
-(1, 104, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 103, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 105, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 106, '', '', 'Student Volunteers', '3X300X1', 0, 900, 0, 'Faculty/Admin/Support Staff Volunteers', '3X1500X1', 0, 4500, 0, 'Volunteers from the Partner Community or Institution', '3X500X1', 0, 0, 1500, 'Volunteer External Resource Person (not from UST)', '3X1500X1', 0, 4500, 0, 'Subtotal', '', 0, 9900, 4500, 'Lunch / Dinner', '3X90X1', 0, 22, 0, 'Snack', '3X50X3', 0, 0, 1, 'Venue and Facilities', '1X1111X1', 1, 0, 0, 'Transportation', '1X3333X1, 1X3333X1, 1X3333X11', '', '1,,', '', ',1,', '', ',,1', 'Accommodation', '1X1111X1', 1, 0, 0, '', '1X1111X1', 0, 1, 0, '', '1X1111X1', 0, 0, 1, 111, 1111, 111, 'paper', '11X12X1', 111, 0, 0, 'pens', '11X12X1', 0, 111, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 1111, 1111, 1111, 'pens', '111X12X1', 0, 22222, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 222, 0, 1111, 1111, 1114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 107, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 108, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, 109, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(8, 110, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(9, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(10, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(11, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(12, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(13, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(14, 111, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(15, 112, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(16, 0, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(17, 0, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(18, 0, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(19, 0, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(20, 113, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(21, 114, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(22, 115, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(23, 116, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(24, 118, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(25, 119, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(26, 101, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(27, 121, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(28, 122, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(29, 1, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(30, 2, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(31, 8, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 0, 0, 0, 'Snack', '1X50X1', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(32, 9, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(33, 10, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(34, 11, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(35, 12, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(36, 13, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(37, 14, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(38, 15, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X', 1, 1, 1, 'Snack', 'X50X', 1, 1, 1, 'Venue and Facilities', 'XX', 1, 1, 1, 'Transportation', 'XX, XX, XX', '', '1,1,1', '', '1,1,1', '', '1,1,1', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 6, 6, 6, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 0, 0, 0, 4, 4, 4, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 1, 1, 1, '', 'XX', 0, 0, 0, 4, 4, 4, 14, 3314, 514, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(39, 16, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 1, 1, 1, 'Snack', '1X50X1', 1, 1, 1, 'Venue and Facilities', '1X1111X1', 1, 1, 1, 'Transportation', '1X1111X1, 1X1111X1, 1X1111X1', '', '1,1,1', '', '1,1,1', '', '1,1,1', 'Accommodation', '1X1111X1', 1, 1, 1, '', '1X1111X1', 1, 1, 1, '', '1X1111X1', 1, 1, 1, 9, 9, 9, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 5, 5, 5, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 'TESTING 222', '1X1X1', 1, 1, 1, 5, 5, 5, 19, 3319, 519, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(40, 17, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(41, 18, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 2, 0, 0, '', 'XX', 3, 0, 0, '', 'XX', 3, 0, 0, 8, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(42, 19, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(43, 20, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(44, 21, '', '', 'Student Volunteers', '1X300X1', 0, 300, 0, 'Faculty/Admin/Support Staff Volunteers', '1X1500X1', 0, 1500, 0, 'Volunteers from the Partner Community or Institution', '1X500X1', 0, 0, 500, 'Volunteer External Resource Person (not from UST)', '1X1500X1', 0, 1500, 0, 'Subtotal', '', 0, 3300, 1500, 'Lunch / Dinner', '1X90X1', 2, 2, 2, 'Snack', 'X50X', 2, 2, 2, 'Venue and Facilities', 'XX', 2, 2, 2, 'Transportation', 'XX, XX, XX', '', '2,2,2', '', '2,2,2', '', '2,2,2', 'Accommodation', 'XX', 2, 2, 2, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 14, 14, 14, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 0, 2, '', 'XX', 2, 0, 0, 10, 6, 8, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 2, 2, 2, '', 'XX', 0, 0, 2, '', 'XX', 0, 0, 0, 6, 6, 8, 30, 3326, 530, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(45, 22, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(46, 23, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(47, 24, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(48, 25, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(49, 26, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(50, 27, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(51, 28, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(52, 29, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(53, 30, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(54, 31, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(55, 32, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(92, 9, '', '', 'Student Volunteers', 'X300X', 0, 0, 0, 'Faculty/Admin/Support Staff Volunteers', 'X1500X', 0, 0, 0, 'Volunteers from the Partner Community or Institution', 'X500X', 0, 0, 0, 'Volunteer External Resource Person (not from UST)', 'X1500X', 0, 0, 0, 'Subtotal', '', 0, 0, 0, 'Lunch / Dinner', 'X90X', 0, 0, 0, 'Snack', 'X50X', 0, 0, 0, 'Venue and Facilities', 'XX', 0, 0, 0, 'Transportation', 'XX, XX, XX', '', ',,', '', ',,', '', ',,', 'Accommodation', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, '', 'XX', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -305,11 +295,11 @@ INSERT INTO `budget_proposal` (`budget_id`, `proposal_id`, `proj_evaluation`, `p
 -- Table structure for table `college_list`
 --
 
-CREATE TABLE IF NOT EXISTS `college_list` (
+CREATE TABLE `college_list` (
   `college_id` int(11) NOT NULL,
   `college_name` varchar(255) NOT NULL,
   `college_code` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `college_list`
@@ -348,7 +338,7 @@ INSERT INTO `college_list` (`college_id`, `college_name`, `college_code`) VALUES
 -- Table structure for table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
+CREATE TABLE `comment` (
   `comment_id` int(100) NOT NULL,
   `user_id` int(100) NOT NULL,
   `comment` varchar(255) NOT NULL,
@@ -363,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- Table structure for table `cover_letter`
 --
 
-CREATE TABLE IF NOT EXISTS `cover_letter` (
+CREATE TABLE `cover_letter` (
   `cover_id` int(11) NOT NULL,
   `iso` varchar(100) NOT NULL,
   `year` varchar(50) NOT NULL,
@@ -379,7 +369,14 @@ CREATE TABLE IF NOT EXISTS `cover_letter` (
   `position1` varchar(100) NOT NULL,
   `title` varchar(1000) NOT NULL,
   `proposal_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cover_letter`
+--
+
+INSERT INTO `cover_letter` (`cover_id`, `iso`, `year`, `date`, `address_name`, `address_position`, `address_company1`, `address_company2`, `salutation`, `body`, `closing`, `proj_head1`, `position1`, `title`, `proposal_id`) VALUES
+(9, '', 'AY 2016-2017', 'feb 9, 2017', 'DR. MARK ANTHONY D. ABENIR, DSD', 'Director - simbahayan', 'University of Santo Tomas', 'Espana, Manila', 'Greetings!', 'sfsdfsdfsdfs', 'Respectfully yours,', 'Abigail D.. Brioles', 'Project Head', 'testing1', 9);
 
 -- --------------------------------------------------------
 
@@ -387,7 +384,7 @@ CREATE TABLE IF NOT EXISTS `cover_letter` (
 -- Table structure for table `login_user`
 --
 
-CREATE TABLE IF NOT EXISTS `login_user` (
+CREATE TABLE `login_user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -397,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `login_user` (
   `college` varchar(100) NOT NULL,
   `profile` int(11) NOT NULL,
   `reference` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login_user`
@@ -405,21 +402,14 @@ CREATE TABLE IF NOT EXISTS `login_user` (
 
 INSERT INTO `login_user` (`user_id`, `username`, `password`, `name`, `email`, `account_type`, `college`, `profile`, `reference`) VALUES
 (1, 'admin', '098f6bcd4621d373cade4e832627b4f6', 'System Administrator', 'jmcmanzanilla@gmail.com', 'Administrator', '', 1, 0),
-(5, 'j_victoria', '49704d02ade8a8ff9e335618ea48d730', 'Jasmin Victoria', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
-(6, 'm_abenir', '49704d02ade8a8ff9e335618ea48d730', 'Mark Anthony D. Abenir', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
-(7, 'f_alipao', '49704d02ade8a8ff9e335618ea48d730', 'Froilan Alipao', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
-(8, 'k_balmeo', '585c3c82d99a3eba07296eca302ebc38', 'Khrisnamonte Balmeo', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 1),
-(10, 'ust_iss', '585c3c82d99a3eba07296eca302ebc38', 'Information Systems Society', 'jmcmanzanilla@gmail.com', 'Organization', 'iics', 1, 8),
-(11, 'iss_pres', '585c3c82d99a3eba07296eca302ebc38', 'Krizsa Tanaleon', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 8),
-(12, 'iss_adviser', '585c3c82d99a3eba07296eca302ebc38', 'Salve Diaz', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 8),
-(14, 'a_santos', '585c3c82d99a3eba07296eca302ebc38', 'Alex Santos', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 8),
-(15, 'h_pama', '585c3c82d99a3eba07296eca302ebc38', 'Father Hermel Pama', 'jmcmanzanilla@gmail.com', 'Signatory', 'iics', 1, 8),
-(17, 'm_arepentido', '49704d02ade8a8ff9e335618ea48d730', 'Manuel Arepentido', 'jmcmanzanilla@gmail.com', 'Signatory', 'simbahayan', 1, 1),
-(57, 'NSTP-Moderator', '00b1abfcf441b71b77b642c0b209ef0a', 'Jose Ricarte B. Origenes', 'jr@gmail.com', 'Signatory', 'nstp', 1, 1),
-(65, 'earth_ust', '3a52573b62196e8b56a19f9d9e1ac1b3', 'EARTH - UST', 'eust@gmail.com', 'Organization', 'univwide', 1, 1),
-(66, 'earth_pres', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Adriel Benitez', 'ab@gmail.com', 'Signatory', 'univwide', 1, 1),
-(67, 'earth_adviser', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Luis Padilla', 'lp@gmail.com', 'Signatory', 'univwide', 1, 1),
-(68, 'f1_nstp', '00b1abfcf441b71b77b642c0b209ef0a', 'Rhea Ylagan', 'ry@gmail.com', 'Organization', 'nstp', 1, 1);
+(20, 'm_abenir', '49704d02ade8a8ff9e335618ea48d730', 'Asst. Prof. Mark Anthony D. Abenir, DSD', 'mabenir@gmail.com', 'Signatory', 'simbahayan', 1, 1),
+(21, 'j_victoria', '49704d02ade8a8ff9e335618ea48d730', 'Jasmin Victoria', 'j@gmail.com', 'Signatory', 'simbahayan', 1, 1),
+(22, 'f_alipao', '49704d02ade8a8ff9e335618ea48d730', 'Froilan Alipao', 'kp@gmail.com', 'Signatory', 'simbahayan', 1, 1),
+(23, 'simbahayancoor', '49704d02ade8a8ff9e335618ea48d730', 'Simbahayan Program Coordinator', 'scdo@gmail.com', 'Signatory', 'simbahayan', 1, 1),
+(24, 'k_balmeo', '585c3c82d99a3eba07296eca302ebc38', 'Khrisnamonte balmeo', 'kb@gmail.com', 'Signatory', 'iics', 1, 1),
+(25, 'earth_ust', '3a52573b62196e8b56a19f9d9e1ac1b3', 'EARTH_UST', 'eust@gmail.com', 'Organization', 'univwide', 1, 1),
+(26, 'earth_pres', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Adriel Benitez', 'ab@gmail.com', 'Signatory', 'univwide', 1, 1),
+(27, 'earth_adviser', '3a52573b62196e8b56a19f9d9e1ac1b3', 'Luis Padilla', 'lp@gmail.com', 'Signatory', 'univwide', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -427,7 +417,7 @@ INSERT INTO `login_user` (`user_id`, `username`, `password`, `name`, `email`, `a
 -- Table structure for table `notification`
 --
 
-CREATE TABLE IF NOT EXISTS `notification` (
+CREATE TABLE `notification` (
   `notification_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -442,7 +432,7 @@ CREATE TABLE IF NOT EXISTS `notification` (
 -- Table structure for table `order_signatory`
 --
 
-CREATE TABLE IF NOT EXISTS `order_signatory` (
+CREATE TABLE `order_signatory` (
   `signatory_id` int(11) NOT NULL,
   `org_num` int(11) NOT NULL,
   `order_number` int(11) NOT NULL,
@@ -453,29 +443,19 @@ CREATE TABLE IF NOT EXISTS `order_signatory` (
   `simbahayan` int(11) NOT NULL,
   `univ_wide` int(11) NOT NULL,
   `nstp` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `order_signatory`
 --
 
 INSERT INTO `order_signatory` (`signatory_id`, `org_num`, `order_number`, `signatory_num`, `signatory_name`, `reference`, `standard`, `simbahayan`, `univ_wide`, `nstp`) VALUES
-(7, 0, 1, 14, 'Alex Santos', 8, 1, 0, 0, 0),
-(8, 0, 2, 15, 'Father Hermel Pama', 8, 1, 0, 0, 0),
-(21, 10, 1, 11, 'Krizsa Tanaleon', 8, 0, 0, 0, 0),
-(22, 10, 2, 12, 'Salve Diaz', 8, 0, 0, 0, 0),
-(23, 10, 3, 8, 'Khrisnamonte Balmeo', 8, 0, 0, 0, 0),
-(24, 16, 1, 11, 'Krizsa Tanaleon', 8, 0, 0, 0, 0),
-(25, 16, 2, 12, 'Salve Diaz', 8, 0, 0, 0, 0),
-(26, 16, 3, 8, 'Khrisnamonte Balmeo', 8, 0, 0, 0, 0),
-(69, 0, 1, 7, 'Asst. Prof. Froilan Alipao, MA', 1, 1, 1, 0, 0),
-(70, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 1, 1, 1, 0, 0),
-(79, 0, 1, 57, 'Assoc. Prof. Jose Ricarte B. Origenes', 57, 1, 0, 0, 1),
-(80, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 57, 1, 0, 0, 1),
-(81, 65, 1, 66, 'Adriel Benitez', 1, 0, 0, 1, 0),
-(82, 65, 2, 67, 'Luis Padilla', 1, 0, 0, 1, 0),
-(83, 0, 1, 5, 'Jasmin Victoria', 1, 1, 1, 1, 0),
-(84, 0, 2, 6, 'Dr. Mark Anthony D. Abenir, DSD', 1, 1, 1, 1, 0);
+(16, 0, 1, 23, 'Simbahayan Program Coordinator', 1, 1, 1, 1, 0),
+(17, 0, 2, 20, 'Asst. Prof. Mark Anthony D. Abenir, DSD', 1, 1, 1, 1, 0),
+(18, 0, 1, 22, 'Froilan Alipao', 1, 1, 1, 0, 0),
+(19, 0, 2, 20, 'Asst. Prof. Mark Anthony D. Abenir, DSD', 1, 1, 1, 0, 0),
+(20, 25, 1, 26, 'Adriel Benitez', 1, 0, 0, 1, 0),
+(21, 25, 2, 27, 'Luis Padilla', 1, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -483,10 +463,10 @@ INSERT INTO `order_signatory` (`signatory_id`, `org_num`, `order_number`, `signa
 -- Table structure for table `position`
 --
 
-CREATE TABLE IF NOT EXISTS `position` (
+CREATE TABLE `position` (
   `position_id` int(11) NOT NULL,
   `position_name` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `position`
@@ -511,7 +491,7 @@ INSERT INTO `position` (`position_id`, `position_name`) VALUES
 -- Table structure for table `program_flow`
 --
 
-CREATE TABLE IF NOT EXISTS `program_flow` (
+CREATE TABLE `program_flow` (
   `program_id` int(11) NOT NULL,
   `proposal_id` int(11) NOT NULL,
   `date` date NOT NULL,
@@ -564,7 +544,14 @@ CREATE TABLE IF NOT EXISTS `program_flow` (
   `time15` varchar(100) NOT NULL,
   `description15` varchar(100) NOT NULL,
   `person15` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `program_flow`
+--
+
+INSERT INTO `program_flow` (`program_id`, `proposal_id`, `date`, `address`, `time0`, `description0`, `person0`, `time1`, `description1`, `person1`, `time2`, `description2`, `person2`, `time3`, `description3`, `person3`, `time4`, `description4`, `person4`, `time5`, `description5`, `person5`, `time6`, `description6`, `person6`, `time7`, `description7`, `person7`, `time8`, `description8`, `person8`, `time9`, `description9`, `person9`, `time10`, `description10`, `person10`, `time11`, `description11`, `person11`, `time12`, `description12`, `person12`, `time13`, `description13`, `person13`, `time14`, `description14`, `person14`, `time15`, `description15`, `person15`) VALUES
+(9, 9, '2017-03-31', 'dsadasd', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '', ' - ', '', '');
 
 -- --------------------------------------------------------
 
@@ -572,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `program_flow` (
 -- Table structure for table `proj_proposal`
 --
 
-CREATE TABLE IF NOT EXISTS `proj_proposal` (
+CREATE TABLE `proj_proposal` (
   `proposal_id` int(11) NOT NULL,
   `days` int(11) NOT NULL,
   `page` int(11) NOT NULL,
@@ -626,7 +613,14 @@ CREATE TABLE IF NOT EXISTS `proj_proposal` (
   `edit` int(11) NOT NULL,
   `program_flow` int(11) NOT NULL,
   `target_date` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `proj_proposal`
+--
+
+INSERT INTO `proj_proposal` (`proposal_id`, `days`, `page`, `lead_org`, `affiliation`, `college`, `lname1`, `fname1`, `mi1`, `cnum1`, `email1`, `lname2`, `fname2`, `mi2`, `cnum2`, `email2`, `collab`, `proj_title`, `prog_areadev`, `community`, `participants`, `comser_budget`, `org_budget`, `com_budget`, `proj_background`, `proj_background1`, `proj_background2`, `proj_background3`, `gen_objective`, `spec_obj1`, `exp_result1`, `spec_obj2`, `exp_result2`, `spec_obj3`, `exp_result3`, `spec_obj4`, `exp_result4`, `spec_obj5`, `exp_result5`, `proj_evaluation`, `proj_evaluation1`, `status`, `signatory_position`, `pending`, `budget`, `approved`, `cover`, `vehicle`, `upload_date`, `terminal`, `edit`, `program_flow`, `target_date`) VALUES
+(9, 1, 0, '25', 'University-Wide', 'NA - University Wide', 'Brioles', 'Abigail', 'D.', '09126574565', 'eust@gmail.com', 'fgdgdfg', 'dfgdfgdf', 'k', '09123343423', 'dfgs@gmail.com', 'na', 'testing1', 'Health and Wellness Development', 'tarlac', 12, 212, 212, 212, 'dsadasd', 'sadasd', 'dsadas', 'dsadad', 'asdad', 'dasd', 'asd', 'asdas', 'dasd', 'asda', 'sda', 'dasd', 'asdad', 'asda', 'dada', 'dasda', 'sasda', 'Approved', '', 'Complete', 1, '', 1, 0, '2017-02-09', 0, 0, 1, '2017-03-31,');
 
 -- --------------------------------------------------------
 
@@ -634,7 +628,7 @@ CREATE TABLE IF NOT EXISTS `proj_proposal` (
 -- Table structure for table `report`
 --
 
-CREATE TABLE IF NOT EXISTS `report` (
+CREATE TABLE `report` (
   `proposal_id` int(11) NOT NULL,
   `date_received` date NOT NULL,
   `lead_org` varchar(50) NOT NULL,
@@ -653,7 +647,14 @@ CREATE TABLE IF NOT EXISTS `report` (
   `staff` int(11) NOT NULL,
   `alumni` int(11) NOT NULL,
   `remarks` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `report`
+--
+
+INSERT INTO `report` (`proposal_id`, `date_received`, `lead_org`, `proj_title`, `proj_area`, `beneficiaries`, `date_target`, `budget_approved`, `budget_code`, `report_id`, `transaction_code`, `cr_code`, `student`, `faculty`, `admin`, `staff`, `alumni`, `remarks`) VALUES
+(9, '2017-02-09', '', 'testing1', 'tarlac', 12, '2017-03-31,', '', '', 4, 0, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -661,7 +662,7 @@ CREATE TABLE IF NOT EXISTS `report` (
 -- Table structure for table `saaf`
 --
 
-CREATE TABLE IF NOT EXISTS `saaf` (
+CREATE TABLE `saaf` (
   `saaf` int(11) NOT NULL,
   `lead_org` varchar(100) NOT NULL,
   `optradio` varchar(100) NOT NULL,
@@ -731,7 +732,7 @@ CREATE TABLE IF NOT EXISTS `saaf` (
 -- Table structure for table `signatory_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `signatory_profile` (
+CREATE TABLE `signatory_profile` (
   `signatory_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
@@ -745,31 +746,20 @@ CREATE TABLE IF NOT EXISTS `signatory_profile` (
   `security_question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL,
   `signature` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `signatory_profile`
 --
 
 INSERT INTO `signatory_profile` (`signatory_id`, `user_id`, `fname`, `mi`, `lname`, `position`, `college`, `email`, `contact_number`, `address`, `security_question`, `answer`, `signature`) VALUES
-(2, 8, 'Khrisnamonte', 'A.', 'Balmeo', 'College Community Development Coordinator', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09177245421', 'Quezon', 'Yes?', 'Yes', 'uploads/qq.jpg'),
-(4, 5, 'Jasmin', 'D.', 'Victoria', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/rovinesig.png'),
-(5, 7, 'Froilan', 'D.', 'Alipao', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/qq.jpg'),
-(6, 6, 'Mark', 'D.', 'Abenir', 'Simbahayan Director', 'Simbahayan ', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Name of dog', 'Duke', 'uploads/earthadv.jpg'),
-(8, 12, 'Salve', 'L', 'Diaz', 'Organization Adviser', 'Institute of Information and Computing Sciences', 'asc.anastacio@gmail.com', '09175253752', 'asdfgfh', 'What is the name of your fattest cat?', 'Kuting', 'uploads/nstpmode.jpg'),
-(9, 11, 'Krizsa Marie', 'D', 'Tanaleon', 'Organization President', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09159105104', 'QC', 'Yes?', 'NO', 'uploads/Krizsa.jpg'),
-(10, 17, 'Manuel', 'D.', 'Arepentido', 'Budget Officer', 'Simbahayan', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Dog''s Name', 'Duke', ''),
-(11, 19, 'Krizsa Marie', 'Dela Pena', 'Tanaleon', 'College Community Development Coordinator', 'Faculty of Engineering', 'krizsamarietanaleon@gmail.com', '09173274123', 'esfrtgreh', 'Hello?', 'Hi', 'uploads/hahaha.jpg'),
-(12, 20, 'Carissa', 'V', 'Gaviola', 'Organization Adviser', 'NA - University Wide', 'cavgangelica@gmail.com', '1234567', 'sdlkfrje', 'hi', 'hello', 'uploads/qq.jpg'),
-(13, 22, 'Joan Marie', 'Calma', 'Manzanilla', 'College Community Development Coordinator', 'National Service Training Program (NSTP)', 'jmcmanzanilla@gmail.com', '6451225', 'Antipolo City', 'Nakamove on ka na?', 'Secret', 'uploads/fgfd.png'),
-(19, 53, 'raymond', 's', 'chen', 'Organization President', 'Institute of Information and Computing Sciences', 'rr@gmail.com', '24413231', 'manila', 'good?', 'no', 'uploads/hahaha.jpg'),
-(20, 14, 'Alex', 'A', 'Santos', 'IICS Director', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123456764', 'Metro Manila', 'good?', 'no', 'uploads/rovinesig.png'),
-(21, 15, 'Hermel', 'S', 'Pama', 'College Regent', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '09123454332', 'Metro Manila', 'good?', 'no', 'uploads/s6.jpg'),
-(22, 13, 'Mylene', 'A', 'Domingo', 'Department Chairman', 'Institute of Information and Computing Sciences', 'jmcmanzanilla@gmail.com', '2134242342', 'manila', 'good?', 'no', 'uploads/hahaha.jpg'),
-(25, 57, 'Jose Ricarte', 'B.', 'Origenes', 'NSTP Moderator', 'National Service Training Program (NSTP)', 'jr@gmail.com', '09157772345', 'manila', 'good?', 'yes', 'uploads/qq.jpg'),
-(33, 66, 'Adriel', 'L.', 'Benitez', 'Organization President', 'NA - University Wide', 'ab@gmail.com', '09787577455', 'manila', 'good?', 'yes', 'uploads/earthpress.jpg'),
-(34, 67, 'Luis', 'A.', 'Padilla', 'Organization Adviser', 'NA - University Wide', 'lp@gmail.com', '09975647866', 'manila', 'pet name?', 'mocha', 'uploads/earthadv.jpg'),
-(35, 69, 'Mark', 'D.', 'Abenir', 'Simbahayan Director', 'Simbahayan ', 'ma@gmail.com', '6464565465465', 'Metro Manila', 'color?', 'blue', 'uploads/earthpress.png');
+(16, 20, 'Mark', 'D.', 'Abenir', 'Simbahayan Director', 'Simbahayan ', 'mabenir@gmail.com', '09126574565', 'manila', 'color?', 'Blue', ''),
+(17, 22, 'Froilan', 'H.', 'Alipao', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'kp@gmail.com', '09126574567', 'Manila', 'color?', 'Blue', ''),
+(18, 21, 'Jasmin', 'J.', 'Victoria', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'j@gmail.com', '09163454345', 'manila', 'color?', 'pink', ''),
+(19, 26, 'Adriel', 'J.', 'Benitez', 'Organization President', 'NA - University Wide', 'ab@gmail.com', '09126574565', 'manila', 'color?', 'Blue', ''),
+(20, 27, 'Luis', 'V.', 'Padilla', 'Organization Adviser', 'NA - University Wide', 'lp@gmail.com', '09126574567', 'manila', 'color?', 'Blue', ''),
+(21, 24, 'Khrisnamonte', 'D.', 'Balmeo', 'College Community Development Coordinator', 'Institute of Information and Computing Sciences', 'kb@gmail.com', '09126574567', 'manila', 'color?', 'Blue', ''),
+(22, 23, 'Simbahayan ', 'Program', 'Coordinator', 'Simbahayan Program Area Coordinator', 'Simbahayan ', 'scdo@gmail.com', '09126574565', 'manila', 'color?', 'pink', '');
 
 -- --------------------------------------------------------
 
@@ -777,7 +767,7 @@ INSERT INTO `signatory_profile` (`signatory_id`, `user_id`, `fname`, `mi`, `lnam
 -- Table structure for table `simbahayan_order`
 --
 
-CREATE TABLE IF NOT EXISTS `simbahayan_order` (
+CREATE TABLE `simbahayan_order` (
   `signatory_id` int(11) NOT NULL,
   `order_number` int(11) NOT NULL,
   `signatory_num` int(11) NOT NULL,
@@ -792,14 +782,24 @@ CREATE TABLE IF NOT EXISTS `simbahayan_order` (
 -- Table structure for table `status_update`
 --
 
-CREATE TABLE IF NOT EXISTS `status_update` (
+CREATE TABLE `status_update` (
   `update_id` int(11) NOT NULL,
   `date` int(11) NOT NULL,
   `proposal_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `action` varchar(255) NOT NULL,
   `reason` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `status_update`
+--
+
+INSERT INTO `status_update` (`update_id`, `date`, `proposal_id`, `user_id`, `action`, `reason`) VALUES
+(24, 0, 9, 26, 'Approved', ''),
+(25, 0, 9, 27, 'Approved', ''),
+(26, 0, 9, 23, 'Approved', ''),
+(27, 0, 9, 20, 'Approved', '');
 
 -- --------------------------------------------------------
 
@@ -807,7 +807,7 @@ CREATE TABLE IF NOT EXISTS `status_update` (
 -- Table structure for table `student_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `student_profile` (
+CREATE TABLE `student_profile` (
   `org_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `org_name` varchar(100) NOT NULL,
@@ -822,18 +822,14 @@ CREATE TABLE IF NOT EXISTS `student_profile` (
   `signature` varchar(100) NOT NULL,
   `security_question` varchar(255) NOT NULL,
   `answer` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `student_profile`
 --
 
 INSERT INTO `student_profile` (`org_id`, `user_id`, `org_name`, `affiliation`, `college`, `fname`, `mi`, `lname`, `position`, `email`, `contact_number`, `signature`, `security_question`, `answer`) VALUES
-(3, 10, 'Information Systems Society', 'College-Based', 'Institute of Information and Computing Sciences', 'Nicolo Joseph', 'A.', 'Punzalan', 'Organization Community Development Representative', 'jmcmanzanilla@gmail.com', '09177245421', 'uploads/earthust.jpg', 'What is the name of your dog?', 'Sushi'),
-(9, 16, 'Computer Sciences Society', 'College-Based', 'Institute of Information and Computing Sciences', 'Angelica', 'Santos', 'Gonzales', 'Project Head', 'jmcmanzanilla@gmail.com', '09157772345', 'uploads/hahaha.jpg', 'you good?', 'no'),
-(10, 58, 'Rhea Ylagan', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'K.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09787577455', 'uploads/earthust.jpg', 'okay?', 'yes'),
-(11, 65, 'EARTH - UST', 'University-Wide', 'NA - University Wide', 'Abigail', 'D.', 'Brioles', 'Organization Community Development Representative', 'eust@gmail.com', '09123456764', 'uploads/earthust.jpg', 'still good?', 'yes'),
-(12, 68, 'F1-NSTP', 'None - NSTP', 'National Service Training Program (NSTP)', 'Rhea', 'B.', 'Ylagan', 'NSTP Facilitator', 'ry@gmail.com', '09123456764', 'uploads/earthust.jpg', 'favorite color?', 'pink');
+(22, 25, 'EARTH_UST', 'University-Wide', 'NA - University Wide', 'Abigail', 'D.', 'Brioles', 'Organization Community Development Representative', 'eust@gmail.com', '09126574565', 'uploads/earthadv.jpg', 'color?', 'pink');
 
 -- --------------------------------------------------------
 
@@ -841,7 +837,7 @@ INSERT INTO `student_profile` (`org_id`, `user_id`, `org_name`, `affiliation`, `
 -- Table structure for table `terminal`
 --
 
-CREATE TABLE IF NOT EXISTS `terminal` (
+CREATE TABLE `terminal` (
   `terminal_id` int(11) NOT NULL,
   `proposal_id` int(11) NOT NULL,
   `file_path` varchar(255) NOT NULL,
@@ -854,7 +850,7 @@ CREATE TABLE IF NOT EXISTS `terminal` (
 -- Table structure for table `vehiclerequest`
 --
 
-CREATE TABLE IF NOT EXISTS `vehiclerequest` (
+CREATE TABLE `vehiclerequest` (
   `vehicle_id` int(11) NOT NULL,
   `osg_num` varchar(100) NOT NULL,
   `borrower` varchar(50) NOT NULL,
@@ -917,13 +913,16 @@ ALTER TABLE `comment`
 -- Indexes for table `cover_letter`
 --
 ALTER TABLE `cover_letter`
-  ADD PRIMARY KEY (`cover_id`), ADD UNIQUE KEY `proposal_id` (`proposal_id`);
+  ADD PRIMARY KEY (`cover_id`),
+  ADD UNIQUE KEY `proposal_id` (`proposal_id`);
 
 --
 -- Indexes for table `login_user`
 --
 ALTER TABLE `login_user`
-  ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `username` (`username`), ADD UNIQUE KEY `username_2` (`username`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `username_2` (`username`);
 
 --
 -- Indexes for table `order_signatory`
@@ -989,7 +988,8 @@ ALTER TABLE `terminal`
 -- Indexes for table `vehiclerequest`
 --
 ALTER TABLE `vehiclerequest`
-  ADD PRIMARY KEY (`vehicle_id`), ADD UNIQUE KEY `proposal_id` (`proposal_id`);
+  ADD PRIMARY KEY (`vehicle_id`),
+  ADD UNIQUE KEY `proposal_id` (`proposal_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -999,27 +999,27 @@ ALTER TABLE `vehiclerequest`
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `announcement_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `approval_form`
 --
 ALTER TABLE `approval_form`
-  MODIFY `approval_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `approval_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `audit_trail`
 --
 ALTER TABLE `audit_trail`
-  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1179;
+  MODIFY `audit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1804;
 --
 -- AUTO_INCREMENT for table `budget_proposal`
 --
 ALTER TABLE `budget_proposal`
-  MODIFY `budget_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+  MODIFY `budget_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT for table `college_list`
 --
 ALTER TABLE `college_list`
-  MODIFY `college_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+  MODIFY `college_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `comment`
 --
@@ -1029,42 +1029,42 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `cover_letter`
 --
 ALTER TABLE `cover_letter`
-  MODIFY `cover_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+  MODIFY `cover_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `login_user`
 --
 ALTER TABLE `login_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `order_signatory`
 --
 ALTER TABLE `order_signatory`
-  MODIFY `signatory_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=85;
+  MODIFY `signatory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `position`
 --
 ALTER TABLE `position`
-  MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `program_flow`
 --
 ALTER TABLE `program_flow`
-  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `program_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `proj_proposal`
 --
 ALTER TABLE `proj_proposal`
-  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `proposal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `signatory_profile`
 --
 ALTER TABLE `signatory_profile`
-  MODIFY `signatory_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+  MODIFY `signatory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `simbahayan_order`
 --
@@ -1074,17 +1074,17 @@ ALTER TABLE `simbahayan_order`
 -- AUTO_INCREMENT for table `status_update`
 --
 ALTER TABLE `status_update`
-  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=104;
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `student_profile`
 --
 ALTER TABLE `student_profile`
-  MODIFY `org_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `org_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `terminal`
 --
 ALTER TABLE `terminal`
-  MODIFY `terminal_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `terminal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `vehiclerequest`
 --
